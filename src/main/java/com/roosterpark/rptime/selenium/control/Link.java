@@ -11,16 +11,24 @@ import org.openqa.selenium.WebElement;
  *
  * An abstract base class for Links
  */
-public abstract class Link<T> {
+public abstract class Link<T> implements Control {
 
     private WebDriver driver;
     private WebElement element;
 
     public Link(WebDriver driver, String elementId) {
         this.driver = driver;
-        this.element = this.driver.findElement(By.id(elementId));
+        this.element = this.driver.findElement(By.linkText(elementId));
     }
 
     public abstract T click();
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public WebElement getElement() {
+        return element;
+    }
 
 }

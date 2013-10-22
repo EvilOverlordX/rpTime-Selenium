@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
+import com.roosterpark.rptime.selenium.control.Link;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -12,6 +13,8 @@ public class LandingPage extends BasicPageObject {
 
     private static final String ADDRESS = "http://roosterparktime.appspot.com";
 
+    private RpTimeLink rpTimeLink;
+
     public LandingPage(WebDriver driver) {
         super(driver);
     }
@@ -19,6 +22,26 @@ public class LandingPage extends BasicPageObject {
     @Override
     public void openPage() {
         getWebDriver().get(ADDRESS);
+    }
+
+    public RpTimePage clickRpTimeLink() {
+        rpTimeLink = new RpTimeLink(getWebDriver());
+        return rpTimeLink.click();
+    }
+
+    private class RpTimeLink extends Link<RpTimePage> {
+
+        private static final String LINK_TEXT = "Rptime";
+
+        public RpTimeLink(WebDriver driver) {
+           super(driver, LINK_TEXT);
+        }
+
+        @Override
+        public RpTimePage click() {
+            getElement().click();
+            return new RpTimePage(getDriver());
+        }
     }
 
 }
