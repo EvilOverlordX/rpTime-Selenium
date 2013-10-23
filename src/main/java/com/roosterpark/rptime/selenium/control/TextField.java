@@ -6,29 +6,34 @@ import org.openqa.selenium.WebElement;
 
 /**
  * User: John
- * Date: 10/18/13
- * Time: 10:03 AM
- *
- * An abstract base class for Button controls
+ * Date: 10/23/13
+ * Time: 10:26 AM
  */
-public abstract class Button<T> implements Control {
+public class TextField implements Control {
 
     private WebDriver driver;
     private WebElement element;
 
-    public Button(WebDriver driver, String elementId) {
+    public TextField(WebDriver driver, String elementId) {
         this.driver = driver;
         this.element = this.driver.findElement(By.id(elementId));
     }
 
-    public abstract T click();
+    public void clear() {
+        element.clear();
+    }
 
+    public void enterText(String text) {
+        element.sendKeys(text);
+    }
+
+    @Override
     public WebDriver getDriver() {
         return driver;
     }
 
+    @Override
     public WebElement getElement() {
         return element;
     }
-
 }
