@@ -21,6 +21,15 @@ public abstract class Button<T> implements Control {
         this.element = this.driver.findElement(By.id(elementId));
     }
 
+    public Button(WebDriver driver, String elementId, boolean isByName) {
+        this.driver = driver;
+        if (isByName) {
+            this.element = this.driver.findElement(By.name(elementId));
+        } else {
+            this.element = this.driver.findElement(By.id(elementId));
+        }
+    }
+
     public abstract T click();
 
     public WebDriver getDriver() {

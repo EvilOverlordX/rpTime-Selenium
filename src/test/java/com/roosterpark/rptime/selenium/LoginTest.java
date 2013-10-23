@@ -1,7 +1,9 @@
 package com.roosterpark.rptime.selenium;
 
+import com.roosterpark.rptime.selenium.page.ConfirmationPage;
+import com.roosterpark.rptime.selenium.page.HomePage;
 import com.roosterpark.rptime.selenium.page.LandingPage;
-import com.roosterpark.rptime.selenium.page.RpTimePage;
+import com.roosterpark.rptime.selenium.page.LoginPage;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +15,9 @@ import org.junit.Test;
 public class LoginTest extends BasicSeleniumTest {
 
     private LandingPage landingPage;
-    private RpTimePage rpTimePage;
+    private LoginPage loginPage;
+    private ConfirmationPage confirmationPage;
+    private HomePage homePage;
 
     @Before
     public void setup() {
@@ -23,9 +27,11 @@ public class LoginTest extends BasicSeleniumTest {
     @Test
     public void loginTest() throws InterruptedException {
         landingPage.openPage();
-        rpTimePage = landingPage.clickRpTimeLink();
+        loginPage = landingPage.clickSignInLink();
+        confirmationPage = loginPage.signIn(getUsername(), getPassword());
+        homePage = confirmationPage.confirm();
         Thread.sleep(30000);
-        rpTimePage.close();
+        loginPage.close();
     }
 
 }

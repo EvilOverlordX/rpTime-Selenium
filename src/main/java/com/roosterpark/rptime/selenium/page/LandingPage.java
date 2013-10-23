@@ -13,7 +13,7 @@ public class LandingPage extends BasicPageObject {
 
     private static final String ADDRESS = "http://roosterparktime.appspot.com";
 
-    private RpTimeLink rpTimeLink;
+    private SignInLink signInLink;
 
     public LandingPage(WebDriver driver) {
         super(driver);
@@ -24,23 +24,23 @@ public class LandingPage extends BasicPageObject {
         getWebDriver().get(ADDRESS);
     }
 
-    public RpTimePage clickRpTimeLink() {
-        rpTimeLink = new RpTimeLink(getWebDriver());
-        return rpTimeLink.click();
+    public LoginPage clickSignInLink() {
+        signInLink = new SignInLink(getWebDriver());
+        return signInLink.click();
     }
 
-    private class RpTimeLink extends Link<RpTimePage> {
+    private class SignInLink extends Link<LoginPage> {
 
-        private static final String LINK_TEXT = "Rptime";
+        private static final String LINK_TEXT = "Sign in";
 
-        public RpTimeLink(WebDriver driver) {
-           super(driver, LINK_TEXT);
+        public SignInLink(WebDriver driver) {
+            super(driver, LINK_TEXT);
         }
 
         @Override
-        public RpTimePage click() {
+        public LoginPage click() {
             getElement().click();
-            return new RpTimePage(getDriver());
+            return new LoginPage(getDriver());
         }
     }
 
