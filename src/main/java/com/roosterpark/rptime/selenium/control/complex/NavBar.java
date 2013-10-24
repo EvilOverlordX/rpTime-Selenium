@@ -36,4 +36,8 @@ public class NavBar {
         return timeSheetsLink.click();
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
 }
