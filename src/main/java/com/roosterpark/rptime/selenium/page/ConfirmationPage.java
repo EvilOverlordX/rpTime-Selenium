@@ -34,7 +34,7 @@ public class ConfirmationPage extends BasicPageObject {
             allowButton = new AllowButton(getWebDriver());
             return allowButton.click();
         } catch (NoSuchElementException nseex) {
-            return new HomePage();
+            return new HomePage(getWebDriver());
         }
     }
 
@@ -47,7 +47,7 @@ public class ConfirmationPage extends BasicPageObject {
         @Override
         public HomePage click() {
             getElement().click();
-            return new HomePage();
+            return new HomePage(getDriver());
         }
 
     }

@@ -1,11 +1,22 @@
 package com.roosterpark.rptime.selenium.page;
 
+import com.roosterpark.rptime.selenium.BasicPageObject;
+import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
+import org.openqa.selenium.WebDriver;
+
 /**
- * Created with IntelliJ IDEA.
  * User: John
  * Date: 10/23/13
  * Time: 1:42 PM
- * To change this template use File | Settings | File Templates.
  */
-public class HomePage {
+public class HomePage extends BasicPageObject {
+
+    public HomePage(WebDriver driver) {
+        super(driver);
+    }
+
+    @Override
+    public void openPage() {
+        throw new NotDirectlyOpenableException("Home page should not be opened directly");
+    }
 }
