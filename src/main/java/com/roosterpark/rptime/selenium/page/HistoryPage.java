@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.page;
 
-import com.roosterpark.rptime.selenium.BasicPageObject;
+import com.roosterpark.rptime.selenium.NavBarPageObject;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import org.openqa.selenium.WebDriver;
 
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
  * Date: 10/23/13
  * Time: 10:41 AM
  */
-public class HistoryPage extends BasicPageObject {
+public class HistoryPage extends NavBarPageObject {
 
     public HistoryPage(WebDriver driver) {
         super(driver);

@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.page;
 
-import com.roosterpark.rptime.selenium.BasicPageObject;
+import com.roosterpark.rptime.selenium.NavBarPageObject;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import org.openqa.selenium.WebDriver;
 
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
  * Date: 10/22/13
  * Time: 3:07 PM
  */
-public class TimeSheetPage extends BasicPageObject {
+public class TimeSheetPage extends NavBarPageObject {
 
     public TimeSheetPage(WebDriver driver) {
         super(driver);
