@@ -5,7 +5,9 @@ import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -29,12 +31,12 @@ public class ConfirmationPage extends BasicPageObject {
     }
 
     public HomePage confirm() {
-        try {
-            getWebDriver().findElement(By.name(ALLOW_BUTTON_ID));
+        List<WebElement> elements = getWebDriver().findElements(By.name(ALLOW_BUTTON_ID));
+        if (elements.size() == 0) {
+            return new HomePage(getWebDriver());
+        } else {
             allowButton = new AllowButton(getWebDriver());
             return allowButton.click();
-        } catch (NoSuchElementException nseex) {
-            return new HomePage(getWebDriver());
         }
     }
 
