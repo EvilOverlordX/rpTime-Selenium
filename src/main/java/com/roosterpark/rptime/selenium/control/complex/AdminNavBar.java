@@ -1,9 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex;
 
-import com.roosterpark.rptime.selenium.page.ClientPage;
-import com.roosterpark.rptime.selenium.page.HistoryPage;
-import com.roosterpark.rptime.selenium.page.HomePage;
-import com.roosterpark.rptime.selenium.page.WorkerPage;
+import com.roosterpark.rptime.selenium.page.*;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -18,6 +15,7 @@ public class AdminNavBar {
     private HomeLink homeLink;
     private ClientsLink clientsLink;
     private WorkersLink workersLink;
+    private ContractsLink contractsLink;
 
     public AdminNavBar(WebDriver driver) {
         this.driver = driver;
@@ -25,6 +23,7 @@ public class AdminNavBar {
         homeLink = new HomeLink(driver);
         clientsLink = new ClientsLink(driver);
         workersLink = new WorkersLink(driver);
+        contractsLink = new ContractsLink(driver);
     }
 
     public WebDriver getDriver() {
@@ -45,6 +44,10 @@ public class AdminNavBar {
 
     public WorkerPage clickWorkersLink() {
         return workersLink.click();
+    }
+
+    public ContractsPage clickContractsLink() {
+        return contractsLink.click();
     }
 
 }
