@@ -11,9 +11,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public abstract class BasicSeleniumTest {
 
-    private static final String USERNAME = "testuser@roosterpark.com";
-    private static final String PASSWORD = "testuser";
-
     private WebDriver driver;
 
     @Before
@@ -23,14 +20,6 @@ public abstract class BasicSeleniumTest {
 
     public WebDriver getDriver() {
         return driver;
-    }
-
-    public String getUsername() {
-        return USERNAME;
-    }
-
-    public String getPassword() {
-        return PASSWORD;
     }
 
 }
