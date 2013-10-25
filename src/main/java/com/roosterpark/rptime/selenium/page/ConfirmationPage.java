@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * User: John
@@ -18,8 +17,6 @@ import java.util.NoSuchElementException;
 public class ConfirmationPage extends BasicPageObject {
 
     private static final String ALLOW_BUTTON_ID = "submit_true";
-
-    private AllowButton allowButton;
 
     public ConfirmationPage(WebDriver driver) {
         super(driver);
@@ -35,7 +32,7 @@ public class ConfirmationPage extends BasicPageObject {
         if (elements.size() == 0) {
             return new HomePage(getWebDriver());
         } else {
-            allowButton = new AllowButton(getWebDriver());
+            AllowButton allowButton = new AllowButton(getWebDriver());
             return allowButton.click();
         }
     }
