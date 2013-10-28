@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.control.complex;
+package com.roosterpark.rptime.selenium.control.complex.navbar;
 
 import com.roosterpark.rptime.selenium.page.HistoryPage;
 import com.roosterpark.rptime.selenium.page.HomePage;
