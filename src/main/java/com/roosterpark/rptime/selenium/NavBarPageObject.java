@@ -1,7 +1,7 @@
 package com.roosterpark.rptime.selenium;
 
-import com.roosterpark.rptime.selenium.control.complex.AdminNavBar;
-import com.roosterpark.rptime.selenium.control.complex.NavBar;
+import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
+import com.roosterpark.rptime.selenium.control.complex.navbar.NavBar;
 import com.roosterpark.rptime.selenium.exception.NavBarException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
