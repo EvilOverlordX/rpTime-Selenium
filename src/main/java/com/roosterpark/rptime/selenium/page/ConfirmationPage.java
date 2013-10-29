@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ByName;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,7 +41,7 @@ public class ConfirmationPage extends BasicPageObject {
     private class AllowButton extends Button<HomePage> {
 
         public AllowButton(WebDriver driver) {
-            super(driver, ALLOW_BUTTON_ID, true);
+            super(driver, ALLOW_BUTTON_ID, new ByName());
         }
 
         @Override
