@@ -1,7 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.form;
 
+import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.CheckBox;
-import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.control.TextField;
 import org.openqa.selenium.WebDriver;
 
@@ -25,8 +25,8 @@ public class CreateWorkerForm {
     private TextField emailField;
     private TextField startDateField;
     private CheckBox hourlyCheckBox;
-    private SaveButtonLink saveButtonLink;
-    private CancelButtonLink cancelButtonLink;
+    private SaveButton saveButton;
+    private CancelButton cancelButton;
 
     public CreateWorkerForm(WebDriver driver) {
         this.driver = driver;
@@ -35,8 +35,8 @@ public class CreateWorkerForm {
         emailField = new TextField(driver, EMAIL);
         startDateField = new TextField(driver, START_DATE);
         hourlyCheckBox = new CheckBox(driver, HOURLY);
-        saveButtonLink = new SaveButtonLink(driver);
-        cancelButtonLink = new CancelButtonLink(driver);
+        saveButton = new SaveButton(driver);
+        cancelButton = new CancelButton(driver);
     }
 
     public WebDriver getDriver() {
@@ -76,11 +76,11 @@ public class CreateWorkerForm {
     }
 
     public void clickSave() {
-        saveButtonLink.click();
+        saveButton.click();
     }
 
     public void clickCancel() {
-        cancelButtonLink.click();
+        cancelButton.click();
     }
 
     public void checkHourly() {
@@ -91,11 +91,11 @@ public class CreateWorkerForm {
         return hourlyCheckBox.isChecked();
     }
 
-    private class SaveButtonLink extends Link<Void> {
+    private class SaveButton extends Button<Void> {
 
         private static final String SAVE_BUTTON = "Save";
 
-        public SaveButtonLink(WebDriver driver) {
+        public SaveButton(WebDriver driver) {
             super(driver, SAVE_BUTTON);
         }
 
@@ -106,11 +106,11 @@ public class CreateWorkerForm {
         }
     }
 
-    private class CancelButtonLink extends Link<Void> {
+    private class CancelButton extends Button<Void> {
 
         private static final String CANCEL_BUTTON = "Cancel";
 
-        public CancelButtonLink(WebDriver driver) {
+        public CancelButton(WebDriver driver) {
             super(driver, CANCEL_BUTTON);
         }
 
