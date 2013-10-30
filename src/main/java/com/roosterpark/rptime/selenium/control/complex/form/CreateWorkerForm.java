@@ -93,7 +93,7 @@ public class CreateWorkerForm {
 
     private class SaveButton extends Button<Void> {
 
-        private static final String SAVE_BUTTON = "Save";
+        private static final String SAVE_BUTTON = "save";
 
         public SaveButton(WebDriver driver) {
             super(driver, SAVE_BUTTON);
@@ -108,7 +108,7 @@ public class CreateWorkerForm {
 
     private class CancelButton extends Button<Void> {
 
-        private static final String CANCEL_BUTTON = "Cancel";
+        private static final String CANCEL_BUTTON = "cancel";
 
         public CancelButton(WebDriver driver) {
             super(driver, CANCEL_BUTTON);
