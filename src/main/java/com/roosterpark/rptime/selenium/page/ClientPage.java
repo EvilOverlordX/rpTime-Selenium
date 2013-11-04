@@ -4,6 +4,7 @@ import com.roosterpark.rptime.selenium.NavBarPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateClientForm;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -38,12 +39,16 @@ public class ClientPage extends NavBarPageObject {
 
         private static final String NEW_BUTTON = "new";
 
+        private WaitForVisible waitForVisible;
+
         public NewButton(WebDriver driver) {
             super(driver, NEW_BUTTON);
         }
 
         @Override
         public Void click() {
+            waitForVisible = new WaitForVisible(getElement());
+            waitForVisible.defaultWaitForVisible();
             getElement().click();
             return null;
         }
