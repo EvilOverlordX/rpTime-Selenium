@@ -28,4 +28,27 @@ public class WorkerEditListRow {
     public String getEmail() {
         return email;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        WorkerEditListRow that = (WorkerEditListRow) o;
+
+        if (editButton != null ? !editButton.equals(that.editButton) : that.editButton != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = editButton != null ? editButton.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        return result;
+    }
+
 }
