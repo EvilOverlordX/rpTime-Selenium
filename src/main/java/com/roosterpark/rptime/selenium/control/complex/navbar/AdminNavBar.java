@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 public class AdminNavBar {
 
     private WebDriver driver;
-    private HistoryLink historyLink;
     private HomeLink homeLink;
     private ClientsLink clientsLink;
     private WorkersLink workersLink;
@@ -19,7 +18,6 @@ public class AdminNavBar {
 
     public AdminNavBar(WebDriver driver) {
         this.driver = driver;
-        historyLink = new HistoryLink(driver);
         homeLink = new HomeLink(driver);
         clientsLink = new ClientsLink(driver);
         workersLink = new WorkersLink(driver);
@@ -28,10 +26,6 @@ public class AdminNavBar {
 
     public WebDriver getDriver() {
         return driver;
-    }
-
-    public HistoryPage clickHistoryLink() {
-        return historyLink.click();
     }
 
     public HomePage clickHomeLink() {
