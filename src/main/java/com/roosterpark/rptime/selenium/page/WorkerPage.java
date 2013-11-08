@@ -3,6 +3,7 @@ package com.roosterpark.rptime.selenium.page;
 import com.roosterpark.rptime.selenium.NavBarPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateWorkerForm;
+import com.roosterpark.rptime.selenium.control.complex.list.WorkerEditList;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import org.openqa.selenium.WebDriver;
 
@@ -14,9 +15,11 @@ import org.openqa.selenium.WebDriver;
 public class WorkerPage extends NavBarPageObject {
 
     private CreateWorkerForm createWorkerForm;
+    private WorkerEditList workerEditList;
 
     public WorkerPage(WebDriver driver) {
         super(driver);
+        workerEditList = new WorkerEditList(driver);
     }
 
     @Override
@@ -26,6 +29,10 @@ public class WorkerPage extends NavBarPageObject {
 
     public void initWorkerForm() {
         createWorkerForm = new CreateWorkerForm(getWebDriver());
+    }
+
+    public void initWorkerEditList() {
+        workerEditList.init();
     }
 
     public CreateWorkerForm getCreateWorkerForm() {
