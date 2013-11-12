@@ -19,11 +19,9 @@ public class WorkerPage extends NavBarPageObject {
 
     private CreateWorkerForm createWorkerForm;
     private WorkerEditList workerEditList;
-    private WaitForVisible waitForVisible;
 
     public WorkerPage(WebDriver driver) {
         super(driver);
-        workerEditList = new WorkerEditList(driver);
     }
 
     @Override
@@ -53,7 +51,7 @@ public class WorkerPage extends NavBarPageObject {
     public void waitForWorkersRedraw() {
         WebElement workersDiv = getWebDriver().findElement(By.id("workers"));
         WebElement workersHeader = workersDiv.findElement(By.xpath(".//div[@class='panel-heading']/h4"));
-        waitForVisible = new WaitForVisible(workersHeader);
+        WaitForVisible waitForVisible = new WaitForVisible(workersHeader);
         waitForVisible.defaultWaitForVisible();
     }
 
