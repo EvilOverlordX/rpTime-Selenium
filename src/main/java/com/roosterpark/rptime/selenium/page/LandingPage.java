@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class LandingPage extends BasicPageObject {
 
-    private static final String ADDRESS = "http://roosterparktime.appspot.com";
+    private static final String ADDRESS = "http://roosterparktime-qa.appspot.com";
 
     private SignInLink signInLink;
 
