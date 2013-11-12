@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.list.generator;
 
 import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
 import com.roosterpark.rptime.selenium.control.complex.list.WorkerEditListRow;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,7 @@ public class WorkerEditListRowGenerator {
     private WebDriver driver;
     private List<WebElement> elements;
     private List<WorkerEditListRow> rows;
+    private WaitForVisible waitForVisible;
 
     public WorkerEditListRowGenerator(WebDriver driver) {
         this.driver = driver;
@@ -26,16 +28,27 @@ public class WorkerEditListRowGenerator {
     }
 
     public List<WorkerEditListRow> generate() {
+        boolean found = false;
         getElements();
         for (WebElement element : elements) {
-            EditButton editButton = new EditButton(driver, getEditButtonId(element));
-            rows.add(new WorkerEditListRow(editButton, getName(element), getEmail(element)));
+            if (element.findElements(By.xpath(".//span[@class='btn-group']/button")).size() != 0) {
+                if (!found) {
+                    waitForVisible = new WaitForVisible(element);
+                    waitForVisible.waitForVisible(60L, 100L);
+                    EditButton editButton = new EditButton(driver, getEditButtonId(element));
+                    rows.add(new WorkerEditListRow(editButton, getName(element), getEmail(element)));
+                    found = true;
+                } else {
+                    EditButton editButton = new EditButton(driver, getEditButtonId(element));
+                    rows.add(new WorkerEditListRow(editButton, getName(element), getEmail(element)));
+                }
+            }
         }
         return rows;
     }
 
     private void getElements() {
-        elements = driver.findElements(By.tagName("li"));
+        elements = driver.findElements(By.className("ng-binding"));
     }
 
     private String getEditButtonId(WebElement element) {
@@ -55,7 +68,7 @@ public class WorkerEditListRowGenerator {
 
     private String getEmail(WebElement element) {
         WebElement spanElement = element.findElement(By.xpath(".//span[@class='text-muted ng-binding']"));
-        return spanElement.getText();
+        return spanElement.getText().trim();
     }
 
 }

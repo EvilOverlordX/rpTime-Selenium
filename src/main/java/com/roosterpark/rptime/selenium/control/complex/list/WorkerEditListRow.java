@@ -51,4 +51,12 @@ public class WorkerEditListRow {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "WorkerEditListRow{" +
+                "editButton=" + editButton +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
