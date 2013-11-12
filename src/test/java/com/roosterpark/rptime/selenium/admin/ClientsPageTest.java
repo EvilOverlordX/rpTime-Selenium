@@ -2,12 +2,16 @@ package com.roosterpark.rptime.selenium.admin;
 
 import com.roosterpark.rptime.selenium.BasicSeleniumTest;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateClientForm;
+import com.roosterpark.rptime.selenium.control.complex.list.ClientEditList;
+import com.roosterpark.rptime.selenium.control.complex.list.ClientEditListRow;
 import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
 import com.roosterpark.rptime.selenium.page.ClientPage;
 import com.roosterpark.rptime.selenium.page.HomePage;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  * User: John
@@ -19,7 +23,6 @@ public class ClientsPageTest extends BasicSeleniumTest {
     private static final String NAME = "fooclient-" + System.currentTimeMillis();
 
     private LoginMule loginMule;
-    private CreateClientForm createClientForm;
 
     @Before
     public void setup() {
@@ -31,14 +34,27 @@ public class ClientsPageTest extends BasicSeleniumTest {
         HomePage homePage = loginMule.loginAsAdmin();
         AdminNavBar navBar = homePage.getAdminNavBar();
         ClientPage clientPage = navBar.clickClientsLink();
-        clientPage.clickNewButton();
-        createClientForm = clientPage.getCreateClientForm();
-        createClientForm.enterName(NAME);
-        createClientForm.checkLunchRequired();
+        clientFormHelper(clientPage, NAME, true);
+        clientPage.waitForClientsRedraw();
+        clientPage.initClientEditList();
+        verifyClientAdded(clientPage, NAME);
+        clientPage.close();
+    }
+
+    private void clientFormHelper(ClientPage clientPage, String name, boolean isLunchRequired) {
+        CreateClientForm createClientForm = clientPage.getCreateClientForm();
+        createClientForm.enterName(name);
+        if (isLunchRequired) {
+            createClientForm.checkLunchRequired();
+        }
         createClientForm.selectMonday();
         createClientForm.clickSave();
-        //TODO: add verification
-        clientPage.close();
+    }
+
+    private void verifyClientAdded(ClientPage clientPage, String name) {
+        ClientEditList clientEditList = clientPage.getClientEditList();
+        ClientEditListRow row = clientEditList.getRowByName(name);
+        assertNotNull("Client not added!", row);
     }
 
 }

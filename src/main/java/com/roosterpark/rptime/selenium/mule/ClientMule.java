@@ -38,7 +38,6 @@ public class ClientMule {
         HomePage homePage = loginMule.loginAsAdmin();
         AdminNavBar navBar = homePage.getAdminNavBar();
         ClientPage clientPage = navBar.clickClientsLink();
-        clientPage.clickNewButton();
         CreateClientForm createClientForm = clientPage.getCreateClientForm();
         createClientForm.enterName(name);
         if(isLunchRequired) {

@@ -62,7 +62,7 @@ public class ClientEditListRowGenerator {
     }
 
     private String getName(WebElement element) {
-        return element.getText();
+        return element.getText().substring(5);
     }
 
 }
