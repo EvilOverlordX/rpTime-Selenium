@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.list.generator;
 
-import com.roosterpark.rptime.selenium.control.complex.list.ClientEditListRow;
+import com.roosterpark.rptime.selenium.control.complex.list.client.ClientEditListRow;
 import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;

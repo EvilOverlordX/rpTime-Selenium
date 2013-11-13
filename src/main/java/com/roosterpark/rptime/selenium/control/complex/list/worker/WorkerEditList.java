@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.control.complex.list;
+package com.roosterpark.rptime.selenium.control.complex.list.worker;
 
 import com.roosterpark.rptime.selenium.control.complex.list.generator.WorkerEditListRowGenerator;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,6 @@
-package com.roosterpark.rptime.selenium.control.complex.list;
+package com.roosterpark.rptime.selenium.control.complex.list.contract;
+
+import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
 
 /**
  * User: John

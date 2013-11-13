@@ -2,16 +2,14 @@ package com.roosterpark.rptime.selenium.admin;
 
 import com.roosterpark.rptime.selenium.BasicSeleniumTest;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateWorkerForm;
-import com.roosterpark.rptime.selenium.control.complex.list.WorkerEditList;
-import com.roosterpark.rptime.selenium.control.complex.list.WorkerEditListRow;
+import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerEditList;
+import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerEditListRow;
 import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
 import com.roosterpark.rptime.selenium.page.HomePage;
 import com.roosterpark.rptime.selenium.page.WorkerPage;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 

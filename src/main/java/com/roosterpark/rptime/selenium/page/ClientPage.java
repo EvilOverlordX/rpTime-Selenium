@@ -3,7 +3,7 @@ package com.roosterpark.rptime.selenium.page;
 import com.roosterpark.rptime.selenium.NavBarPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateClientForm;
-import com.roosterpark.rptime.selenium.control.complex.list.ClientEditList;
+import com.roosterpark.rptime.selenium.control.complex.list.client.ClientEditList;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;

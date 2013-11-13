@@ -1,7 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.list.generator;
 
 import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
-import com.roosterpark.rptime.selenium.control.complex.list.WorkerEditListRow;
+import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerEditListRow;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

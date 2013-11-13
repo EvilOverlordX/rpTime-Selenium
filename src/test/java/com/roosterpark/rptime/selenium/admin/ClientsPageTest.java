@@ -2,8 +2,8 @@ package com.roosterpark.rptime.selenium.admin;
 
 import com.roosterpark.rptime.selenium.BasicSeleniumTest;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateClientForm;
-import com.roosterpark.rptime.selenium.control.complex.list.ClientEditList;
-import com.roosterpark.rptime.selenium.control.complex.list.ClientEditListRow;
+import com.roosterpark.rptime.selenium.control.complex.list.client.ClientEditList;
+import com.roosterpark.rptime.selenium.control.complex.list.client.ClientEditListRow;
 import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
 import com.roosterpark.rptime.selenium.page.ClientPage;
