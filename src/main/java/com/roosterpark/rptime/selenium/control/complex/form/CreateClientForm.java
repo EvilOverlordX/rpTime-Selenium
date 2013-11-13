@@ -88,34 +88,4 @@ public class CreateClientForm {
         cancelButton.click();
     }
 
-    private class SaveButton extends Button<Void> {
-
-        private static final String SAVE_ID = "save";
-
-        public SaveButton(WebDriver driver) {
-            super(driver, SAVE_ID);
-        }
-
-        @Override
-        public Void click() {
-            getElement().click();
-            return null;
-        }
-    }
-
-    private class CancelButton extends Button<Void> {
-
-        private static final String CANCEL_ID = "cancel";
-
-        public CancelButton(WebDriver driver) {
-            super(driver, CANCEL_ID);
-        }
-
-        @Override
-        public Void click() {
-            getElement().click();
-            return null;
-        }
-    }
-
 }

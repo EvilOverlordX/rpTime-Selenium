@@ -91,34 +91,4 @@ public class CreateWorkerForm {
         return hourlyCheckBox.isChecked();
     }
 
-    private class SaveButton extends Button<Void> {
-
-        private static final String SAVE_BUTTON = "save";
-
-        public SaveButton(WebDriver driver) {
-            super(driver, SAVE_BUTTON);
-        }
-
-        @Override
-        public Void click() {
-            getElement().click();
-            return null;
-        }
-    }
-
-    private class CancelButton extends Button<Void> {
-
-        private static final String CANCEL_BUTTON = "cancel";
-
-        public CancelButton(WebDriver driver) {
-            super(driver, CANCEL_BUTTON);
-        }
-
-        @Override
-        public Void click() {
-            getElement().click();
-            return null;
-        }
-    }
-
 }
