@@ -16,10 +16,19 @@ public class WorkerMule {
     private WebDriver driver;
 
     private LoginMule loginMule;
+    private HomePage homePage;
 
     public WorkerMule(WebDriver driver) {
         this.driver = driver;
         loginMule = new LoginMule(this.driver);
+    }
+
+    public void login() {
+        homePage = loginMule.loginAsAdmin();
+    }
+
+    public void setHomePage(HomePage homePage) {
+        this.homePage = homePage;
     }
 
     public WorkerPage addHourlyWorker(String firstName, String lastName, String email, String startDate) {
@@ -31,7 +40,6 @@ public class WorkerMule {
     }
 
     private WorkerPage addWorker(String firstName, String lastName, String email, String startDate, boolean isHourly) {
-        HomePage homePage = loginMule.loginAsAdmin();
         AdminNavBar navBar = homePage.getAdminNavBar();
         WorkerPage workerPage = navBar.clickWorkersLink();
         workerPage.initWorkerForm();

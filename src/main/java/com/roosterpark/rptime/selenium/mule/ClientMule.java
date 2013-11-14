@@ -16,6 +16,7 @@ public class ClientMule {
     private WebDriver driver;
 
     private LoginMule loginMule;
+    private HomePage homePage;
 
     public ClientMule(WebDriver driver) {
         this.driver = driver;
@@ -24,6 +25,14 @@ public class ClientMule {
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public void login() {
+        homePage = loginMule.loginAsAdmin();
+    }
+
+    public void setHomePage(HomePage homePage) {
+        this.homePage = homePage;
     }
 
     public ClientPage addLunchRequiredClient(String name, String dayOfWeek) {
@@ -35,7 +44,6 @@ public class ClientMule {
     }
 
     private ClientPage addClient(String name, boolean isLunchRequired, String dayOfWeek) {
-        HomePage homePage = loginMule.loginAsAdmin();
         AdminNavBar navBar = homePage.getAdminNavBar();
         ClientPage clientPage = navBar.clickClientsLink();
         CreateClientForm createClientForm = clientPage.getCreateClientForm();
