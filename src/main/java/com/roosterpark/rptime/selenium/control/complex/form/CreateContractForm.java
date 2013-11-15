@@ -4,7 +4,10 @@ import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.CheckBox;
 import com.roosterpark.rptime.selenium.control.DropDownList;
 import com.roosterpark.rptime.selenium.control.TextField;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * User: John
@@ -79,6 +82,13 @@ public class CreateContractForm {
 
     public void clearEndDate() {
         endDate.clear();
+    }
+
+    public void waitForCreateContractRedraw() {
+        WebElement createContractDiv = getDriver().findElement(By.id("createContract"));
+        WebElement createContractHeader = createContractDiv.findElement(By.xpath(".//div[@class='panel-heading']/span/h4"));
+        WaitForVisible waitForVisible = new WaitForVisible(createContractHeader);
+        waitForVisible.defaultWaitForVisible();
     }
 
     private class WorkerSelect extends DropDownList {

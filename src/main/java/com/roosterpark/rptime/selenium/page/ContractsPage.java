@@ -6,7 +6,9 @@ import com.roosterpark.rptime.selenium.control.complex.form.CreateContractForm;
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEditList;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * User: John
@@ -30,6 +32,13 @@ public class ContractsPage extends NavBarPageObject{
         NewButton newButton = new NewButton(getWebDriver());
         newButton.click();
         return new CreateContractForm(getWebDriver());
+    }
+
+    public void waitForContractsRedraw() {
+        WebElement contractsDiv = getWebDriver().findElement(By.id("contracts"));
+        WebElement contractsHeader = contractsDiv.findElement(By.xpath(".//div[@class='panel-heading']/h4"));
+        WaitForVisible waitForVisible = new WaitForVisible(contractsHeader);
+        waitForVisible.defaultWaitForVisible();
     }
 
     public void initContractEditList() {

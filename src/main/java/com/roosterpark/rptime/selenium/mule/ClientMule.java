@@ -35,6 +35,11 @@ public class ClientMule {
         this.homePage = homePage;
     }
 
+    public void setHomePageAsAdmin(HomePage homePage) {
+        this.homePage = homePage;
+        homePage.setAdmin(true);
+    }
+
     public ClientPage addLunchRequiredClient(String name, String dayOfWeek) {
         return addClient(name, true, dayOfWeek);
     }
@@ -46,6 +51,7 @@ public class ClientMule {
     private ClientPage addClient(String name, boolean isLunchRequired, String dayOfWeek) {
         AdminNavBar navBar = homePage.getAdminNavBar();
         ClientPage clientPage = navBar.clickClientsLink();
+        clientPage.waitForClientsRedraw();
         CreateClientForm createClientForm = clientPage.getCreateClientForm();
         createClientForm.enterName(name);
         if(isLunchRequired) {
@@ -77,6 +83,7 @@ public class ClientMule {
                 createClientForm.selectMonday();
         }
         createClientForm.clickSave();
+        clientPage.setAdmin(true);
         return clientPage;
     }
 
