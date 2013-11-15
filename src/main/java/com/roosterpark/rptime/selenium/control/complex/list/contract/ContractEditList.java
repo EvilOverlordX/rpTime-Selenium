@@ -1,7 +1,10 @@
 package com.roosterpark.rptime.selenium.control.complex.list.contract;
 
 import com.roosterpark.rptime.selenium.control.complex.list.generator.ContractEditListRowGenerator;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -23,6 +26,7 @@ public class ContractEditList {
 
     public ContractEditList(WebDriver driver) {
         this.driver = driver;
+        generator = new ContractEditListRowGenerator(driver);
         rowsByClient = new HashMap<>();
         rowsByWorker = new HashMap<>();
     }
@@ -60,6 +64,13 @@ public class ContractEditList {
 
     public List<ContractEditListRow> getRowsByWorker(String worker) {
         return rowsByWorker.get(worker);
+    }
+
+    public void waitForContractsRedraw() {
+        WebElement contractsDiv = getDriver().findElement(By.id("contracts"));
+        WebElement contractsHeader = contractsDiv.findElement(By.xpath(".//div[@class='panel-heading']/h4"));
+        WaitForVisible waitForVisible = new WaitForVisible(contractsHeader);
+        waitForVisible.defaultWaitForVisible();
     }
 
 }
