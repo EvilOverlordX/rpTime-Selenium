@@ -53,31 +53,31 @@ public class CreateClientForm {
     }
 
     public void selectSunday() {
-        startDayOfWeekDropDown.selectByValue(0);
+        startDayOfWeekDropDown.selectByText("Sunday");
     }
 
     public void selectMonday() {
-        startDayOfWeekDropDown.selectByValue(1);
+        startDayOfWeekDropDown.selectByText("Monday");
     }
 
     public void selectTuesday() {
-        startDayOfWeekDropDown.selectByValue(2);
+        startDayOfWeekDropDown.selectByText("Tuesday");
     }
 
     public void selectWednesday() {
-        startDayOfWeekDropDown.selectByValue(3);
+        startDayOfWeekDropDown.selectByText("Wednesday");
     }
 
     public void selectThursday() {
-        startDayOfWeekDropDown.selectByValue(4);
+        startDayOfWeekDropDown.selectByText("Thursday");
     }
 
     public void selectFriday() {
-        startDayOfWeekDropDown.selectByValue(5);
+        startDayOfWeekDropDown.selectByText("Friday");
     }
 
     public void selectSaturday() {
-        startDayOfWeekDropDown.selectByValue(6);
+        startDayOfWeekDropDown.selectByText("Saturday");
     }
 
     public void clickSave() {
