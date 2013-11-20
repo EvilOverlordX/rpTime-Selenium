@@ -15,6 +15,7 @@ public class AdminNavBar {
     private ClientsLink clientsLink;
     private WorkersLink workersLink;
     private ContractsLink contractsLink;
+    private ReportDropDown reportDropDown;
 
     public AdminNavBar(WebDriver driver) {
         this.driver = driver;
@@ -22,6 +23,7 @@ public class AdminNavBar {
         clientsLink = new ClientsLink(driver);
         workersLink = new WorkersLink(driver);
         contractsLink = new ContractsLink(driver);
+        reportDropDown = new ReportDropDown(driver);
     }
 
     public WebDriver getDriver() {
@@ -42,6 +44,10 @@ public class AdminNavBar {
 
     public ContractsPage clickContractsLink() {
         return contractsLink.click();
+    }
+
+    public ReportsPopup clickReportDropDown() {
+        return reportDropDown.click();
     }
 
 }
