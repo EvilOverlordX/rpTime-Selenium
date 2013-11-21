@@ -1,7 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.navbar;
 
-import com.roosterpark.rptime.selenium.page.HomePage;
-import com.roosterpark.rptime.selenium.page.TimeSheetPage;
+import com.roosterpark.rptime.selenium.page.UserTimeSheetPage;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -12,21 +11,15 @@ import org.openqa.selenium.WebDriver;
 public class NavBar {
 
     private WebDriver driver;
-    private HomeLink homeLink;
-    private TimeSheetsLink timeSheetsLink;
+    private UserTimeSheetsLink userTimeSheetsLink;
 
     public NavBar(WebDriver driver) {
         this.driver = driver;
-        homeLink = new HomeLink(driver);
-        timeSheetsLink = new TimeSheetsLink(driver);
+        userTimeSheetsLink = new UserTimeSheetsLink(driver);
     }
 
-    public HomePage clickHomeLink() {
-        return homeLink.click();
-    }
-
-    public TimeSheetPage clickTimeSheetsLink() {
-        return timeSheetsLink.click();
+    public UserTimeSheetPage clickTimeSheetsLink() {
+        return userTimeSheetsLink.click();
     }
 
     public WebDriver getDriver() {
