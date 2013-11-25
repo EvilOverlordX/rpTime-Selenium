@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.list.contract;
 
-import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
+import com.roosterpark.rptime.selenium.page.ContractsPage;
 
 /**
  * User: John
@@ -9,30 +9,22 @@ import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
  */
 public class ContractEditListRow {
 
-    private EditButton editButton;
-    private String client;
-    private String worker;
     private String startDate;
     private String endDate;
+    private ContractLink contractLink;
 
-    public ContractEditListRow(EditButton editButton, String client, String worker, String startDate, String endDate) {
-        this.editButton = editButton;
-        this.client = client;
-        this.worker = worker;
+    public ContractEditListRow(ContractLink contractLink, String startDate, String endDate) {
+        this.contractLink = contractLink;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public void clickEditButton() {
-        editButton.click();
+    public ContractsPage clickContractsLink() {
+        return contractLink.click();
     }
 
-    public String getClient() {
-        return client;
-    }
-
-    public String getWorker() {
-        return worker;
+    public ContractLink getContractLink() {
+        return contractLink;
     }
 
     public String getStartDate() {
@@ -50,33 +42,27 @@ public class ContractEditListRow {
 
         ContractEditListRow that = (ContractEditListRow) o;
 
-        if (client != null ? !client.equals(that.client) : that.client != null) return false;
-        if (editButton != null ? !editButton.equals(that.editButton) : that.editButton != null) return false;
+        if (contractLink != null ? !contractLink.equals(that.contractLink) : that.contractLink != null) return false;
         if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
         if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
-        if (worker != null ? !worker.equals(that.worker) : that.worker != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = editButton != null ? editButton.hashCode() : 0;
-        result = 31 * result + (client != null ? client.hashCode() : 0);
-        result = 31 * result + (worker != null ? worker.hashCode() : 0);
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
+        int result = startDate != null ? startDate.hashCode() : 0;
         result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
+        result = 31 * result + (contractLink != null ? contractLink.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "ContractEditListRow{" +
-                "editButton=" + editButton +
-                ", client='" + client + '\'' +
-                ", worker='" + worker + '\'' +
-                ", startDate='" + startDate + '\'' +
+                "startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
+                ", contractLink=" + contractLink +
                 '}';
     }
 

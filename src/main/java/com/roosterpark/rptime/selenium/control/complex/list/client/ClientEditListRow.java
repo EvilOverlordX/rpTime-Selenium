@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.list.client;
 
-import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
+import com.roosterpark.rptime.selenium.page.ClientPage;
 
 /**
  * User: John
@@ -9,20 +9,18 @@ import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
  */
 public class ClientEditListRow {
 
-    private EditButton editButton;
-    private String name;
+    private ClientLink clientLink;
 
-    public ClientEditListRow(EditButton editButton, String name) {
-        this.editButton = editButton;
-        this.name = name;
+    public ClientEditListRow(ClientLink clientLink) {
+        this.clientLink = clientLink;
     }
 
-    public void clickEditButton() {
-        editButton.click();
+    public ClientPage clickClientLink() {
+        return clientLink.click();
     }
 
-    public String getName() {
-        return name;
+    public ClientLink getClientLink() {
+        return clientLink;
     }
 
     @Override
@@ -32,24 +30,20 @@ public class ClientEditListRow {
 
         ClientEditListRow that = (ClientEditListRow) o;
 
-        if (editButton != null ? !editButton.equals(that.editButton) : that.editButton != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (clientLink != null ? !clientLink.equals(that.clientLink) : that.clientLink != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = editButton != null ? editButton.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        return clientLink != null ? clientLink.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "ClientEditListRow{" +
-                "editButton=" + editButton +
-                ", name='" + name + '\'' +
+                "clientLink=" + clientLink +
                 '}';
     }
 

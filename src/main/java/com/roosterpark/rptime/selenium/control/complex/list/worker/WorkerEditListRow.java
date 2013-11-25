@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.list.worker;
 
-import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
+import com.roosterpark.rptime.selenium.page.WorkerPage;
 
 /**
  * User: John
@@ -9,26 +9,24 @@ import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
  */
 public class WorkerEditListRow {
 
-    private EditButton editButton;
-    private String name;
+    private WorkerLink workerLink;
     private String email;
 
-    public WorkerEditListRow(EditButton editButton, String name, String email) {
-        this.editButton = editButton;
+    public WorkerEditListRow(WorkerLink workerLink, String email) {
         this.email = email;
-        this.name = name;
-    }
-
-    public void clickEditButton() {
-        editButton.click();
-    }
-
-    public String getName() {
-        return name;
+        this.workerLink = workerLink;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public WorkerPage clickWorkerLink() {
+        return workerLink.click();
+    }
+
+    public WorkerLink getWorkerLink() {
+        return workerLink;
     }
 
     @Override
@@ -38,17 +36,15 @@ public class WorkerEditListRow {
 
         WorkerEditListRow that = (WorkerEditListRow) o;
 
-        if (editButton != null ? !editButton.equals(that.editButton) : that.editButton != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (workerLink != null ? !workerLink.equals(that.workerLink) : that.workerLink != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = editButton != null ? editButton.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = workerLink != null ? workerLink.hashCode() : 0;
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
@@ -56,9 +52,9 @@ public class WorkerEditListRow {
     @Override
     public String toString() {
         return "WorkerEditListRow{" +
-                "editButton=" + editButton +
-                ", name='" + name + '\'' +
+                "workerLink=" + workerLink +
                 ", email='" + email + '\'' +
                 '}';
     }
+
 }
