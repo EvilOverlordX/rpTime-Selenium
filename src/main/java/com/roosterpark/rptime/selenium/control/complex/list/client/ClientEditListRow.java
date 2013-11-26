@@ -10,9 +10,11 @@ import com.roosterpark.rptime.selenium.page.ClientPage;
 public class ClientEditListRow {
 
     private ClientLink clientLink;
+    private String name;
 
-    public ClientEditListRow(ClientLink clientLink) {
+    public ClientEditListRow(ClientLink clientLink, String name) {
         this.clientLink = clientLink;
+        this.name = name;
     }
 
     public ClientPage clickClientLink() {
@@ -21,6 +23,10 @@ public class ClientEditListRow {
 
     public ClientLink getClientLink() {
         return clientLink;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

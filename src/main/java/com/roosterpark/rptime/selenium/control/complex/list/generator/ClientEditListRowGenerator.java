@@ -28,8 +28,9 @@ public class ClientEditListRowGenerator {
     public List<ClientEditListRow> generate() {
         getElements();
         for (WebElement element : elements) {
-            ClientLink clientLink = new ClientLink(driver, getLinkName(element));
-            rows.add(new ClientEditListRow(clientLink));
+            String name = getLinkName(element);
+            ClientLink clientLink = new ClientLink(driver, name);
+            rows.add(new ClientEditListRow(clientLink, name));
         }
         return rows;
     }
