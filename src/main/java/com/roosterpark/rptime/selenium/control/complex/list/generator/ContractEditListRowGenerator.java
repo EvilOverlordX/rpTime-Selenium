@@ -1,16 +1,13 @@
 package com.roosterpark.rptime.selenium.control.complex.list.generator;
 
-import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEditListRow;
-import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractLink;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * User: John
@@ -29,54 +26,66 @@ public class ContractEditListRowGenerator {
     }
 
     public List<ContractEditListRow> generate() {
-        boolean found = false;
         getElements();
         for (WebElement element : elements) {
-            if (element.findElements(By.xpath(".//span[@class='btn-group']/button")).size() != 0) {
-                if (!found) {
-                    WaitForVisible waitForVisible = new WaitForVisible(element);
-                    waitForVisible.waitForVisible(60L, 100L);
-                    EditButton editButton = new EditButton(driver, getEditButtonId(element));
-                    Map<String, String> textParts = filterText(element);
-                    rows.add(new ContractEditListRow(editButton, textParts.get("client"), textParts.get("worker"),
-                                                     textParts.get("startDate"), textParts.get("endDate")));
-                    found = true;
-                } else {
-                    EditButton editButton = new EditButton(driver, getEditButtonId(element));
-                    Map<String, String> textParts = filterText(element);
-                    rows.add(new ContractEditListRow(editButton, textParts.get("client"), textParts.get("worker"),
-                                                     textParts.get("startDate"), textParts.get("endDate")));
-                }
+            String clientName = getClientFromElement(element);
+            List<WebElement> filteredElements = getListItemElements(element);
+            for (WebElement filteredElement : filteredElements) {
+                ContractLink contractLink = new ContractLink(driver, getIdFromElement(filteredElement));
+                ContractEditListRow contractEditListRow = new ContractEditListRow(contractLink,
+                                                                                  getStartDate(filteredElement),
+                                                                                  getEndDate(filteredElement));
+                contractEditListRow.setClient(clientName);
+                contractEditListRow.setWorker(getWorker(filteredElement));
+                rows.add(contractEditListRow);
             }
         }
         return rows;
     }
 
     private void getElements() {
-        elements = driver.findElements(By.className("ng-binding"));
+        WebElement contractsDiv = driver.findElement(By.id("contracts"));
+        elements = contractsDiv.findElements(By.xpath(".//div/div/ul/li"));
     }
 
-    private String getEditButtonId(WebElement element) {
-        List<WebElement> buttons = element.findElements(By.xpath(".//span[@class='btn-group']/button"));
-        for (WebElement button : buttons) {
-            String id = button.getAttribute("id");
-            if (id.startsWith("edit")) {
-                return id;
+    private List<WebElement> getListItemElements(WebElement element) {
+        List<WebElement> filtered = new LinkedList<>();
+        List<WebElement> unfiltered = element.findElements(By.xpath(".//ul/li"));
+        for (WebElement unfilteredElement : unfiltered) {
+            if (unfilteredElement.getAttribute("class").contains("ng-hide")) {
+                // Do nothing here
+            } else {
+                filtered.add(unfilteredElement);
             }
         }
-        return null; // just in case...
+        return filtered;
     }
 
-    private Map<String, String> filterText(WebElement element) {
-        Map<String, String> textElements = new HashMap<>();
-        String baseString = element.getText().substring(5); // Snip off "Edit" text
-        String[] baseStringParts = baseString.split(","); // Split off client name
-        textElements.put("client", baseStringParts[0].trim());
-        String[] remainingParts = baseStringParts[1].trim().split(" ");
-        textElements.put("worker", remainingParts[0] + " " + remainingParts[1]); // Worker name got split
-        textElements.put("startDate", remainingParts[3]); // Skip 2, which is a dash
-        textElements.put("endDate", remainingParts[5]); // Skip 4, which is a dash
-        return textElements;
+    private String getClientFromElement(WebElement element) {
+        return element.getAttribute("id");
+    }
+
+    private String getIdFromElement(WebElement element) {
+        WebElement link = element.findElement(By.xpath(".//a"));
+        return link.getAttribute("id");
+    }
+
+    private String getWorker(WebElement element) {
+        String baseText = element.getText().trim();
+        String[] parts = baseText.split(" ");
+        return parts[0] + " " + parts[1];
+    }
+
+    private String getStartDate(WebElement element) {
+        String baseText = element.getText().trim();
+        String[] parts = baseText.split(" ");
+        return parts[3];
+    }
+
+    private String getEndDate(WebElement element) {
+        String baseText = element.getText().trim();
+        String[] parts = baseText.split(" ");
+        return parts[5];
     }
 
 }

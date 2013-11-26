@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.list.contract;
 
 import com.roosterpark.rptime.selenium.control.Link;
+import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ById;
 import com.roosterpark.rptime.selenium.page.ContractsPage;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
@@ -12,11 +13,8 @@ import org.openqa.selenium.WebDriver;
  */
 public class ContractLink extends Link<ContractsPage> {
 
-    private String id;
-
     public ContractLink(WebDriver driver, String id) {
-        super(driver, id);
-        this.id = id;
+        super(driver, id, new ById());
     }
 
     @Override
@@ -25,10 +23,6 @@ public class ContractLink extends Link<ContractsPage> {
         waitForVisible.defaultWaitForVisible();
         getElement().click();
         return new ContractsPage(getDriver());
-    }
-
-    public String getId() {
-        return id;
     }
 
 }

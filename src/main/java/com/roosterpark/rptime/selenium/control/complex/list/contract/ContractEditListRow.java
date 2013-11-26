@@ -12,6 +12,8 @@ public class ContractEditListRow {
     private String startDate;
     private String endDate;
     private ContractLink contractLink;
+    private String worker;
+    private String client;
 
     public ContractEditListRow(ContractLink contractLink, String startDate, String endDate) {
         this.contractLink = contractLink;
@@ -35,6 +37,22 @@ public class ContractEditListRow {
         return endDate;
     }
 
+    public String getWorker() {
+        return worker;
+    }
+
+    public void setWorker(String worker) {
+        this.worker = worker;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,9 +60,11 @@ public class ContractEditListRow {
 
         ContractEditListRow that = (ContractEditListRow) o;
 
+        if (client != null ? !client.equals(that.client) : that.client != null) return false;
         if (contractLink != null ? !contractLink.equals(that.contractLink) : that.contractLink != null) return false;
         if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
         if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
+        if (worker != null ? !worker.equals(that.worker) : that.worker != null) return false;
 
         return true;
     }
@@ -54,6 +74,8 @@ public class ContractEditListRow {
         int result = startDate != null ? startDate.hashCode() : 0;
         result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
         result = 31 * result + (contractLink != null ? contractLink.hashCode() : 0);
+        result = 31 * result + (worker != null ? worker.hashCode() : 0);
+        result = 31 * result + (client != null ? client.hashCode() : 0);
         return result;
     }
 
@@ -63,6 +85,8 @@ public class ContractEditListRow {
                 "startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 ", contractLink=" + contractLink +
+                ", worker='" + worker + '\'' +
+                ", client='" + client + '\'' +
                 '}';
     }
 
