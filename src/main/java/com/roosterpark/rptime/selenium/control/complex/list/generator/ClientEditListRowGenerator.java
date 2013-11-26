@@ -1,8 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.list.generator;
 
 import com.roosterpark.rptime.selenium.control.complex.list.client.ClientEditListRow;
-import com.roosterpark.rptime.selenium.control.complex.list.EditButton;
-import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import com.roosterpark.rptime.selenium.control.complex.list.client.ClientLink;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,42 +26,21 @@ public class ClientEditListRowGenerator {
     }
 
     public List<ClientEditListRow> generate() {
-        boolean found = false;
         getElements();
         for (WebElement element : elements) {
-            if (element.findElements(By.xpath(".//span[@class='btn-group']/button")).size() != 0) {
-                if (!found) {
-                    WaitForVisible waitForVisible = new WaitForVisible(element);
-                    waitForVisible.waitForVisible(60L, 100L);
-                    EditButton editButton = new EditButton(driver, getEditButtonId(element));
-                    rows.add(new ClientEditListRow(editButton, getName(element)));
-                    found = true;
-                } else {
-                    EditButton editButton = new EditButton(driver, getEditButtonId(element));
-                    rows.add(new ClientEditListRow(editButton, getName(element)));
-                }
-            }
+            ClientLink clientLink = new ClientLink(driver, getLinkName(element));
+            rows.add(new ClientEditListRow(clientLink));
         }
         return rows;
     }
 
     private void getElements() {
-        elements = driver.findElements(By.className("ng-binding"));
+        elements = driver.findElements(By.xpath("//div[@id='mainDiv']/div/div/div/div/div/div/ul/li"));
     }
 
-    private String getEditButtonId(WebElement element) {
-        List<WebElement> buttons = element.findElements(By.xpath(".//span[@class='btn-group']/button"));
-        for (WebElement button : buttons) {
-            String id = button.getAttribute("id");
-            if (id.startsWith("edit")) {
-                return id;
-            }
-        }
-        return null; // just in case...
-    }
-
-    private String getName(WebElement element) {
-        return element.getText().substring(5);
+    private String getLinkName(WebElement element) {
+        WebElement link = element.findElement(By.xpath(".//a"));
+        return link.getText().trim();
     }
 
 }
