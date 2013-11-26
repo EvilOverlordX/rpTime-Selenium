@@ -16,14 +16,12 @@ public class WorkerEditList {
 
     private WebDriver driver;
     private List<WorkerEditListRow> rows;
-    private Map<String, WorkerEditListRow> rowsByName;
     private Map<String, WorkerEditListRow> rowsByEmail;
     private WorkerEditListRowGenerator generator;
 
     public WorkerEditList(WebDriver driver) {
         this.driver = driver;
         rowsByEmail = new HashMap<>();
-        rowsByName = new HashMap<>();
         generator = new WorkerEditListRowGenerator(driver);
     }
 
@@ -35,7 +33,6 @@ public class WorkerEditList {
         rows = generator.generate();
         for (WorkerEditListRow row : rows) {
             rowsByEmail.put(row.getEmail(), row);
-            rowsByName.put(row.getName(), row);
         }
     }
 
@@ -47,16 +44,8 @@ public class WorkerEditList {
         return rowsByEmail.get(email);
     }
 
-    public WorkerEditListRow getRowByName(String name) {
-        return rowsByName.get(name);
-    }
-
-    public void clickEditByEmail(String email) {
-        getRowByEmail(email).clickEditButton();
-    }
-
-    public void clickEditByName(String name) {
-        getRowByName(name).clickEditButton();
+    public void clickLinkByEmail(String email) {
+        getRowByEmail(email).clickWorkerLink();
     }
 
 }
