@@ -19,10 +19,11 @@ public class ClientDropDownPopup {
     private Map<String, ClientDropDownLink> linkMap;
     private ClientDropDownLink paidTimeOff;
     private WebDriver driver;
-    private WebElement parentElement;
+    private WebElement element;
 
-    public ClientDropDownPopup(WebDriver driver, List<ClientDropDownLink> links) {
+    public ClientDropDownPopup(WebDriver driver, WebElement element, List<ClientDropDownLink> links) {
         this.driver = driver;
+        this.element = element;
         paidTimeOff = new ClientDropDownLink(driver, "Paid time off");
         linkMap = new HashMap<>();
         linksByName(links);
@@ -38,12 +39,7 @@ public class ClientDropDownPopup {
         return driver;
     }
 
-    public void setParentElement(WebElement element) {
-        parentElement = element;
-    }
-
     public void view() {
-        WebElement element = parentElement.findElement(By.xpath(".//ul[@class='dropdown-menu']"));
         WaitForVisible waitForVisible = new WaitForVisible(element);
         waitForVisible.defaultWaitForVisible();
 
