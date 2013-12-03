@@ -4,6 +4,7 @@ import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.timesheet.generator.ClientDropDownPopupGenerator;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * User: John
@@ -13,11 +14,10 @@ import org.openqa.selenium.WebDriver;
 public class ClientDropDownButton extends Button<ClientDropDownPopup> {
 
     private ClientDropDownPopup popup;
-    private ClientDropDownPopupGenerator generator;
 
-    public ClientDropDownButton(WebDriver driver, String id) {
+    public ClientDropDownButton(WebDriver driver, String id, WebElement menuElement) {
         super(driver, id);
-        generator = new ClientDropDownPopupGenerator(driver, getElement());
+        ClientDropDownPopupGenerator generator = new ClientDropDownPopupGenerator(driver, menuElement);
         popup = generator.generate();
     }
 

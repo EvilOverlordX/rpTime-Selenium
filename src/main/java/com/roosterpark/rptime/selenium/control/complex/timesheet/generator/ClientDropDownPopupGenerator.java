@@ -17,24 +17,20 @@ import java.util.List;
 public class ClientDropDownPopupGenerator {
 
     private WebDriver driver;
-    private WebElement parentElement;
+    private WebElement menuElement;
 
-    public ClientDropDownPopupGenerator(WebDriver driver, WebElement parentElement) {
+    public ClientDropDownPopupGenerator(WebDriver driver, WebElement menuElement) {
         this.driver = driver;
-        this.parentElement = parentElement;
+        this.menuElement = menuElement;
     }
 
     public ClientDropDownPopup generate() {
-        return new ClientDropDownPopup(driver, getPopupElement(), getLinks());
-    }
-
-    private WebElement getPopupElement() {
-        return parentElement.findElement(By.xpath(".//ul[@class='dropdown-menu']"));
+        return new ClientDropDownPopup(driver, menuElement, getLinks());
     }
 
     private List<ClientDropDownLink> getLinks() {
         List<ClientDropDownLink> links = new LinkedList<>();
-        List<WebElement> elements = parentElement.findElements(By.xpath(".//ul[@class='dropdown-menu']/li"));
+        List<WebElement> elements = menuElement.findElements(By.xpath(".//li"));
         for (WebElement element : elements) {
             if (element.getText().trim().equals("-- Select Client--")) {
                 // Do nothing
