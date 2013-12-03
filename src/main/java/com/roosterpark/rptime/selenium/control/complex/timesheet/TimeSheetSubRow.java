@@ -19,14 +19,17 @@ public class TimeSheetSubRow {
     private TextField clockOut;
     private AddButton addButton;
     private RemoveButton removeButton;
+    private ClientDropDownButton clientDropDownButton;
     private UUID id;
 
-    public TimeSheetSubRow(TextField clockIn, TextField clockOut, AddButton addButton, RemoveButton removeButton) {
+    public TimeSheetSubRow(TextField clockIn, TextField clockOut, AddButton addButton,
+                           RemoveButton removeButton, ClientDropDownButton clientDropDownButton) {
         this.id = UUID.randomUUID();
         this.clockIn = clockIn;
         this.clockOut = clockOut;
         this.addButton = addButton;
         this.removeButton = removeButton;
+        this.clientDropDownButton = clientDropDownButton;
     }
 
     public void setHomeRow(TimeSheetRow homeRow) {
@@ -91,6 +94,10 @@ public class TimeSheetSubRow {
 
     public void clearClockOutTime() {
         clockOut.clear();
+    }
+
+    public ClientDropDownPopup clickClientDropDownButton() {
+        return clientDropDownButton.click();
     }
 
 }
