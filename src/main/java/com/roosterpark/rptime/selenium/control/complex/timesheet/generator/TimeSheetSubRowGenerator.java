@@ -25,6 +25,7 @@ public class TimeSheetSubRowGenerator {
     private String addButtonId;
     private String removeButtonId;
     private WebElement menuElement;
+    private WebElement buttonElement;
 
     public TimeSheetSubRowGenerator(WebDriver driver, WebElement parentElement, TimeSheetRow homeRow) {
         this.driver = driver;
@@ -44,6 +45,7 @@ public class TimeSheetSubRowGenerator {
         getInputIds();
         getButtonIds();
         getMenuElement();
+        getButtonElement();
         TextField clockIn = new TextField(driver, startId);
         TextField clockOut = new TextField(driver, endId);
         ClientDropDownButton button = new ClientDropDownButton(driver, clientButtonId, menuElement);
@@ -51,6 +53,7 @@ public class TimeSheetSubRowGenerator {
         RemoveButton removeButton = new RemoveButton(driver, removeButtonId);
         TimeSheetSubRow subRow = new TimeSheetSubRow(clockIn, clockOut, addButton, removeButton, button);
         subRow.setHomeRow(homeRow);
+        subRow.setButtonsElement(buttonElement);
         if (isNew) {
             subRow.setDeletable(true);
         }
@@ -85,6 +88,16 @@ public class TimeSheetSubRowGenerator {
 
     private void getMenuElement() {
         menuElement = parentElement.findElement(By.xpath(".//div/div/div/div/ul"));
+    }
+
+    private void getButtonElement() {
+        List<WebElement> elements = parentElement.findElements(By.xpath(".//div/div/div"));
+        for (WebElement element: elements) {
+            String classText = element.getAttribute("class");
+            if (!classText.equals("col-sm-3")) {
+                buttonElement = element;
+            }
+        }
     }
 
 }
