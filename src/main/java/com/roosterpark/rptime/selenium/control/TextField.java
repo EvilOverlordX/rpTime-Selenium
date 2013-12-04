@@ -27,6 +27,10 @@ public class TextField implements Control {
         element.sendKeys(text);
     }
 
+    public String getText() {
+        return element.getText();
+    }
+
     @Override
     public WebDriver getDriver() {
         return driver;
