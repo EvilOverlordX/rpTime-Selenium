@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.timesheet;
 
 import com.roosterpark.rptime.selenium.control.TextField;
 import com.roosterpark.rptime.selenium.exception.InoperableControlException;
+import org.openqa.selenium.WebElement;
 
 import java.util.UUID;
 
@@ -14,6 +15,8 @@ public class TimeSheetSubRow {
 
     private boolean isDeletable = false;
     private boolean isAbleToAdd = true;
+    private boolean isWeekendVisible = false;
+    private boolean isWeekend = false;
     private TimeSheetRow homeRow;
     private TextField clockIn;
     private TextField clockOut;
@@ -21,6 +24,8 @@ public class TimeSheetSubRow {
     private RemoveButton removeButton;
     private ClientDropDownButton clientDropDownButton;
     private UUID id;
+    private int index = 0;
+    private WebElement buttonsElement;
 
     public TimeSheetSubRow(TextField clockIn, TextField clockOut, AddButton addButton,
                            RemoveButton removeButton, ClientDropDownButton clientDropDownButton) {
@@ -61,6 +66,9 @@ public class TimeSheetSubRow {
     }
 
     public void clickRemoveButton() {
+        if (isWeekend && !isWeekendVisible) {
+            throw new InoperableControlException("Cannot select client at this time");
+        }
         if(isDeletable) {
             removeButton.click();
             homeRow.removeSubRow(this.id);
@@ -70,11 +78,14 @@ public class TimeSheetSubRow {
     }
 
     public void clickAddButton() {
+        if (isWeekend && !isWeekendVisible) {
+            throw new InoperableControlException("Cannot select client at this time");
+        }
         if(isAbleToAdd) {
             addButton.click();
             this.isAbleToAdd = false;
             this.isDeletable = false;
-            homeRow.generateNewSubRow();
+            homeRow.generateNewSubRow(index);
         } else {
             throw new InoperableControlException("Cannot add new sub-row at this time");
         }
@@ -82,22 +93,69 @@ public class TimeSheetSubRow {
 
     public void writeClockInTime(String time) {
         clockIn.enterText(time);
+        if (isWeekend) {
+            isWeekendVisible = true;
+        }
     }
 
     public void clearClockInTime() {
         clockIn.clear();
+        if (isWeekend && !areButtonsVisible()) {
+            isWeekendVisible = false;
+        }
     }
 
     public void writeClockOutTime(String time) {
         clockOut.enterText(time);
+        if (isWeekend) {
+            isWeekendVisible = true;
+        }
     }
 
     public void clearClockOutTime() {
         clockOut.clear();
+        if (isWeekend && !areButtonsVisible()) {
+            isWeekendVisible = false;
+        }
     }
 
     public ClientDropDownPopup clickClientDropDownButton() {
+        if (isWeekend && !isWeekendVisible) {
+            throw new InoperableControlException("Cannot select client at this time");
+        }
         return clientDropDownButton.click();
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public void setWeekendVisible(boolean isVisible) {
+        isWeekendVisible = isVisible;
+    }
+
+    public boolean isWeekendVisible() {
+        return isWeekendVisible;
+    }
+
+    public void setIsWeekend(boolean isWeekend) {
+        this.isWeekend = isWeekend;
+    }
+
+    public boolean isWeekend() {
+        return isWeekend;
+    }
+
+    public void setButtonsElement(WebElement element) {
+        buttonsElement = element;
+    }
+
+    public boolean areButtonsVisible() {
+        return !buttonsElement.getAttribute("class").contains("ng-hide");
     }
 
 }
