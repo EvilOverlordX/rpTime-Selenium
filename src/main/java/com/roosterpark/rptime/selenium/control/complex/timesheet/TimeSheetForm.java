@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.timesheet;
 
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,6 +40,8 @@ public class TimeSheetForm {
 
     public void initialize() {
         WebElement createTimeSheetDiv = driver.findElement(By.id("createTimeSheet"));
+        WaitForVisible waitForVisible = new WaitForVisible(createTimeSheetDiv);
+        waitForVisible.defaultWaitForVisible();
         List<WebElement> elements = createTimeSheetDiv.findElements(By.xpath(".//div/div/ul/li"));
         for (WebElement element: elements) {
             String day = getDay(element);

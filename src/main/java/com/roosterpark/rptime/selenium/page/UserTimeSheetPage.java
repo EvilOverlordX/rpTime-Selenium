@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetForm;
 import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ByClass;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.page.popup.TimeSheetPopup;
@@ -15,6 +16,8 @@ import org.openqa.selenium.WebDriver;
  */
 public class UserTimeSheetPage extends BasicPageObject {
 
+    private TimeSheetForm timeSheetForm;
+
     public UserTimeSheetPage(WebDriver driver) {
         super(driver);
     }
@@ -22,6 +25,15 @@ public class UserTimeSheetPage extends BasicPageObject {
     @Override
     public void openPage() {
         throw new NotDirectlyOpenableException("User Time Sheet page should not be opened directly.");
+    }
+
+    public void initializeTimeSheetForm() {
+        timeSheetForm = new TimeSheetForm(getWebDriver());
+        timeSheetForm.initialize();
+    }
+
+    public TimeSheetForm getTimeSheetForm() {
+        return timeSheetForm;
     }
 
     public void clickCreateButton() {
