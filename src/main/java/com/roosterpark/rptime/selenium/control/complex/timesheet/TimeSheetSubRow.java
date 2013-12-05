@@ -71,7 +71,7 @@ public class TimeSheetSubRow {
         }
         if(isDeletable) {
             removeButton.click();
-            homeRow.removeSubRow(this.id);
+            homeRow.removeSubRow(this);
         } else {
             throw new InoperableControlException("Cannot delete sub-row at this time");
         }
