@@ -1,5 +1,7 @@
 package com.roosterpark.rptime.selenium;
 
+import com.roosterpark.rptime.selenium.control.complex.navbar.SignOutButton;
+import com.roosterpark.rptime.selenium.control.complex.navbar.SignOutPopup;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -26,6 +28,12 @@ public abstract class BasicPageObject {
 
     public void close() {
         driver.quit();
+    }
+
+    public void clickSignOutButton(String email) {
+        SignOutButton signOutButton = new SignOutButton(getWebDriver(), email);
+        SignOutPopup signOutPopup = signOutButton.click();
+        signOutPopup.clickSignOutLink();
     }
 
 }
