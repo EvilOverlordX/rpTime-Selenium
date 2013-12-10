@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.timesheet;
 
+import com.roosterpark.rptime.selenium.page.UserTimeSheetPage;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -76,6 +77,16 @@ public class TimeSheetForm {
         String baseText = dayElement.getText().trim();
         String[] parts = baseText.split(" ");
         return parts[1];
+    }
+
+    public void clickSaveButton() {
+        SaveButton saveButton = new SaveButton(getDriver());
+        saveButton.click();
+    }
+
+    public UserTimeSheetPage clickSubmitButton() {
+        SubmitButton submitButton = new SubmitButton(getDriver());
+        return submitButton.click();
     }
 
 }
