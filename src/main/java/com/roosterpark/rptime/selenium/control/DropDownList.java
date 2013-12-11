@@ -17,10 +17,12 @@ public abstract class DropDownList implements Control {
     private WebDriver driver;
     private WebElement element;
     private Select select;
+    private By by;
 
     public DropDownList(WebDriver driver, String elementId) {
         this.driver = driver;
         this.element = this.driver.findElement(By.id(elementId));
+        this.by = By.id(elementId);
         this.select = new Select(this.element);
     }
 
@@ -34,6 +36,10 @@ public abstract class DropDownList implements Control {
 
     public Select getSelect() {
         return select;
+    }
+
+    public By getBy() {
+        return by;
     }
 
 }

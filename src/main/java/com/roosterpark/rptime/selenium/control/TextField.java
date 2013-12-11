@@ -14,10 +14,12 @@ public class TextField implements Control {
 
     private WebDriver driver;
     private WebElement element;
+    private By by;
 
     public TextField(WebDriver driver, String elementId) {
         this.driver = driver;
         this.element = this.driver.findElement(By.id(elementId));
+        this.by = By.id(elementId);
     }
 
     public void clear() {
@@ -45,4 +47,10 @@ public class TextField implements Control {
     public WebElement getElement() {
         return element;
     }
+
+    @Override
+    public By getBy() {
+        return by;
+    }
+
 }

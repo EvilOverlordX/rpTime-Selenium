@@ -13,10 +13,12 @@ public class CheckBox implements Control {
 
     private WebDriver driver;
     private WebElement element;
+    private By by;
 
     public CheckBox(WebDriver driver, String elementId) {
         this.driver = driver;
         this.element = this.driver.findElement(By.id(elementId));
+        this.by = By.id(elementId);
     }
 
     @Override
@@ -27,6 +29,11 @@ public class CheckBox implements Control {
     @Override
     public WebElement getElement() {
         return element;
+    }
+
+    @Override
+    public By getBy() {
+        return by;
     }
 
     public void check() {

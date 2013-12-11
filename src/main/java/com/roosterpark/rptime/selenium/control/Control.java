@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium.control;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -12,5 +13,6 @@ public interface Control {
 
     public WebDriver getDriver();
     public WebElement getElement();
+    public By getBy();
 
 }

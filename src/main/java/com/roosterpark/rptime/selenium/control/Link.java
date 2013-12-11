@@ -16,25 +16,35 @@ public abstract class Link<T> implements Control {
 
     private WebDriver driver;
     private WebElement element;
+    private By by;
 
     public Link(WebDriver driver, String elementId) {
         this.driver = driver;
         this.element = this.driver.findElement(By.linkText(elementId));
+        this.by = By.linkText(elementId);
     }
 
     public Link(WebDriver driver, String elementId, FindByHelper helper) {
         this.driver = driver;
         this.element = this.driver.findElement(helper.find(elementId));
+        this.by = helper.find(elementId);
     }
 
     public abstract T click();
 
+    @Override
     public WebDriver getDriver() {
         return driver;
     }
 
+    @Override
     public WebElement getElement() {
         return element;
+    }
+
+    @Override
+    public By getBy() {
+        return by;
     }
 
 }
