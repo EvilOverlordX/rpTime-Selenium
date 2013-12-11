@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium.control;
 
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,10 +21,14 @@ public class TextField implements Control {
     }
 
     public void clear() {
+        WaitForVisible waitForVisible = new WaitForVisible(element);
+        waitForVisible.defaultWaitForVisible();
         element.clear();
     }
 
     public void enterText(String text) {
+        WaitForVisible waitForVisible = new WaitForVisible(element);
+        waitForVisible.defaultWaitForVisible();
         element.sendKeys(text);
     }
 

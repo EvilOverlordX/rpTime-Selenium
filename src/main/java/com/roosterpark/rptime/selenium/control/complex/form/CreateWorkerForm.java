@@ -1,9 +1,11 @@
 package com.roosterpark.rptime.selenium.control.complex.form;
 
-import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.CheckBox;
 import com.roosterpark.rptime.selenium.control.TextField;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * User: John
@@ -89,6 +91,12 @@ public class CreateWorkerForm {
 
     public boolean isHourlyChecked() {
         return hourlyCheckBox.isChecked();
+    }
+
+    public void waitForRedraw() {
+        WebElement createWorkerElement = driver.findElement(By.id("createWorker"));
+        WaitForVisible waitForVisible = new WaitForVisible(createWorkerElement);
+        waitForVisible.defaultWaitForVisible();
     }
 
 }
