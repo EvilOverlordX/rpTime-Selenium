@@ -1,23 +1,22 @@
 package com.roosterpark.rptime.selenium.control.complex.navbar;
 
-import com.roosterpark.rptime.selenium.control.Link;
+import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 /**
  * User: John
  * Date: 12/5/13
  * Time: 3:24 PM
  */
-public class SignOutButton extends Link<SignOutPopup> {
+public class SignOutButton extends Button<SignOutPopup> {
+
+    private static final String ID = "signOut";
 
     private WebDriver driver;
-    private WebElement popupElement;
 
-    public SignOutButton(WebDriver driver, String id) {
-        super(driver, id);
+    public SignOutButton(WebDriver driver) {
+        super(driver, ID);
         this.driver = driver;
     }
 
@@ -25,14 +24,8 @@ public class SignOutButton extends Link<SignOutPopup> {
     public SignOutPopup click() {
         WaitForVisible waitForVisible = new WaitForVisible(getElement());
         waitForVisible.defaultWaitForVisible();
-        getPopupElement();
         getElement().click();
-        return new SignOutPopup(driver, popupElement);
-    }
-
-    private void getPopupElement() {
-        WebElement baseElement = driver.findElement(By.xpath("//div[@id='mainDiv']/div/nav/div"));
-        popupElement = baseElement.findElement(By.xpath(".//ul[@class='nav navbar-nav navbar-right']/li"));
+        return new SignOutPopup(driver);
     }
 
 }

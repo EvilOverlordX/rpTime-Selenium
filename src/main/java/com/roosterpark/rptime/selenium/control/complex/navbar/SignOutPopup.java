@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.navbar;
 
 import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -13,11 +14,11 @@ import org.openqa.selenium.WebElement;
 public class SignOutPopup {
 
     private SignOutLink signOutLink;
-    private WebElement element;
+    private WebDriver driver;
 
-    public SignOutPopup(WebDriver driver, WebElement element) {
-        this.element = element;
+    public SignOutPopup(WebDriver driver) {
         signOutLink = new SignOutLink(driver);
+        this.driver = driver;
     }
 
     public void clickSignOutLink() {
@@ -25,6 +26,7 @@ public class SignOutPopup {
     }
 
     public void view() {
+        WebElement element = driver.findElement(By.className("dropdown-menu"));
         WaitForVisible waitForVisible = new WaitForVisible(element);
         waitForVisible.defaultWaitForVisible();
     }

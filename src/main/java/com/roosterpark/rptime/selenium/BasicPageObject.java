@@ -3,7 +3,6 @@ package com.roosterpark.rptime.selenium;
 import com.roosterpark.rptime.selenium.control.complex.navbar.SignOutButton;
 import com.roosterpark.rptime.selenium.control.complex.navbar.SignOutPopup;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 /**
  * User: John
@@ -30,10 +29,18 @@ public abstract class BasicPageObject {
         driver.quit();
     }
 
-    public void clickSignOutButton(String email) {
-        SignOutButton signOutButton = new SignOutButton(getWebDriver(), email);
+    public void clickSignOutButton() {
+        SignOutButton signOutButton = new SignOutButton(getWebDriver());
         SignOutPopup signOutPopup = signOutButton.click();
         signOutPopup.clickSignOutLink();
+    }
+
+    public void pauseForRedraw() {
+        try {
+            Thread.sleep(5000);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
     }
 
 }
