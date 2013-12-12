@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.control.CheckBox;
 import com.roosterpark.rptime.selenium.control.TextField;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import org.openqa.selenium.WebDriver;
@@ -15,21 +16,22 @@ public class LoginPage extends BasicPageObject {
 
     private static final String EMAIL_ID = "Email";
     private static final String PASSWORD_ID = "Passwd";
-
-    private TextField emailField;
-    private TextField passwordField;
-    private SignInButton signInButton;
+    private static final String SIGNED_IN_CHECK_BOX_ID = "PersistentCookie";
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
     public ConfirmationPage signIn(String email, String password) {
-        emailField = new TextField(getWebDriver(), EMAIL_ID);
-        passwordField = new TextField(getWebDriver(), PASSWORD_ID);
-        signInButton = new SignInButton(getWebDriver());
+        TextField emailField = new TextField(getWebDriver(), EMAIL_ID);
+        TextField passwordField = new TextField(getWebDriver(), PASSWORD_ID);
+        SignInButton signInButton = new SignInButton(getWebDriver());
+        CheckBox staySignedIn = new CheckBox(getWebDriver(), SIGNED_IN_CHECK_BOX_ID);
         emailField.enterText(email);
         passwordField.enterText(password);
+        if (staySignedIn.isChecked()) {
+            staySignedIn.check();
+        }
         return signInButton.click();
     }
 
