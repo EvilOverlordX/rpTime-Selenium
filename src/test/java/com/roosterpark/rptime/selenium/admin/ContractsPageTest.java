@@ -45,7 +45,7 @@ public class ContractsPageTest extends BasicSeleniumTest {
     public void onSiteContractTest() {
         workerMule.login();
         WorkerPage workerPage = workerMule.addSalariedWorker(WORKER_FIRST_NAME, WORKER_LAST_NAME, EMAIL, START_DATE);
-        clientMule.setHomePageAsAdmin(workerPage.getAdminNavBar().clickHomeLink());
+        clientMule.setHomePage(workerPage.getAdminNavBar().clickHomeLink());
         ClientPage clientPage = clientMule.addNonLunchRequiredClient(CLIENT, "Monday");
         HomePage homePage = clientPage.getAdminNavBar().clickHomeLink();
         homePage.setAdmin(true);
