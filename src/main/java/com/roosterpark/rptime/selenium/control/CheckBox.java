@@ -1,5 +1,7 @@
 package com.roosterpark.rptime.selenium.control;
 
+import com.roosterpark.rptime.selenium.timer.WaitForPresent;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,10 +39,14 @@ public class CheckBox implements Control {
     }
 
     public void check() {
+        WaitForVisible waitForVisible = new WaitForVisible(element);
+        waitForVisible.defaultWaitForVisible();
         element.click();
     }
 
     public boolean isChecked() {
+        WaitForVisible waitForVisible = new WaitForVisible(element);
+        waitForVisible.defaultWaitForVisible();
         return element.isSelected();
     }
 }

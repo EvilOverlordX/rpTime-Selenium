@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.NavBarPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.control.CheckBox;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateContractForm;
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEditList;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
@@ -17,7 +18,10 @@ import org.openqa.selenium.WebElement;
  */
 public class ContractsPage extends NavBarPageObject{
 
+    private static final String CHECK_BOX_ID = "showExpiredContracts";
+
     private ContractEditList contractEditList;
+    private CheckBox expiredContractsCheckBox;
 
     public ContractsPage(WebDriver driver) {
         super(driver);
@@ -48,6 +52,20 @@ public class ContractsPage extends NavBarPageObject{
 
     public ContractEditList getContractEditList() {
         return contractEditList;
+    }
+
+    public void checkShowExpiredContracts() {
+        if (expiredContractsCheckBox == null) {
+            expiredContractsCheckBox = new CheckBox(getWebDriver(), CHECK_BOX_ID);
+        }
+        expiredContractsCheckBox.check();
+    }
+
+    public boolean isShowExpiredContractsChecked() {
+        if (expiredContractsCheckBox == null) {
+            expiredContractsCheckBox = new CheckBox(getWebDriver(), CHECK_BOX_ID);
+        }
+        return expiredContractsCheckBox.isChecked();
     }
 
     private class NewButton extends Button<Void> {
