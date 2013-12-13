@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.page.popup;
 
 import com.roosterpark.rptime.selenium.control.Link;
+import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ById;
 import com.roosterpark.rptime.selenium.page.UserTimeSheetPage;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
@@ -12,10 +13,10 @@ import org.openqa.selenium.WebDriver;
  */
 public class NextWeekLink extends Link<UserTimeSheetPage> {
 
-    private static final String ID = "Next Week";
+    private static final String ID = "set-week-next";
 
     public NextWeekLink(WebDriver driver) {
-        super(driver, ID);
+        super(driver, ID, new ById());
     }
 
     @Override
