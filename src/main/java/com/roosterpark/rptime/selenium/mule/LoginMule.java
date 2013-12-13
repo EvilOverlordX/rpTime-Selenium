@@ -34,16 +34,24 @@ public class LoginMule {
 
     public HomePage loginAsAdmin() {
         user = new AdminUser();
-        homePage = login(user);
-        homePage.setAdmin(true);
-        assertTrue("Not logged in as admin!", homePage.isLoggedInAsAdmin());
-        return homePage;
+        return loginAsTestDefinedAdminUser(user);
     }
 
     public HomePage loginAsStandard() {
         user = new StandardUser();
+        return loginAsTestDefinedUser(user);
+    }
+
+    public HomePage loginAsTestDefinedUser(User user) {
         homePage = login(user);
         assertFalse("Logged in as admin!", homePage.isLoggedInAsAdmin());
+        return homePage;
+    }
+
+    public HomePage loginAsTestDefinedAdminUser(User user) {
+        homePage = login(user);
+        homePage.setAdmin(true);
+        assertTrue("Not logged in as admin!", homePage.isLoggedInAsAdmin());
         return homePage;
     }
 

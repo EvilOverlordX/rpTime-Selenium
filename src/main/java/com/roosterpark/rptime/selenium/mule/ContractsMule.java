@@ -30,6 +30,7 @@ public class ContractsMule {
 
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
+        homePage.setAdmin(true);
     }
 
     public WebDriver getDriver() {
@@ -50,6 +51,7 @@ public class ContractsMule {
         }
         workerPage.setAdmin(true);
         homePage = workerPage.getAdminNavBar().clickHomeLink();
+        homePage.setAdmin(true);
     }
 
     public void addClient(String client, String dayOfWeek, boolean isLunchRequired) {
@@ -62,6 +64,7 @@ public class ContractsMule {
         }
         clientPage.setAdmin(true);
         homePage = clientPage.getAdminNavBar().clickHomeLink();
+        homePage.setAdmin(true);
     }
 
     public ContractsPage createOnSiteContract(String client, String worker, String startDate, String endDate) {
@@ -75,6 +78,7 @@ public class ContractsMule {
     private ContractsPage createContract(String client, String worker, boolean isOnSite,
                                          String startDate, String endDate) {
         contractsPage = homePage.getAdminNavBar().clickContractsLink();
+        contractsPage.pauseForRedraw();
         contractsPage.waitForContractsRedraw();
         CreateContractForm createContractForm = contractsPage.getCreateContractForm();
         if (isOnSite) {
