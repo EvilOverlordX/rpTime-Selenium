@@ -3,7 +3,6 @@ package com.roosterpark.rptime.selenium.page;
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetForm;
-import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ByClass;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.page.popup.TimeSheetPopup;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
@@ -65,10 +64,10 @@ public class UserTimeSheetPage extends BasicPageObject {
 
     private class DropDownButton extends Button<TimeSheetPopup> {
 
-        private static final String ID = "dropdown-toggle";
+        private static final String ID = "toggle-create-dropdown";
 
         public DropDownButton(WebDriver driver) {
-            super(driver, ID, new ByClass()) ;
+            super(driver, ID) ;
         }
 
         @Override
@@ -76,7 +75,7 @@ public class UserTimeSheetPage extends BasicPageObject {
             WaitForVisible waitForVisible = new WaitForVisible(getElement());
             waitForVisible.defaultWaitForVisible();
             getElement().click();
-            return null;
+            return new TimeSheetPopup(getDriver());
         }
     }
 

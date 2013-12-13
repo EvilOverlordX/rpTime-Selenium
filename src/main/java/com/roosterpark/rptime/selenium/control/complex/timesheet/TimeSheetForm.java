@@ -43,7 +43,7 @@ public class TimeSheetForm {
         WebElement createTimeSheetDiv = driver.findElement(By.id("createTimeSheet"));
         WaitForVisible waitForVisible = new WaitForVisible(createTimeSheetDiv);
         waitForVisible.defaultWaitForVisible();
-        List<WebElement> elements = createTimeSheetDiv.findElements(By.xpath(".//div/div/ul/li"));
+        List<WebElement> elements = createTimeSheetDiv.findElements(By.xpath(".//div[@class='panel-body']/div/ul/li"));
         for (WebElement element: elements) {
             String day = getDay(element);
             if ((day.equals("Sunday") || (day.equals("Saturday")))) {

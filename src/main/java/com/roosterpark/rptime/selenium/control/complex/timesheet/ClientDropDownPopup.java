@@ -17,14 +17,12 @@ import java.util.Map;
 public class ClientDropDownPopup {
 
     private Map<String, ClientDropDownLink> linkMap;
-    private ClientDropDownLink paidTimeOff;
     private WebDriver driver;
     private WebElement element;
 
     public ClientDropDownPopup(WebDriver driver, WebElement element, List<ClientDropDownLink> links) {
         this.driver = driver;
         this.element = element;
-        paidTimeOff = new ClientDropDownLink(driver, "Paid time off");
         linkMap = new HashMap<>();
         linksByName(links);
     }
@@ -47,10 +45,6 @@ public class ClientDropDownPopup {
 
     public void clickClientByName(String name) {
         linkMap.get(name).click();
-    }
-
-    public void clickPaidTimeOff() {
-        paidTimeOff.click();
     }
 
 }
