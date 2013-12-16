@@ -29,12 +29,10 @@ public class ClientMule {
 
     public void login() {
         homePage = loginMule.loginAsAdmin();
-        homePage.setAdmin(true);
     }
 
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
-        homePage.setAdmin(true);
     }
 
     public ClientPage addLunchRequiredClient(String name, String dayOfWeek) {
@@ -46,7 +44,7 @@ public class ClientMule {
     }
 
     private ClientPage addClient(String name, boolean isLunchRequired, String dayOfWeek) {
-        AdminNavBar navBar = homePage.getAdminNavBar();
+        AdminNavBar navBar = homePage.getNavBar();
         ClientPage clientPage = navBar.clickClientsLink();
         clientPage.pauseForRedraw();
         clientPage.waitForClientsRedraw();
@@ -81,7 +79,6 @@ public class ClientMule {
                 createClientForm.selectMonday();
         }
         createClientForm.clickSave();
-        clientPage.setAdmin(true);
         return clientPage;
     }
 

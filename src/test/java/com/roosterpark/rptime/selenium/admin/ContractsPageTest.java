@@ -45,11 +45,10 @@ public class ContractsPageTest extends BasicSeleniumTest {
     public void onSiteContractTest() {
         workerMule.login();
         WorkerPage workerPage = workerMule.addSalariedWorker(WORKER_FIRST_NAME, WORKER_LAST_NAME, EMAIL, START_DATE);
-        clientMule.setHomePage(workerPage.getAdminNavBar().clickHomeLink());
+        clientMule.setHomePage(workerPage.getNavBar().clickHomeLink());
         ClientPage clientPage = clientMule.addNonLunchRequiredClient(CLIENT, "Monday");
-        HomePage homePage = clientPage.getAdminNavBar().clickHomeLink();
-        homePage.setAdmin(true);
-        ContractsPage contractsPage = homePage.getAdminNavBar().clickContractsLink();
+        HomePage homePage = clientPage.getNavBar().clickHomeLink();
+        ContractsPage contractsPage = homePage.getNavBar().clickContractsLink();
         contractsPage.waitForContractsRedraw();
         contractsPage = createContractHelper(contractsPage, CLIENT, WORKER_LAST_NAME + ", " + WORKER_FIRST_NAME,
                                              true, START_DATE, END_DATE);

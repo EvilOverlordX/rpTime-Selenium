@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
+import com.roosterpark.rptime.selenium.StandardPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetForm;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
@@ -13,7 +14,7 @@ import org.openqa.selenium.WebDriver;
  * Date: 11/21/13
  * Time: 8:44 AM
  */
-public class UserTimeSheetPage extends BasicPageObject {
+public class UserTimeSheetPage extends StandardPageObject {
 
     private TimeSheetForm timeSheetForm;
 

@@ -33,7 +33,6 @@ public class WorkerMule {
 
     public void setHomePageAsAdmin(HomePage homePage) {
         this.homePage = homePage;
-        homePage.setAdmin(true);
     }
 
     public WorkerPage addHourlyWorker(String firstName, String lastName, String email, String startDate) {
@@ -45,7 +44,7 @@ public class WorkerMule {
     }
 
     private WorkerPage addWorker(String firstName, String lastName, String email, String startDate, boolean isHourly) {
-        AdminNavBar navBar = homePage.getAdminNavBar();
+        AdminNavBar navBar = homePage.getNavBar();
         WorkerPage workerPage = navBar.clickWorkersLink();
         workerPage.pauseForRedraw();
         workerPage.waitForWorkersRedraw();
@@ -60,7 +59,6 @@ public class WorkerMule {
             workerForm.checkHourly();
         }
         workerForm.clickSave();
-        workerPage.setAdmin(true);
         return workerPage;
     }
 

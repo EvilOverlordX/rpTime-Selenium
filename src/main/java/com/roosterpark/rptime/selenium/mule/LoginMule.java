@@ -1,9 +1,6 @@
 package com.roosterpark.rptime.selenium.mule;
 
-import com.roosterpark.rptime.selenium.page.ConfirmationPage;
-import com.roosterpark.rptime.selenium.page.HomePage;
-import com.roosterpark.rptime.selenium.page.LandingPage;
-import com.roosterpark.rptime.selenium.page.LoginPage;
+import com.roosterpark.rptime.selenium.page.*;
 import com.roosterpark.rptime.selenium.user.AdminUser;
 import com.roosterpark.rptime.selenium.user.StandardUser;
 import com.roosterpark.rptime.selenium.user.User;
@@ -37,21 +34,19 @@ public class LoginMule {
         return loginAsTestDefinedAdminUser(user);
     }
 
-    public HomePage loginAsStandard() {
+    public UserTimeSheetPage loginAsStandard() {
         user = new StandardUser();
         return loginAsTestDefinedUser(user);
     }
 
-    public HomePage loginAsTestDefinedUser(User user) {
+    public UserTimeSheetPage loginAsTestDefinedUser(User user) {
         homePage = login(user);
-        assertFalse("Logged in as admin!", homePage.isLoggedInAsAdmin());
-        return homePage;
+        return new UserTimeSheetPage(driver);
     }
 
     public HomePage loginAsTestDefinedAdminUser(User user) {
         homePage = login(user);
-        homePage.setAdmin(true);
-        assertTrue("Not logged in as admin!", homePage.isLoggedInAsAdmin());
+        assertTrue("Not logged in as admin!", homePage.isAdminWarningVisible());
         return homePage;
     }
 

@@ -1,10 +1,11 @@
 package com.roosterpark.rptime.selenium.page;
 
-import com.roosterpark.rptime.selenium.NavBarPageObject;
+import com.roosterpark.rptime.selenium.AdminPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateWorkerForm;
 import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerEditList;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
+import com.roosterpark.rptime.selenium.timer.WaitForPresent;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +16,7 @@ import org.openqa.selenium.WebElement;
  * Date: 10/22/13
  * Time: 2:55 PM
  */
-public class WorkerPage extends NavBarPageObject {
+public class WorkerPage extends AdminPageObject {
 
     private CreateWorkerForm createWorkerForm;
     private WorkerEditList workerEditList;
@@ -59,15 +60,15 @@ public class WorkerPage extends NavBarPageObject {
 
         private static final String NEW_BUTTON = "new";
 
-        private WaitForVisible waitForVisible;
-
         public NewButton(WebDriver driver) {
             super(driver, NEW_BUTTON);
         }
 
         @Override
         public Void click() {
-            waitForVisible = new WaitForVisible(getElement());
+            WaitForPresent waitForPresent = new WaitForPresent(getDriver());
+            waitForPresent.defaultWaitForPresent(getBy());
+            WaitForVisible waitForVisible = new WaitForVisible(getElement());
             waitForVisible.defaultWaitForVisible();
             getElement().click();
             return null;

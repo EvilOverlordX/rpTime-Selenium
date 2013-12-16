@@ -32,7 +32,7 @@ public class ClientsPageTest extends BasicSeleniumTest {
     @Test
     public void addLunchRequiredClientTest() {
         HomePage homePage = loginMule.loginAsAdmin();
-        AdminNavBar navBar = homePage.getAdminNavBar();
+        AdminNavBar navBar = homePage.getNavBar();
         ClientPage clientPage = navBar.clickClientsLink();
         clientFormHelper(clientPage, NAME, true);
         clientPage.waitForClientsRedraw();

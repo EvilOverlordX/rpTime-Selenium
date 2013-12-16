@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.page;
 
-import com.roosterpark.rptime.selenium.NavBarPageObject;
+import com.roosterpark.rptime.selenium.AdminPageObject;
 import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ByXpath;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
  * Date: 10/23/13
  * Time: 1:42 PM
  */
-public class HomePage extends NavBarPageObject {
+public class HomePage extends AdminPageObject {
 
     public HomePage(WebDriver driver) {
         super(driver);

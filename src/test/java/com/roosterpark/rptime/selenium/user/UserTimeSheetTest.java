@@ -43,9 +43,9 @@ public class UserTimeSheetTest extends BasicSeleniumTest {
 
     @Test
     public void createTimeSheetTest() {
-        HomePage homePage = loginMule.loginAsTestDefinedUser(user);
-        NavBar navBar = homePage.getNavBar();
-        UserTimeSheetPage userTimeSheetPage = navBar.clickTimeSheetsLink();
+        UserTimeSheetPage userTimeSheetPage = loginMule.loginAsTestDefinedUser(user);
+        NavBar navBar = userTimeSheetPage.getNavBar();
+        userTimeSheetPage = navBar.clickTimeSheetsLink();
         userTimeSheetPage.pauseForRedraw();
         TimeSheetPopup popup = userTimeSheetPage.clickDropDownButton();
         userTimeSheetPage = popup.clickThisWeekLink();

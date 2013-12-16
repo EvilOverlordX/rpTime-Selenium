@@ -40,7 +40,7 @@ public class WorkerPageTest extends BasicSeleniumTest {
     @Test
     public void addHourlyWorkerTest() {
         HomePage homePage = loginMule.loginAsAdmin();
-        AdminNavBar navBar = homePage.getAdminNavBar();
+        AdminNavBar navBar = homePage.getNavBar();
         WorkerPage workerPage = navBar.clickWorkersLink();
         workerPage.initWorkerForm();
         workerForm = workerPage.getCreateWorkerForm();
@@ -54,7 +54,7 @@ public class WorkerPageTest extends BasicSeleniumTest {
     @Test
     public void addSalariedWorkerTest() {
         HomePage homePage = loginMule.loginAsAdmin();
-        AdminNavBar navBar = homePage.getAdminNavBar();
+        AdminNavBar navBar = homePage.getNavBar();
         WorkerPage workerPage = navBar.clickWorkersLink();
         workerPage.initWorkerForm();
         workerForm = workerPage.getCreateWorkerForm();

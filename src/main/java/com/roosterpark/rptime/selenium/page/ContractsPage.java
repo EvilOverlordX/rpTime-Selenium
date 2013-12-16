@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.page;
 
-import com.roosterpark.rptime.selenium.NavBarPageObject;
+import com.roosterpark.rptime.selenium.AdminPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.CheckBox;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateContractForm;
@@ -16,7 +16,7 @@ import org.openqa.selenium.WebElement;
  * Date: 10/25/13
  * Time: 2:11 PM
  */
-public class ContractsPage extends NavBarPageObject{
+public class ContractsPage extends AdminPageObject {
 
     private static final String CHECK_BOX_ID = "showExpiredContracts";
 
