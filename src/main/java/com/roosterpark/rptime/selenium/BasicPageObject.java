@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium;
 
+import com.roosterpark.rptime.selenium.control.AdminWarning;
 import com.roosterpark.rptime.selenium.control.complex.navbar.SignOutButton;
 import com.roosterpark.rptime.selenium.control.complex.navbar.SignOutPopup;
 import org.openqa.selenium.WebDriver;
@@ -41,6 +42,11 @@ public abstract class BasicPageObject {
         } catch (Exception ex) {
             System.err.println(ex);
         }
+    }
+
+    public boolean isAdminWarningVisible() {
+        AdminWarning adminWarning = new AdminWarning(getWebDriver());
+        return adminWarning.isAdminWarningDisplayed();
     }
 
 }
