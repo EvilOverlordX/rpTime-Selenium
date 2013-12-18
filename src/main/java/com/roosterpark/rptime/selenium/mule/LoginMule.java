@@ -41,7 +41,12 @@ public class LoginMule {
 
     public UserTimeSheetPage loginAsTestDefinedUser(User user) {
         homePage = login(user);
+        assertFalse("Logged in as admin!", homePage.isAdminWarningVisible());
         return new UserTimeSheetPage(driver);
+    }
+
+    public ErrorPage errorLoginAsTestDefinedUser(User user) {
+         return errorLogin(user);
     }
 
     public HomePage loginAsTestDefinedAdminUser(User user) {
@@ -57,6 +62,15 @@ public class LoginMule {
         ConfirmationPage confirmationPage = loginPage.signIn(user.getUsername(), user.getPassword());
         homePage = confirmationPage.confirm();
         return homePage;
+    }
+
+    private ErrorPage errorLogin(User user) {
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.openPage();
+        LoginPage loginPage = landingPage.clickSignInLink();
+        ConfirmationPage confirmationPage = loginPage.signIn(user.getUsername(), user.getPassword());
+        ErrorPage errorPage = confirmationPage.errorConfirm();
+        return errorPage;
     }
 
 }

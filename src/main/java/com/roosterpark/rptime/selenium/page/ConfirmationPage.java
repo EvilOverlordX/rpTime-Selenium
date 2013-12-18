@@ -4,6 +4,7 @@ import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ByName;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,6 +39,16 @@ public class ConfirmationPage extends BasicPageObject {
         }
     }
 
+    public ErrorPage errorConfirm() {
+        List<WebElement> elements = getWebDriver().findElements(By.name(ALLOW_BUTTON_ID));
+        if (elements.size() == 0) {
+            return new ErrorPage(getWebDriver());
+        } else {
+            AllowButton allowButton = new AllowButton(getWebDriver());
+            return allowButton.errorClick();
+        }
+    }
+
     private class AllowButton extends Button<HomePage> {
 
         public AllowButton(WebDriver driver) {
@@ -48,6 +59,13 @@ public class ConfirmationPage extends BasicPageObject {
         public HomePage click() {
             getElement().click();
             return new HomePage(getDriver());
+        }
+
+        public ErrorPage errorClick() {
+            WaitForVisible waitForVisible = new WaitForVisible(getElement());
+            waitForVisible.defaultWaitForVisible();
+            getElement().click();
+            return new ErrorPage(getDriver());
         }
 
     }
