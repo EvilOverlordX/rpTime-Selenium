@@ -99,4 +99,9 @@ public class CreateWorkerForm {
         waitForVisible.defaultWaitForVisible();
     }
 
+    public boolean doesEmailFieldDefaultToEmail(String email) {
+        String emailFieldText = emailField.getText().trim();
+        return email.equals(email);
+    }
+
 }
