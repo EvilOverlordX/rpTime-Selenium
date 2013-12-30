@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.list.unregistered;
 
 import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateWorkerForm;
+import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ById;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 
@@ -13,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 public class UnregisteredUserLink extends Link<CreateWorkerForm> {
 
     public UnregisteredUserLink(WebDriver driver, String id) {
-        super(driver, id);
+        super(driver, id, new ById());
     }
 
     @Override
