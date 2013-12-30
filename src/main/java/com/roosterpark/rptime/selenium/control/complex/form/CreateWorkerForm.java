@@ -101,7 +101,7 @@ public class CreateWorkerForm {
 
     public boolean doesEmailFieldDefaultToEmail(String email) {
         String emailFieldText = emailField.getText().trim();
-        return email.equals(email);
+        return emailFieldText.equals(email);
     }
 
 }
