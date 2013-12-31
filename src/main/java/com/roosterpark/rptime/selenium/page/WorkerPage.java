@@ -3,6 +3,7 @@ package com.roosterpark.rptime.selenium.page;
 import com.roosterpark.rptime.selenium.AdminPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateWorkerForm;
+import com.roosterpark.rptime.selenium.control.complex.list.unregistered.UnregisteredWorkerList;
 import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerEditList;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.timer.WaitForPresent;
@@ -20,6 +21,7 @@ public class WorkerPage extends AdminPageObject {
 
     private CreateWorkerForm createWorkerForm;
     private WorkerEditList workerEditList;
+    private UnregisteredWorkerList unregisteredWorkerList;
 
     public WorkerPage(WebDriver driver) {
         super(driver);
@@ -41,6 +43,15 @@ public class WorkerPage extends AdminPageObject {
 
     public WorkerEditList getWorkerEditList() {
         return workerEditList;
+    }
+
+    public void initUnregisteredWorkerList() {
+        unregisteredWorkerList = new UnregisteredWorkerList(getWebDriver());
+        unregisteredWorkerList.initialize();
+    }
+
+    public UnregisteredWorkerList getUnregisteredWorkerList() {
+        return unregisteredWorkerList;
     }
 
     public CreateWorkerForm getCreateWorkerForm() {
