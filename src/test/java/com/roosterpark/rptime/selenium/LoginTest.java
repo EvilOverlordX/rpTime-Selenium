@@ -38,7 +38,7 @@ public class LoginTest extends BasicSeleniumTest {
     @Test
     public void standardLoginTest() {
         workerMule.setHomePage(loginMule.loginAsAdmin());
-        WorkerPage workerPage = workerMule.addSalariedWorker("Test", "User", "testuser@roosterpark.com", "01-01-2014");
+        WorkerPage workerPage = workerMule.addSalariedWorker("Test", "User", "testuser@roosterpark.com", "2014-01-01");
         workerPage.clickSignOutButton();
         user = new StandardUser();
         landingPage.openPage();
