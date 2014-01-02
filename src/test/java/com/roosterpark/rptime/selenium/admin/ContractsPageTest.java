@@ -28,9 +28,10 @@ public class ContractsPageTest extends BasicSeleniumTest {
     private static final String WORKER_FIRST_NAME = "c-first" + System.currentTimeMillis();
     private static final String WORKER_LAST_NAME = "c-last-" + System.currentTimeMillis();
     private static final String EMAIL = WORKER_FIRST_NAME + "@roosterpark.com";
-    private static final String START_DATE = "2013-01-01";
-    private static final String END_DATE = "2013-12-31";
+    private static final String START_DATE = "2014-01-01";
+    private static final String END_DATE = "2014-12-31";
     private static final String CLIENT = "client-" + System.currentTimeMillis();
+    private static final String CLIENT2 = "client2-" + System.currentTimeMillis();
 
     private WorkerMule workerMule;
     private ClientMule clientMule;
@@ -53,6 +54,21 @@ public class ContractsPageTest extends BasicSeleniumTest {
         contractsPage = createContractHelper(contractsPage, CLIENT, WORKER_LAST_NAME + ", " + WORKER_FIRST_NAME,
                                              true, START_DATE, END_DATE);
         verifyContractAdded(contractsPage, CLIENT);
+        contractsPage.close();
+    }
+
+    @Test
+    public void offSiteContractTest() {
+        workerMule.login();
+        WorkerPage workerPage = workerMule.addSalariedWorker(WORKER_FIRST_NAME, WORKER_LAST_NAME, EMAIL, START_DATE);
+        clientMule.setHomePage(workerPage.getNavBar().clickHomeLink());
+        ClientPage clientPage = clientMule.addNonLunchRequiredClient(CLIENT2, "Monday");
+        HomePage homePage = clientPage.getNavBar().clickHomeLink();
+        ContractsPage contractsPage = homePage.getNavBar().clickContractsLink();
+        contractsPage.waitForContractsRedraw();
+        contractsPage = createContractHelper(contractsPage, CLIENT2, WORKER_LAST_NAME + ", " + WORKER_FIRST_NAME,
+                false, START_DATE, END_DATE);
+        verifyContractAdded(contractsPage, CLIENT2);
         contractsPage.close();
     }
 
