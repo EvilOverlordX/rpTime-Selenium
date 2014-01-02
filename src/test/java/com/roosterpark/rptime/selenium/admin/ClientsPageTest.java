@@ -21,6 +21,7 @@ import static org.junit.Assert.assertNotNull;
 public class ClientsPageTest extends BasicSeleniumTest {
 
     private static final String NAME = "fooclient-" + System.currentTimeMillis();
+    private static final String NAME2 = "fooclient2-" + System.currentTimeMillis();
 
     private LoginMule loginMule;
 
@@ -34,10 +35,24 @@ public class ClientsPageTest extends BasicSeleniumTest {
         HomePage homePage = loginMule.loginAsAdmin();
         AdminNavBar navBar = homePage.getNavBar();
         ClientPage clientPage = navBar.clickClientsLink();
+        clientPage.pauseForRedraw();
         clientFormHelper(clientPage, NAME, true);
         clientPage.waitForClientsRedraw();
         clientPage.initClientEditList();
         verifyClientAdded(clientPage, NAME);
+        clientPage.close();
+    }
+
+    @Test
+    public void addNonLunchRequiredClientTest() {
+        HomePage homePage = loginMule.loginAsAdmin();
+        AdminNavBar navBar = homePage.getNavBar();
+        ClientPage clientPage = navBar.clickClientsLink();
+        clientPage.pauseForRedraw();
+        clientFormHelper(clientPage, NAME2, true);
+        clientPage.waitForClientsRedraw();
+        clientPage.initClientEditList();
+        verifyClientAdded(clientPage, NAME2);
         clientPage.close();
     }
 
