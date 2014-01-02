@@ -44,6 +44,7 @@ public class WorkerMule {
     }
 
     private WorkerPage addWorker(String firstName, String lastName, String email, String startDate, boolean isHourly) {
+        homePage.pauseForRedraw();
         AdminNavBar navBar = homePage.getNavBar();
         WorkerPage workerPage = navBar.clickWorkersLink();
         workerPage.pauseForRedraw();

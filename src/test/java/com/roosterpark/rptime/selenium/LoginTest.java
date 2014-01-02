@@ -1,9 +1,8 @@
 package com.roosterpark.rptime.selenium;
 
-import com.roosterpark.rptime.selenium.page.ConfirmationPage;
-import com.roosterpark.rptime.selenium.page.HomePage;
-import com.roosterpark.rptime.selenium.page.LandingPage;
-import com.roosterpark.rptime.selenium.page.LoginPage;
+import com.roosterpark.rptime.selenium.mule.LoginMule;
+import com.roosterpark.rptime.selenium.mule.WorkerMule;
+import com.roosterpark.rptime.selenium.page.*;
 import com.roosterpark.rptime.selenium.user.AdminUser;
 import com.roosterpark.rptime.selenium.user.StandardUser;
 import com.roosterpark.rptime.selenium.user.User;
@@ -24,22 +23,29 @@ public class LoginTest extends BasicSeleniumTest {
     private LoginPage loginPage;
     private ConfirmationPage confirmationPage;
     private HomePage homePage;
+    private WorkerMule workerMule;
+    private LoginMule loginMule;
 
     private User user;
 
     @Before
     public void setup() {
         landingPage = new LandingPage(getDriver());
+        workerMule = new WorkerMule(getDriver());
+        loginMule = new LoginMule(getDriver());
     }
 
-    //@Test
+    @Test
     public void standardLoginTest() {
+        workerMule.setHomePage(loginMule.loginAsAdmin());
+        WorkerPage workerPage = workerMule.addSalariedWorker("Test", "User", "testuser@roosterpark.com", "01-01-2014");
+        workerPage.clickSignOutButton();
         user = new StandardUser();
         landingPage.openPage();
         loginPage = landingPage.clickSignInLink();
         confirmationPage = loginPage.signIn(user.getUsername(), user.getPassword());
         homePage = confirmationPage.confirm();
-        //assertFalse("Logged in as admin!", homePage.isLoggedInAsAdmin());
+        assertFalse("Logged in as admin!", homePage.isAdminWarningVisible());
         homePage.close();
     }
 
