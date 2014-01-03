@@ -53,4 +53,8 @@ public class TextField implements Control {
         return by;
     }
 
+    public boolean isValid() {
+        return element.getAttribute("class").contains("ng-valid");
+    }
+
 }

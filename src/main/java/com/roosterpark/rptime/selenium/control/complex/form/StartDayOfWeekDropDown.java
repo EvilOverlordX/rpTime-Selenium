@@ -57,4 +57,8 @@ public class StartDayOfWeekDropDown extends DropDownList {
         getSelect().deselectByVisibleText(text);
     }
 
+    public String getSelectedDay() {
+        return getSelect().getFirstSelectedOption().getText().trim();
+    }
+
 }

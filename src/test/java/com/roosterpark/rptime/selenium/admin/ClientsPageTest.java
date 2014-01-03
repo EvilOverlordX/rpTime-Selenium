@@ -11,7 +11,9 @@ import com.roosterpark.rptime.selenium.page.HomePage;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * User: John
@@ -22,6 +24,7 @@ public class ClientsPageTest extends BasicSeleniumTest {
 
     private static final String NAME = "fooclient-" + System.currentTimeMillis();
     private static final String NAME2 = "fooclient2-" + System.currentTimeMillis();
+    private static final String NAME3 = "fooclient3-" + System.currentTimeMillis();
 
     private LoginMule loginMule;
 
@@ -32,10 +35,7 @@ public class ClientsPageTest extends BasicSeleniumTest {
 
     @Test
     public void addLunchRequiredClientTest() {
-        HomePage homePage = loginMule.loginAsAdmin();
-        AdminNavBar navBar = homePage.getNavBar();
-        ClientPage clientPage = navBar.clickClientsLink();
-        clientPage.pauseForRedraw();
+        ClientPage clientPage = goToClientPage();
         clientFormHelper(clientPage, NAME, true);
         clientPage.waitForClientsRedraw();
         clientPage.initClientEditList();
@@ -45,14 +45,31 @@ public class ClientsPageTest extends BasicSeleniumTest {
 
     @Test
     public void addNonLunchRequiredClientTest() {
-        HomePage homePage = loginMule.loginAsAdmin();
-        AdminNavBar navBar = homePage.getNavBar();
-        ClientPage clientPage = navBar.clickClientsLink();
-        clientPage.pauseForRedraw();
+        ClientPage clientPage = goToClientPage();
         clientFormHelper(clientPage, NAME2, true);
         clientPage.waitForClientsRedraw();
         clientPage.initClientEditList();
         verifyClientAdded(clientPage, NAME2);
+        clientPage.close();
+    }
+
+    @Test
+    public void noStartDayClientTest() {
+        ClientPage clientPage = goToClientPage();
+        CreateClientForm createClientForm = clientPage.getCreateClientForm();
+        createClientForm.enterName(NAME3);
+        createClientForm.clickSave();
+        assertTrue("Create client form not here!", createClientForm.hasTextEntered());
+        clientPage.close();
+    }
+
+    @Test
+    public void noNameClientTest() {
+        ClientPage clientPage = goToClientPage();
+        CreateClientForm createClientForm = clientPage.getCreateClientForm();
+        createClientForm.selectMonday();
+        createClientForm.clickSave();
+        assertEquals("Create client form not here!", "Monday", createClientForm.getSelectedDayText());
         clientPage.close();
     }
 
@@ -70,6 +87,14 @@ public class ClientsPageTest extends BasicSeleniumTest {
         ClientEditList clientEditList = clientPage.getClientEditList();
         ClientEditListRow row = clientEditList.getRowByName(name);
         assertNotNull("Client not added!", row);
+    }
+
+    private ClientPage goToClientPage() {
+        HomePage homePage = loginMule.loginAsAdmin();
+        AdminNavBar navBar = homePage.getNavBar();
+        ClientPage clientPage = navBar.clickClientsLink();
+        clientPage.pauseForRedraw();
+        return clientPage;
     }
 
 }

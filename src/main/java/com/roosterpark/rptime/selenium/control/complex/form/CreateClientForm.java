@@ -88,4 +88,12 @@ public class CreateClientForm {
         cancelButton.click();
     }
 
+    public boolean hasTextEntered() {
+        return nameField.isValid();
+    }
+
+    public String getSelectedDayText() {
+        return startDayOfWeekDropDown.getSelectedDay();
+    }
+
 }
