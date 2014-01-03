@@ -48,7 +48,7 @@ public class WorkerPageTest extends BasicSeleniumTest {
         workerPage.initWorkerForm();
         workerForm = workerPage.getCreateWorkerForm();
         workerFormHelper(HOURLY_FIRST_NAME, LAST_NAME, HOURLY_EMAIL, START_DATE, true);
-        workerPage.waitForWorkersRedraw();
+        workerPage.pauseForRedraw();
         workerPage.initWorkerEditList();
         verifyWorkerAdded(workerPage, HOURLY_EMAIL);
         workerPage.close();
@@ -60,7 +60,7 @@ public class WorkerPageTest extends BasicSeleniumTest {
         workerPage.initWorkerForm();
         workerForm = workerPage.getCreateWorkerForm();
         workerFormHelper(SALARIED_FIRST_NAME, LAST_NAME, SALARIED_EMAIL, START_DATE, false);
-        workerPage.waitForWorkersRedraw();
+        workerPage.pauseForRedraw();
         workerPage.initWorkerEditList();
         verifyWorkerAdded(workerPage, SALARIED_EMAIL);
         workerPage.close();

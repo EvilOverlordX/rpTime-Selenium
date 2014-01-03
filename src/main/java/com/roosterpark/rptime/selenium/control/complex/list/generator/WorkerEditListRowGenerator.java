@@ -35,13 +35,13 @@ public class WorkerEditListRowGenerator {
     }
 
     private void getElements() {
-        elements = driver.findElements(By.xpath("//div[@id='mainDiv']/div/div/div/div/div/div/div/div/ul/li"));
+        WebElement element = driver.findElement(By.id("workerList"));
+        elements = element.findElements(By.xpath(".//li"));
     }
 
     private String getLinkId(WebElement element) {
-        String baseText = element.getText().trim();
-        String[] parts = baseText.split(" ");
-        return parts[0] + " " + parts[1];
+        WebElement link = element.findElement(By.xpath(".//a"));
+        return link.getAttribute("id");
     }
 
     private String getEmail(WebElement element) {

@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.list.worker;
 
 import com.roosterpark.rptime.selenium.control.Link;
+import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ById;
 import com.roosterpark.rptime.selenium.page.WorkerPage;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +16,7 @@ public class WorkerLink extends Link<WorkerPage> {
     private String id;
 
     public WorkerLink(WebDriver driver, String id) {
-        super(driver, id);
+        super(driver, id, new ById());
         this.id = id;
     }
 
