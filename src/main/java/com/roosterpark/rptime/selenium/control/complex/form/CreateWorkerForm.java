@@ -104,4 +104,16 @@ public class CreateWorkerForm {
         return emailFieldText.equals(email);
     }
 
+    public boolean doesLastNameHaveText() {
+        return lastNameField.isValid();
+    }
+
+    public boolean doesFirstNameHaveText() {
+        return firstNameField.isValid();
+    }
+
+    public boolean doesEmailFieldHaveText() {
+        return emailField.isValid();
+    }
+
 }
