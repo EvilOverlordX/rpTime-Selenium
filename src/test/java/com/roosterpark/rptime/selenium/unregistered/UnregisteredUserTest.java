@@ -1,5 +1,6 @@
-package com.roosterpark.rptime.selenium;
+package com.roosterpark.rptime.selenium.unregistered;
 
+import com.roosterpark.rptime.selenium.BasicSeleniumTest;
 import com.roosterpark.rptime.selenium.control.complex.list.unregistered.UnregisteredWorkerList;
 import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
