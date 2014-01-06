@@ -99,11 +99,6 @@ public class CreateWorkerForm {
         waitForVisible.defaultWaitForVisible();
     }
 
-    public boolean doesEmailFieldDefaultToEmail(String email) {
-        String emailFieldText = emailField.getText().trim();
-        return emailFieldText.equals(email);
-    }
-
     public boolean doesLastNameHaveText() {
         return lastNameField.isValid();
     }
