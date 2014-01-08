@@ -63,4 +63,8 @@ public class UserTimeSheetList {
         return rowsByWeek.get(week);
     }
 
+    public Integer getTimeSheetCount() {
+        return rows.size();
+    }
+
 }

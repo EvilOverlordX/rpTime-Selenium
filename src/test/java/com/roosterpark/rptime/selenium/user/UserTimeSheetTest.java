@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.user;
 
 import com.roosterpark.rptime.selenium.BasicSeleniumTest;
+import com.roosterpark.rptime.selenium.control.complex.list.timesheet.UserTimeSheetList;
 import com.roosterpark.rptime.selenium.control.complex.navbar.NavBar;
 import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetForm;
 import com.roosterpark.rptime.selenium.mule.ContractsMule;
@@ -12,6 +13,8 @@ import com.roosterpark.rptime.selenium.page.popup.TimeSheetPopup;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * User: John
  * Date: 12/5/13
@@ -19,8 +22,8 @@ import org.junit.Test;
  */
 public class UserTimeSheetTest extends BasicSeleniumTest {
 
-    private static final String START_DATE = "2013-01-01";
-    private static final String END_DATE = "2013-12-31";
+    private static final String START_DATE = "2014-01-01";
+    private static final String END_DATE = "2014-12-31";
     private static final String DAY = "Monday";
 
     private static final String FIRST = "Aiko";
@@ -53,6 +56,11 @@ public class UserTimeSheetTest extends BasicSeleniumTest {
         userTimeSheetPage.initializeTimeSheetForm();
         TimeSheetForm timeSheetForm = userTimeSheetPage.getTimeSheetForm();
         userTimeSheetPage = timeSheetForm.clickSubmitButton();
+        userTimeSheetPage.pauseForRedraw();
+        userTimeSheetPage.initializeUserTimeSheetList();
+        UserTimeSheetList userTimeSheetList = userTimeSheetPage.getUserTimeSheetList();
+        assertEquals("Time Sheet count incorrect!", Integer.valueOf(1), userTimeSheetList.getTimeSheetCount());
+        userTimeSheetPage.close();
     }
 
     private void setupUser() {

@@ -72,15 +72,13 @@ public class ContractsPage extends AdminPageObject {
 
         private static final String NEW_BUTTON = "new";
 
-        private WaitForVisible waitForVisible;
-
         public NewButton(WebDriver driver) {
             super(driver, NEW_BUTTON);
         }
 
         @Override
         public Void click() {
-            waitForVisible = new WaitForVisible(getElement());
+            WaitForVisible waitForVisible = new WaitForVisible(getElement());
             waitForVisible.defaultWaitForVisible();
             getElement().click();
             return null;
