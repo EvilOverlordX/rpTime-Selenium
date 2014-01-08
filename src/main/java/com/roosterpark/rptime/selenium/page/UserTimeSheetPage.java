@@ -3,6 +3,7 @@ package com.roosterpark.rptime.selenium.page;
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.StandardPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.control.complex.list.timesheet.UserTimeSheetList;
 import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetForm;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.page.popup.TimeSheetPopup;
@@ -17,6 +18,7 @@ import org.openqa.selenium.WebDriver;
 public class UserTimeSheetPage extends StandardPageObject {
 
     private TimeSheetForm timeSheetForm;
+    private UserTimeSheetList userTimeSheetList;
 
     public UserTimeSheetPage(WebDriver driver) {
         super(driver);
@@ -34,6 +36,15 @@ public class UserTimeSheetPage extends StandardPageObject {
 
     public TimeSheetForm getTimeSheetForm() {
         return timeSheetForm;
+    }
+
+    public void initializeUserTimeSheetList() {
+        userTimeSheetList = new UserTimeSheetList(getWebDriver());
+        userTimeSheetList.init();
+    }
+
+    public UserTimeSheetList getUserTimeSheetList() {
+        return userTimeSheetList;
     }
 
     public void clickCreateButton() {
