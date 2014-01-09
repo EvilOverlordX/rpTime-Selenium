@@ -76,4 +76,8 @@ public class TimeSheetRow {
         return isWeekend;
     }
 
+    public int getSubRowCount() {
+        return subRows.size();
+    }
+
 }
