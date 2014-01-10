@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -33,35 +34,35 @@ public class TimeSheetSubRowGenerator {
         this.homeRow = homeRow;
     }
 
-    public TimeSheetSubRow generateDefault() {
-        return generate(false);
-    }
-
-    public TimeSheetSubRow generateNew() {
-        return generate(true);
-    }
-
-    private TimeSheetSubRow generate(boolean isNew) {
-        getInputIds();
-        getButtonIds();
-        getMenuElement();
-        getButtonElement();
-        TextField clockIn = new TextField(driver, startId);
-        TextField clockOut = new TextField(driver, endId);
-        ClientDropDownButton button = new ClientDropDownButton(driver, clientButtonId, menuElement);
-        AddButton addButton = new AddButton(driver, addButtonId);
-        RemoveButton removeButton = new RemoveButton(driver, removeButtonId);
-        TimeSheetSubRow subRow = new TimeSheetSubRow(clockIn, clockOut, addButton, removeButton, button);
-        subRow.setHomeRow(homeRow);
-        subRow.setButtonsElement(buttonElement);
-        if (isNew) {
-            subRow.setDeletable(true);
+    public List<TimeSheetSubRow> generate() {
+        List<TimeSheetSubRow> subRows = new LinkedList<>();
+        List<WebElement> elements = findSubRows();
+        for (WebElement element: elements) {
+            getInputIds(element);
+            getButtonIds(element);
+            getMenuElement(element);
+            getButtonElement(element);
+            TextField clockIn = new TextField(driver, startId);
+            TextField clockOut = new TextField(driver, endId);
+            ClientDropDownButton button = new ClientDropDownButton(driver, clientButtonId, menuElement);
+            AddButton addButton = new AddButton(driver, addButtonId);
+            RemoveButton removeButton = new RemoveButton(driver, removeButtonId);
+            TimeSheetSubRow subRow = new TimeSheetSubRow(clockIn, clockOut, addButton, removeButton, button);
+            subRow.setHomeRow(homeRow);
+            subRow.setButtonsElement(buttonElement);
+            subRows.add(subRow);
         }
-        return subRow;
+        int count = subRows.size();
+        subRows.get(count - 1).isDeletable();
+        return subRows;
     }
 
-    private void getInputIds() {
-        List<WebElement> elements = parentElement.findElements(By.xpath(".//div/div/div/input"));
+    private List<WebElement> findSubRows() {
+        return parentElement.findElements(By.xpath(".//div[@class='col-sm-8']/div[@class='row ng-scope']"));
+    }
+
+    private void getInputIds(WebElement subRowElement) {
+        List<WebElement> elements = subRowElement.findElements(By.xpath(".//div/input"));
         for (WebElement element: elements) {
             String id = element.getAttribute("id").trim();
             if (id.startsWith("entry-start")) {
@@ -72,8 +73,8 @@ public class TimeSheetSubRowGenerator {
         }
     }
 
-    private void getButtonIds() {
-        List<WebElement> elements = parentElement.findElements(By.xpath(".//div/div/div/div/button"));
+    private void getButtonIds(WebElement subRowElement) {
+        List<WebElement> elements = subRowElement.findElements(By.xpath(".//div/div/button"));
         for (WebElement element: elements) {
             String id = element.getAttribute("id").trim();
             if (id.startsWith("timeSheetLogEntry")) {
@@ -86,12 +87,17 @@ public class TimeSheetSubRowGenerator {
         }
     }
 
-    private void getMenuElement() {
-        menuElement = parentElement.findElement(By.xpath(".//div/div/div/div/ul"));
+    private void getMenuElement(WebElement subRowElement) {
+        List<WebElement> someElements = subRowElement.findElements(By.xpath(".//div"));
+        for (WebElement element: someElements) {
+            if(element.getAttribute("class").contains("col-sm-6")) {
+                menuElement = element.findElement(By.xpath(".//div/ul"));
+            }
+        }
     }
 
-    private void getButtonElement() {
-        List<WebElement> elements = parentElement.findElements(By.xpath(".//div/div/div"));
+    private void getButtonElement(WebElement subRowElement) {
+        List<WebElement> elements = subRowElement.findElements(By.xpath(".//div"));
         for (WebElement element: elements) {
             String classText = element.getAttribute("class");
             if (!classText.equals("col-sm-3")) {

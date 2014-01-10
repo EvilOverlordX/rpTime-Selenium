@@ -85,7 +85,7 @@ public class TimeSheetSubRow {
             addButton.click();
             this.isAbleToAdd = false;
             this.isDeletable = false;
-            homeRow.generateNewSubRow(index);
+            homeRow.initialize();
         } else {
             throw new InoperableControlException("Cannot add new sub-row at this time");
         }
