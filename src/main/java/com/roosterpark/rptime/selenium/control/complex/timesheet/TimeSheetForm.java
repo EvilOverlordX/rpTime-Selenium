@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.timesheet;
 
+import com.roosterpark.rptime.selenium.control.TextField;
 import com.roosterpark.rptime.selenium.page.UserTimeSheetPage;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
@@ -20,8 +21,10 @@ public class TimeSheetForm {
     private WebDriver driver;
     private Map<String, TimeSheetRow> rowsByDay;
     private Map<Integer, TimeSheetRow> rowsByDayOfWeek;
+    private TextField noteField;
 
     private static final Map<String, Integer> DAYS_OF_WEEK = new HashMap<>();
+    private static final String NOTE_ID = "note";
 
     static {
         DAYS_OF_WEEK.put("Sunday", 0);
@@ -37,6 +40,7 @@ public class TimeSheetForm {
         this.driver = driver;
         rowsByDay = new HashMap<>();
         rowsByDayOfWeek = new HashMap<>();
+        noteField = new TextField(getDriver(), NOTE_ID);
     }
 
     public void initialize() {
@@ -87,6 +91,19 @@ public class TimeSheetForm {
     public UserTimeSheetPage clickSubmitButton() {
         SubmitButton submitButton = new SubmitButton(getDriver());
         return submitButton.click();
+    }
+
+    public void addTextToNote(String text) {
+        noteField.enterText(text);
+    }
+
+    public void clearNote() {
+        noteField.clear();
+    }
+
+    public UserTimeSheetPage clickUpdateButton() {
+        UpdateButton updateButton = new UpdateButton(getDriver());
+        return updateButton.click();
     }
 
 }
