@@ -14,11 +14,13 @@ public class ContractEditListRow {
     private ContractLink contractLink;
     private String worker;
     private String client;
+    private ExpiredLabel expiredLabel;
 
-    public ContractEditListRow(ContractLink contractLink, String startDate, String endDate) {
+    public ContractEditListRow(ContractLink contractLink, String startDate, String endDate, ExpiredLabel expiredLabel) {
         this.contractLink = contractLink;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.expiredLabel = expiredLabel;
     }
 
     public ContractsPage clickContractsLink() {
@@ -51,6 +53,10 @@ public class ContractEditListRow {
 
     public void setClient(String client) {
         this.client = client;
+    }
+
+    public boolean isExpired() {
+        return expiredLabel.isVisible();
     }
 
     @Override
