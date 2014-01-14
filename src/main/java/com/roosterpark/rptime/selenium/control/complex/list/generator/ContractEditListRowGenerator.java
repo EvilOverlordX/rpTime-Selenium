@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.list.generator;
 
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEditListRow;
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractLink;
+import com.roosterpark.rptime.selenium.control.complex.list.contract.ExpiredLabel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,9 +33,11 @@ public class ContractEditListRowGenerator {
             List<WebElement> filteredElements = getListItemElements(element);
             for (WebElement filteredElement : filteredElements) {
                 ContractLink contractLink = new ContractLink(driver, getIdFromElement(filteredElement));
+                ExpiredLabel expiredLabel = new ExpiredLabel(getExpiredElement(filteredElement));
                 ContractEditListRow contractEditListRow = new ContractEditListRow(contractLink,
                                                                                   getStartDate(filteredElement),
-                                                                                  getEndDate(filteredElement));
+                                                                                  getEndDate(filteredElement),
+                                                                                  expiredLabel);
                 contractEditListRow.setClient(clientName);
                 contractEditListRow.setWorker(getWorker(filteredElement));
                 rows.add(contractEditListRow);
@@ -86,6 +89,10 @@ public class ContractEditListRowGenerator {
         String baseText = element.getText().trim();
         String[] parts = baseText.split(" ");
         return parts[5];
+    }
+
+    private WebElement getExpiredElement(WebElement element) {
+        return element.findElement(By.xpath(".//span/span[@id='expired']"));
     }
 
 }
