@@ -29,8 +29,9 @@ public class TotalHoursReportRowGenerator {
         List<WebElement> tableRows = getTableRowElements(getTableBodyElement());
         for (WebElement tableRow: tableRows) {
             WorkerLink workerLink = new WorkerLink(driver, getWorkerLinkId(tableRow));
+            String worker = getWorker(tableRow);
             String hours = getHours(tableRow);
-            rows.add(new TotalHoursReportRow(workerLink, hours));
+            rows.add(new TotalHoursReportRow(workerLink, hours, worker));
         }
         return rows;
     }
@@ -46,6 +47,11 @@ public class TotalHoursReportRowGenerator {
     private String getWorkerLinkId(WebElement element) {
         WebElement link = element.findElement(By.xpath(".//td/a"));
         return link.getAttribute("id").trim();
+    }
+
+    private String getWorker(WebElement element) {
+        WebElement link = element.findElement(By.xpath(".//td/a"));
+        return link.getText().trim();
     }
 
     private String getHours(WebElement element) {
