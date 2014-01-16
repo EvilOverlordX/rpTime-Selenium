@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.control.complex.reports.TotalHoursReportTable;
 import com.roosterpark.rptime.selenium.control.reports.ReportDate;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
@@ -19,6 +20,8 @@ public class HoursPerWorkerMonthReportPage extends BasicPageObject {
     private static final String PREVIOUS_BUTTON_ID = "previousMonth";
     private static final String NEXT_BUTTON_ID = "nextMonth";
     private static final String MONTH_YEAR_ID = "monthYear";
+
+    private TotalHoursReportTable totalHoursReportTable;
 
     public HoursPerWorkerMonthReportPage(WebDriver driver) {
         super(driver);
@@ -42,6 +45,15 @@ public class HoursPerWorkerMonthReportPage extends BasicPageObject {
     public ReportDate getReportDate() {
         WebElement element = getWebDriver().findElement(By.id(MONTH_YEAR_ID));
         return ReportDate.getReportDateFromElement(element);
+    }
+
+    public void initializeTotalHoursReportTable() {
+        totalHoursReportTable = new TotalHoursReportTable(getWebDriver());
+        totalHoursReportTable.initialize();
+    }
+
+    public TotalHoursReportTable getTotalHoursReportTable() {
+        return totalHoursReportTable;
     }
 
     private class PreviousMonthButton extends Button<HoursPerWorkerMonthReportPage> {
