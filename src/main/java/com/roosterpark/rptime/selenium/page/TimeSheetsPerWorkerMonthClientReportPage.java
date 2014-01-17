@@ -3,6 +3,7 @@ package com.roosterpark.rptime.selenium.page;
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.list.client.ClientLink;
+import com.roosterpark.rptime.selenium.control.complex.reports.TimeSheetsSummaryReportTable;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
@@ -18,6 +19,8 @@ public class TimeSheetsPerWorkerMonthClientReportPage extends BasicPageObject {
 
     private static final String PREVIOUS_BUTTON_ID = "previousMonth";
     private static final String NEXT_BUTTON_ID = "nextMonth";
+
+    private TimeSheetsSummaryReportTable timeSheetsSummaryReportTable;
 
     public TimeSheetsPerWorkerMonthClientReportPage(WebDriver driver) {
         super(driver);
@@ -42,6 +45,15 @@ public class TimeSheetsPerWorkerMonthClientReportPage extends BasicPageObject {
     public ClientPage clickClientLink() {
         ClientLink clientLink = new ClientLink(getWebDriver(), getClientLinkId());
         return clientLink.click();
+    }
+
+    public void initializeTimeSheetsSummaryReportTable() {
+        timeSheetsSummaryReportTable = new TimeSheetsSummaryReportTable(getWebDriver());
+        timeSheetsSummaryReportTable.initialize();
+    }
+
+    public TimeSheetsSummaryReportTable getTimeSheetsSummaryReportTable() {
+        return timeSheetsSummaryReportTable;
     }
 
     private String getClientLinkId() {
