@@ -8,14 +8,14 @@ import com.roosterpark.rptime.selenium.page.WorkerPage;
  * Date: 1/17/14
  * Time: 10:04 AM
  */
-public class TimeSheetsReportRow {
+public class TimeSheetsSummaryReportRow {
 
     private WorkerLink workerLink;
     private Integer totalDays;
     private Double totalHours;
     private String worker;
 
-    public TimeSheetsReportRow(WorkerLink workerLink, Integer totalDays, Double totalHours, String worker) {
+    public TimeSheetsSummaryReportRow(WorkerLink workerLink, Integer totalDays, Double totalHours, String worker) {
         this.workerLink = workerLink;
         this.totalDays = totalDays;
         this.totalHours = totalHours;
@@ -43,7 +43,7 @@ public class TimeSheetsReportRow {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TimeSheetsReportRow that = (TimeSheetsReportRow) o;
+        TimeSheetsSummaryReportRow that = (TimeSheetsSummaryReportRow) o;
 
         if (totalDays != null ? !totalDays.equals(that.totalDays) : that.totalDays != null) return false;
         if (totalHours != null ? !totalHours.equals(that.totalHours) : that.totalHours != null) return false;
@@ -64,7 +64,7 @@ public class TimeSheetsReportRow {
 
     @Override
     public String toString() {
-        return "TimeSheetsReportRow{" +
+        return "TimeSheetsSummaryReportRow{" +
                 "workerLink=" + workerLink +
                 ", totalDays=" + totalDays +
                 ", totalHours=" + totalHours +
