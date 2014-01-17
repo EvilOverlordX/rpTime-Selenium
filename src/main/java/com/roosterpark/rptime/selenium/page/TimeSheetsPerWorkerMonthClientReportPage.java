@@ -2,9 +2,12 @@ package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.control.complex.list.client.ClientLink;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * User: John
@@ -34,6 +37,17 @@ public class TimeSheetsPerWorkerMonthClientReportPage extends BasicPageObject {
     public TimeSheetsPerWorkerMonthClientReportPage clickNextMonthButton() {
         NextMonthButton nextMonthButton = new NextMonthButton();
         return nextMonthButton.click();
+    }
+
+    public ClientPage clickClientLink() {
+        ClientLink clientLink = new ClientLink(getWebDriver(), getClientLinkId());
+        return clientLink.click();
+    }
+
+    private String getClientLinkId() {
+        WebElement baseElement = getWebDriver().findElement(By.id("reportSummary"));
+        WebElement linkElement = baseElement.findElement(By.xpath(".//h2/a"));
+        return linkElement.getAttribute("id");
     }
 
     private class PreviousMonthButton extends Button<TimeSheetsPerWorkerMonthClientReportPage> {
