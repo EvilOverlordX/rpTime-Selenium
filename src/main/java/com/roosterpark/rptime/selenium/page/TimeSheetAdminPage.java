@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
  * Date: 10/22/13
  * Time: 3:07 PM
  */
-public class TimeSheetPage extends AdminPageObject {
+public class TimeSheetAdminPage extends AdminPageObject {
 
-    public TimeSheetPage(WebDriver driver) {
+    public TimeSheetAdminPage(WebDriver driver) {
         super(driver);
     }
 
