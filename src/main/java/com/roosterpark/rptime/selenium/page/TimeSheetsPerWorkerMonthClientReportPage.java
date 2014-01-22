@@ -3,12 +3,18 @@ package com.roosterpark.rptime.selenium.page;
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.list.client.ClientLink;
+import com.roosterpark.rptime.selenium.control.complex.reports.TimeSheetsReportTable;
 import com.roosterpark.rptime.selenium.control.complex.reports.TimeSheetsSummaryReportTable;
+import com.roosterpark.rptime.selenium.control.complex.reports.generator.TimeSheetsReportTableGenerator;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * User: John
@@ -21,9 +27,12 @@ public class TimeSheetsPerWorkerMonthClientReportPage extends BasicPageObject {
     private static final String NEXT_BUTTON_ID = "nextMonth";
 
     private TimeSheetsSummaryReportTable timeSheetsSummaryReportTable;
+    private List<TimeSheetsReportTable> tables;
+    private Map<String, TimeSheetsReportTable> tablesByWorker;
 
     public TimeSheetsPerWorkerMonthClientReportPage(WebDriver driver) {
         super(driver);
+        tablesByWorker = new HashMap<>();
     }
 
     @Override
@@ -54,6 +63,22 @@ public class TimeSheetsPerWorkerMonthClientReportPage extends BasicPageObject {
 
     public TimeSheetsSummaryReportTable getTimeSheetsSummaryReportTable() {
         return timeSheetsSummaryReportTable;
+    }
+
+    public void initializeTimeSheetsReportTables() {
+        TimeSheetsReportTableGenerator generator = new TimeSheetsReportTableGenerator(getWebDriver());
+        tables = generator.generate();
+        for (TimeSheetsReportTable table : tables) {
+            tablesByWorker.put(table.getWorker(), table);
+        }
+    }
+
+    public TimeSheetsReportTable getTableByWorker(String worker) {
+        return tablesByWorker.get(worker);
+    }
+
+    public List<TimeSheetsReportTable> getTables() {
+        return tables;
     }
 
     private String getClientLinkId() {
