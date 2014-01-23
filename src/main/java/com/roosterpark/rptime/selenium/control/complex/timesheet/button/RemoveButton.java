@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.control.complex.timesheet;
+package com.roosterpark.rptime.selenium.control.complex.timesheet.button;
 
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;

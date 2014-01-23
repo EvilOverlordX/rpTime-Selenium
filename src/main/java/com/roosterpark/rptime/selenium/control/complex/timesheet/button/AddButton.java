@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.control.complex.timesheet;
+package com.roosterpark.rptime.selenium.control.complex.timesheet.button;
 
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
@@ -6,15 +6,13 @@ import org.openqa.selenium.WebDriver;
 
 /**
  * User: John
- * Date: 12/10/13
- * Time: 3:12 PM
+ * Date: 11/27/13
+ * Time: 2:07 PM
  */
-public class SaveButton extends Button<Void> {
+public class AddButton extends Button<Void> {
 
-    private static final String ID = "save";
-
-    public SaveButton(WebDriver driver) {
-        super(driver, ID);
+    public AddButton(WebDriver driver, String id) {
+        super(driver, id);
     }
 
     @Override
@@ -24,4 +22,5 @@ public class SaveButton extends Button<Void> {
         getElement().click();
         return null;
     }
+
 }

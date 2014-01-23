@@ -1,6 +1,9 @@
 package com.roosterpark.rptime.selenium.control.complex.timesheet;
 
 import com.roosterpark.rptime.selenium.control.TextField;
+import com.roosterpark.rptime.selenium.control.complex.timesheet.button.AddButton;
+import com.roosterpark.rptime.selenium.control.complex.timesheet.button.ClientDropDownButton;
+import com.roosterpark.rptime.selenium.control.complex.timesheet.button.RemoveButton;
 import com.roosterpark.rptime.selenium.exception.InoperableControlException;
 import org.openqa.selenium.WebElement;
 
