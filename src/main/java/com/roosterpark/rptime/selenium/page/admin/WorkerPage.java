@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.page.admin;
 
 import com.roosterpark.rptime.selenium.AdminPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.control.TextField;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateWorkerForm;
 import com.roosterpark.rptime.selenium.control.complex.list.unregistered.UnregisteredWorkerList;
 import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerEditList;
@@ -19,12 +20,16 @@ import org.openqa.selenium.WebElement;
  */
 public class WorkerPage extends AdminPageObject {
 
+    private static final String SEARCH_ID = "search";
+
     private CreateWorkerForm createWorkerForm;
     private WorkerEditList workerEditList;
     private UnregisteredWorkerList unregisteredWorkerList;
+    private TextField workerSearchField;
 
     public WorkerPage(WebDriver driver) {
         super(driver);
+        workerSearchField = new TextField(getWebDriver(), SEARCH_ID);
     }
 
     @Override
@@ -65,6 +70,14 @@ public class WorkerPage extends AdminPageObject {
         WebElement workersHeader = workersDiv.findElement(By.xpath(".//div[@class='panel-heading']/h4"));
         WaitForVisible waitForVisible = new WaitForVisible(workersHeader);
         waitForVisible.defaultWaitForVisible();
+    }
+
+    public void writeToWorkerSearchField(String text) {
+        workerSearchField.enterText(text);
+    }
+
+    public void clearWorkerSearchField() {
+        workerSearchField.clear();
     }
 
     private class NewButton extends Button<Void> {
