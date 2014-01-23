@@ -2,7 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.reports;
 
 import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerLink;
 import com.roosterpark.rptime.selenium.control.complex.reports.generator.TimeSheetsReportRowGenerator;
-import com.roosterpark.rptime.selenium.page.WorkerPage;
+import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 

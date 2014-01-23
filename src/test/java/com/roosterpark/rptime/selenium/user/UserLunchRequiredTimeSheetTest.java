@@ -7,7 +7,7 @@ import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetForm;
 import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetRow;
 import com.roosterpark.rptime.selenium.mule.ContractsMule;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
-import com.roosterpark.rptime.selenium.page.ContractsPage;
+import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
 import com.roosterpark.rptime.selenium.page.UserTimeSheetPage;
 import com.roosterpark.rptime.selenium.page.popup.TimeSheetPopup;
 import org.junit.Before;

@@ -2,8 +2,8 @@ package com.roosterpark.rptime.selenium.mule;
 
 import com.roosterpark.rptime.selenium.control.complex.form.CreateClientForm;
 import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
-import com.roosterpark.rptime.selenium.page.ClientPage;
-import com.roosterpark.rptime.selenium.page.HomePage;
+import com.roosterpark.rptime.selenium.page.admin.ClientPage;
+import com.roosterpark.rptime.selenium.page.admin.HomePage;
 import org.openqa.selenium.WebDriver;
 
 /**

@@ -6,10 +6,10 @@ import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEdi
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEditListRow;
 import com.roosterpark.rptime.selenium.mule.ClientMule;
 import com.roosterpark.rptime.selenium.mule.WorkerMule;
-import com.roosterpark.rptime.selenium.page.ClientPage;
-import com.roosterpark.rptime.selenium.page.ContractsPage;
-import com.roosterpark.rptime.selenium.page.HomePage;
-import com.roosterpark.rptime.selenium.page.WorkerPage;
+import com.roosterpark.rptime.selenium.page.admin.ClientPage;
+import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
+import com.roosterpark.rptime.selenium.page.admin.HomePage;
+import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -2,7 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.list.contract;
 
 import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ById;
-import com.roosterpark.rptime.selenium.page.ContractsPage;
+import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 

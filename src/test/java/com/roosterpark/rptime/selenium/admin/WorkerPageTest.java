@@ -6,8 +6,8 @@ import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerEditLis
 import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerEditListRow;
 import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
-import com.roosterpark.rptime.selenium.page.HomePage;
-import com.roosterpark.rptime.selenium.page.WorkerPage;
+import com.roosterpark.rptime.selenium.page.admin.HomePage;
+import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
 import org.junit.Before;
 import org.junit.Test;
 

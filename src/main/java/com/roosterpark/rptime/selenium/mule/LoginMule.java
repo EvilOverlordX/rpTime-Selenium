@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.mule;
 
 import com.roosterpark.rptime.selenium.page.*;
+import com.roosterpark.rptime.selenium.page.admin.HomePage;
 import com.roosterpark.rptime.selenium.user.AdminUser;
 import com.roosterpark.rptime.selenium.user.StandardUser;
 import com.roosterpark.rptime.selenium.user.User;

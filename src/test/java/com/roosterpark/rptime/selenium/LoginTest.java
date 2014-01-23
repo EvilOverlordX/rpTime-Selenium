@@ -3,6 +3,8 @@ package com.roosterpark.rptime.selenium;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
 import com.roosterpark.rptime.selenium.mule.WorkerMule;
 import com.roosterpark.rptime.selenium.page.*;
+import com.roosterpark.rptime.selenium.page.admin.HomePage;
+import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
 import com.roosterpark.rptime.selenium.user.AdminUser;
 import com.roosterpark.rptime.selenium.user.StandardUser;
 import com.roosterpark.rptime.selenium.user.User;

@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.reports;
 
-import com.roosterpark.rptime.selenium.page.MyTimeSheetsPage;
+import com.roosterpark.rptime.selenium.page.admin.MyTimeSheetsPage;
 
 /**
  * User: John

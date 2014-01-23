@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.list.client;
 
-import com.roosterpark.rptime.selenium.page.ClientPage;
+import com.roosterpark.rptime.selenium.page.admin.ClientPage;
 
 /**
  * User: John

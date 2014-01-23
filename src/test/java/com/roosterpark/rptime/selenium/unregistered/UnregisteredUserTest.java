@@ -5,8 +5,8 @@ import com.roosterpark.rptime.selenium.control.complex.list.unregistered.Unregis
 import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
 import com.roosterpark.rptime.selenium.page.ErrorPage;
-import com.roosterpark.rptime.selenium.page.HomePage;
-import com.roosterpark.rptime.selenium.page.WorkerPage;
+import com.roosterpark.rptime.selenium.page.admin.HomePage;
+import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
 import com.roosterpark.rptime.selenium.user.TestUser;
 import com.roosterpark.rptime.selenium.user.User;
 import org.junit.Before;

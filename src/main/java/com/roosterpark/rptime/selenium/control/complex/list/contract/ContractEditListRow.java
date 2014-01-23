@@ -1,6 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.list.contract;
 
-import com.roosterpark.rptime.selenium.page.ContractsPage;
+import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
 
 /**
  * User: John

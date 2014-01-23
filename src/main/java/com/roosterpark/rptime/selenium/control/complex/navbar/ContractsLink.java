@@ -1,7 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.navbar;
 
 import com.roosterpark.rptime.selenium.control.Link;
-import com.roosterpark.rptime.selenium.page.ContractsPage;
+import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
 import org.openqa.selenium.WebDriver;
 
 /**

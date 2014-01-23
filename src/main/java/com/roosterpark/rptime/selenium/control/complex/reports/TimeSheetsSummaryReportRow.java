@@ -1,7 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.reports;
 
 import com.roosterpark.rptime.selenium.control.complex.list.worker.WorkerLink;
-import com.roosterpark.rptime.selenium.page.WorkerPage;
+import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
 
 /**
  * User: John

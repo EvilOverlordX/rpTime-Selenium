@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.page;
+package com.roosterpark.rptime.selenium.page.admin;
 
 import com.roosterpark.rptime.selenium.AdminPageObject;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;

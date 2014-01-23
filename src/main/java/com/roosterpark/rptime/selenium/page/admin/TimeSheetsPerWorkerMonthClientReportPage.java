@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.page;
+package com.roosterpark.rptime.selenium.page.admin;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;

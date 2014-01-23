@@ -1,10 +1,10 @@
 package com.roosterpark.rptime.selenium.mule;
 
 import com.roosterpark.rptime.selenium.control.complex.form.CreateContractForm;
-import com.roosterpark.rptime.selenium.page.ClientPage;
-import com.roosterpark.rptime.selenium.page.ContractsPage;
-import com.roosterpark.rptime.selenium.page.HomePage;
-import com.roosterpark.rptime.selenium.page.WorkerPage;
+import com.roosterpark.rptime.selenium.page.admin.ClientPage;
+import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
+import com.roosterpark.rptime.selenium.page.admin.HomePage;
+import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
 import org.openqa.selenium.WebDriver;
 
 /**

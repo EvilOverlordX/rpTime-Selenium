@@ -1,7 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.navbar;
 
 import com.roosterpark.rptime.selenium.control.Link;
-import com.roosterpark.rptime.selenium.page.TimeSheetsPerWorkerMonthClientReportPage;
+import com.roosterpark.rptime.selenium.page.admin.TimeSheetsPerWorkerMonthClientReportPage;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 
