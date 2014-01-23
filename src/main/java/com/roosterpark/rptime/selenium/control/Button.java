@@ -15,18 +15,15 @@ import org.openqa.selenium.WebElement;
 public abstract class Button<T> implements Control {
 
     private WebDriver driver;
-    private WebElement element;
     private By by;
 
     public Button(WebDriver driver, String elementId) {
         this.driver = driver;
-        this.element = this.driver.findElement(By.id(elementId));
         this.by = By.id(elementId);
     }
 
     public Button(WebDriver driver, String elementId, FindByHelper helper) {
         this.driver = driver;
-        this.element = this.driver.findElement(helper.find(elementId));
         this.by = helper.find(elementId);
     }
 
@@ -39,7 +36,7 @@ public abstract class Button<T> implements Control {
 
     @Override
     public WebElement getElement() {
-        return element;
+        return this.driver.findElement(by);
     }
 
     @Override
