@@ -3,6 +3,7 @@ package com.roosterpark.rptime.selenium.page;
 import com.roosterpark.rptime.selenium.AdminPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.CheckBox;
+import com.roosterpark.rptime.selenium.control.TextField;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateContractForm;
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEditList;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
@@ -19,12 +20,15 @@ import org.openqa.selenium.WebElement;
 public class ContractsPage extends AdminPageObject {
 
     private static final String CHECK_BOX_ID = "showExpiredContracts";
+    private static final String SEARCH_BY_CLIENT_ID = "clientsearch";
 
     private ContractEditList contractEditList;
     private CheckBox expiredContractsCheckBox;
+    private TextField searchByClientField;
 
     public ContractsPage(WebDriver driver) {
         super(driver);
+        searchByClientField = new TextField(getWebDriver(), SEARCH_BY_CLIENT_ID);
     }
 
     @Override
@@ -66,6 +70,14 @@ public class ContractsPage extends AdminPageObject {
             expiredContractsCheckBox = new CheckBox(getWebDriver(), CHECK_BOX_ID);
         }
         return expiredContractsCheckBox.isChecked();
+    }
+
+    public void writeToSearchByClientTextField(String text) {
+        searchByClientField.enterText(text);
+    }
+
+    public void clearSearchByClientTextField() {
+        searchByClientField.clear();
     }
 
     private class NewButton extends Button<Void> {
