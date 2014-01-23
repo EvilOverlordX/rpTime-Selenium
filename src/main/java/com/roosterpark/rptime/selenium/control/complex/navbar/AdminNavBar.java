@@ -15,6 +15,8 @@ public class AdminNavBar {
     private ClientsLink clientsLink;
     private WorkersLink workersLink;
     private ContractsLink contractsLink;
+    private TimeSheetsAdminLink timeSheetsAdminLink;
+    private MyTimeSheetsLink myTimeSheetsLink;
     private ReportDropDown reportDropDown;
 
     public AdminNavBar(WebDriver driver) {
@@ -24,6 +26,8 @@ public class AdminNavBar {
         workersLink = new WorkersLink(driver);
         contractsLink = new ContractsLink(driver);
         reportDropDown = new ReportDropDown(driver);
+        timeSheetsAdminLink = new TimeSheetsAdminLink(driver);
+        myTimeSheetsLink = new MyTimeSheetsLink(driver);
     }
 
     public WebDriver getDriver() {
@@ -48,6 +52,14 @@ public class AdminNavBar {
 
     public ReportsPopup clickReportDropDown() {
         return reportDropDown.click();
+    }
+
+    public TimeSheetAdminPage clickTimeSheetsAdminLink() {
+        return timeSheetsAdminLink.click();
+    }
+
+    public MyTimeSheetsPage clickMyTimeSheetsLink() {
+        return myTimeSheetsLink.click();
     }
 
 }
