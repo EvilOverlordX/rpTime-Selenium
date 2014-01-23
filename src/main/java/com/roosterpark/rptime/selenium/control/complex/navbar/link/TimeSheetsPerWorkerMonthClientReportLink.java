@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.control.complex.navbar;
+package com.roosterpark.rptime.selenium.control.complex.navbar.link;
 
 import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.page.admin.TimeSheetsPerWorkerMonthClientReportPage;

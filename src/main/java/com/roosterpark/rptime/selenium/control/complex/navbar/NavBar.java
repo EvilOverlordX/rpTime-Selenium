@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.navbar;
 
+import com.roosterpark.rptime.selenium.control.complex.navbar.link.UserTimeSheetsLink;
 import com.roosterpark.rptime.selenium.page.UserTimeSheetPage;
 import org.openqa.selenium.WebDriver;
 
