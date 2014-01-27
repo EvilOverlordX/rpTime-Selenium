@@ -1,10 +1,10 @@
 package com.roosterpark.rptime.selenium.page;
 
-import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.StandardPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.list.timesheet.UserTimeSheetList;
 import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetForm;
+import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetWarning;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.page.popup.TimeSheetPopup;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
@@ -55,6 +55,16 @@ public class UserTimeSheetPage extends StandardPageObject {
     public TimeSheetPopup clickDropDownButton() {
         DropDownButton dropDownButton = new DropDownButton(getWebDriver());
         return dropDownButton.click();
+    }
+
+    public boolean isTimeSheetWarningVisible() {
+        TimeSheetWarning timeSheetWarning = new TimeSheetWarning(getWebDriver());
+        return timeSheetWarning.isVisible();
+    }
+
+    public void clickTimeSheetAlertCloseButton() {
+        TimeSheetWarning timeSheetWarning = new TimeSheetWarning(getWebDriver());
+        timeSheetWarning.clickAlertCloseButton();
     }
 
     private class CreateButton extends Button<Void> {

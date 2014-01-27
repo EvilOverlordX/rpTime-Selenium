@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.page.admin;
 
 import com.roosterpark.rptime.selenium.AdminPageObject;
+import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetWarning;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,16 @@ public class TimeSheetAdminPage extends AdminPageObject {
     @Override
     public void openPage() {
         throw new NotDirectlyOpenableException("Time sheet page should not be opened directly.");
+    }
+
+    public boolean isTimeSheetWarningVisible() {
+        TimeSheetWarning timeSheetWarning = new TimeSheetWarning(getWebDriver());
+        return timeSheetWarning.isVisible();
+    }
+
+    public void clickTimeSheetAlertCloseButton() {
+        TimeSheetWarning timeSheetWarning = new TimeSheetWarning(getWebDriver());
+        timeSheetWarning.clickAlertCloseButton();
     }
 
 }
