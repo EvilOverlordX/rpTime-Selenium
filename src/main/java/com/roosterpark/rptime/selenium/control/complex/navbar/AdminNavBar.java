@@ -21,6 +21,7 @@ public class AdminNavBar {
     private MyTimeSheetsLink myTimeSheetsLink;
     private ReportDropDown reportDropDown;
     private PrintButton printButton;
+    private StatsLink statsLink;
 
     private boolean reportsSelected = false;
 
@@ -34,6 +35,7 @@ public class AdminNavBar {
         timeSheetsAdminLink = new TimeSheetsAdminLink(driver);
         myTimeSheetsLink = new MyTimeSheetsLink(driver);
         printButton = new PrintButton(driver);
+        statsLink = new StatsLink(driver);
     }
 
     public WebDriver getDriver() {
@@ -81,6 +83,11 @@ public class AdminNavBar {
         } else {
             printButton.click();
         }
+    }
+
+    public StatsPage clickStatsLink() {
+        reportsSelected = false;
+        return statsLink.click();
     }
 
 }
