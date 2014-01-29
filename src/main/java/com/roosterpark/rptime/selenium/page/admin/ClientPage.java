@@ -52,6 +52,13 @@ public class ClientPage extends AdminPageObject {
         waitForVisible.defaultWaitForVisible();
     }
 
+    public boolean isClientPage() {
+        WebElement clientsDiv = getWebDriver().findElement(By.id("clients"));
+        WaitForVisible waitForVisible = new WaitForVisible(clientsDiv);
+        waitForVisible.defaultWaitForVisible();
+        return clientsDiv.isDisplayed();
+    }
+
     private class NewButton extends Button<Void> {
 
         private static final String NEW_BUTTON = "new";

@@ -91,6 +91,13 @@ public class ContractsPage extends AdminPageObject {
         return clientfilterSelect;
     }
 
+    public boolean isContractsPage() {
+        WebElement contractsDiv = getWebDriver().findElement(By.id("contracts"));
+        WaitForVisible waitForVisible = new WaitForVisible(contractsDiv);
+        waitForVisible.defaultWaitForVisible();
+        return contractsDiv.isDisplayed();
+    }
+
     private class NewButton extends Button<Void> {
 
         private static final String NEW_BUTTON = "new";

@@ -72,6 +72,13 @@ public class WorkerPage extends AdminPageObject {
         waitForVisible.defaultWaitForVisible();
     }
 
+    public boolean isWorkerPage() {
+        WebElement workersDiv = getWebDriver().findElement(By.id("workers"));
+        WaitForVisible waitForVisible = new WaitForVisible(workersDiv);
+        waitForVisible.defaultWaitForVisible();
+        return workersDiv.isDisplayed();
+    }
+
     public void writeToWorkerSearchField(String text) {
         workerSearchField.enterText(text);
     }
