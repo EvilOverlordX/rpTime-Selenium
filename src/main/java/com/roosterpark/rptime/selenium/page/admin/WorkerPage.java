@@ -29,7 +29,6 @@ public class WorkerPage extends AdminPageObject {
 
     public WorkerPage(WebDriver driver) {
         super(driver);
-        workerSearchField = new TextField(getWebDriver(), SEARCH_ID);
     }
 
     @Override
@@ -80,10 +79,12 @@ public class WorkerPage extends AdminPageObject {
     }
 
     public void writeToWorkerSearchField(String text) {
+        workerSearchField = new TextField(getWebDriver(), SEARCH_ID);
         workerSearchField.enterText(text);
     }
 
     public void clearWorkerSearchField() {
+        workerSearchField = new TextField(getWebDriver(), SEARCH_ID);
         workerSearchField.clear();
     }
 

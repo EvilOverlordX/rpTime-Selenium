@@ -30,8 +30,6 @@ public class ContractsPage extends AdminPageObject {
 
     public ContractsPage(WebDriver driver) {
         super(driver);
-        searchByClientField = new TextField(getWebDriver(), SEARCH_BY_CLIENT_ID);
-        clientfilterSelect = new ClientFilterSelect(getWebDriver());
     }
 
     @Override
@@ -76,14 +74,17 @@ public class ContractsPage extends AdminPageObject {
     }
 
     public void writeToSearchByClientTextField(String text) {
+        searchByClientField = new TextField(getWebDriver(), SEARCH_BY_CLIENT_ID);
         searchByClientField.enterText(text);
     }
 
     public void clearSearchByClientTextField() {
+        searchByClientField = new TextField(getWebDriver(), SEARCH_BY_CLIENT_ID);
         searchByClientField.clear();
     }
 
     public void initClientFilter() {
+        clientfilterSelect = new ClientFilterSelect(getWebDriver());
         clientfilterSelect.initialize();
     }
 
