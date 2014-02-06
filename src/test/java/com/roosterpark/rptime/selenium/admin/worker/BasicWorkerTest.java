@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.admin;
+package com.roosterpark.rptime.selenium.admin.worker;
 
 import com.roosterpark.rptime.selenium.BasicSeleniumTest;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateWorkerForm;

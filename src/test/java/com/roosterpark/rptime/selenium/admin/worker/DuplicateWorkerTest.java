@@ -1,4 +1,4 @@
-package com.roosterpark.rptime.selenium.admin;
+package com.roosterpark.rptime.selenium.admin.worker;
 
 import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
 import org.junit.Test;
