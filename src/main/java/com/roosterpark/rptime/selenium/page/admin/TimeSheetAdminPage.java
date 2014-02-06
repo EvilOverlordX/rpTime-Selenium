@@ -3,7 +3,10 @@ package com.roosterpark.rptime.selenium.page.admin;
 import com.roosterpark.rptime.selenium.AdminPageObject;
 import com.roosterpark.rptime.selenium.control.complex.timesheet.TimeSheetWarning;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * User: John
@@ -29,6 +32,13 @@ public class TimeSheetAdminPage extends AdminPageObject {
     public void clickTimeSheetAlertCloseButton() {
         TimeSheetWarning timeSheetWarning = new TimeSheetWarning(getWebDriver());
         timeSheetWarning.clickAlertCloseButton();
+    }
+
+    public boolean isTimeSheetsAdminPage() {
+        WebElement timeSheetsDiv = getWebDriver().findElement(By.id("timesheets"));
+        WaitForVisible waitForVisible = new WaitForVisible(timeSheetsDiv);
+        waitForVisible.defaultWaitForVisible();
+        return timeSheetsDiv.isDisplayed();
     }
 
 }
