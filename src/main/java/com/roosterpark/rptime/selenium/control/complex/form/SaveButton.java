@@ -1,6 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.form;
 
 import com.roosterpark.rptime.selenium.control.Button;
+import com.roosterpark.rptime.selenium.timer.WaitForPresent;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 
@@ -19,8 +20,10 @@ public class SaveButton extends Button<Void> {
 
     @Override
     public Void click() {
-        WaitForVisible waitForVisible = new WaitForVisible(getElement());
-        waitForVisible.defaultWaitForVisible();
+        WaitForPresent waitForPresent = new WaitForPresent(getDriver());
+        waitForPresent.defaultWaitForPresent(getBy());
+        //WaitForVisible waitForVisible = new WaitForVisible(getElement());
+        //waitForVisible.defaultWaitForVisible();
         getElement().click();
         return null;
     }
