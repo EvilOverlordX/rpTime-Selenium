@@ -86,8 +86,7 @@ public class CreateContractForm {
 
     public void waitForCreateContractRedraw() {
         WebElement createContractDiv = getDriver().findElement(By.id("createContract"));
-        WebElement createContractHeader = createContractDiv.findElement(By.xpath(".//div[@class='panel-heading']/span/h4"));
-        WaitForVisible waitForVisible = new WaitForVisible(createContractHeader);
+        WaitForVisible waitForVisible = new WaitForVisible(createContractDiv);
         waitForVisible.defaultWaitForVisible();
     }
 
