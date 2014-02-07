@@ -64,6 +64,10 @@ public class WorkerPage extends AdminPageObject {
         return createWorkerForm;
     }
 
+    public CreateWorkerForm getEditWorkerForm() {
+        return createWorkerForm;
+    }
+
     public void waitForWorkersRedraw() {
         WebElement workersDiv = getWebDriver().findElement(By.id("workers"));
         WebElement workersHeader = workersDiv.findElement(By.xpath(".//div[@class='panel-heading']/h4"));
