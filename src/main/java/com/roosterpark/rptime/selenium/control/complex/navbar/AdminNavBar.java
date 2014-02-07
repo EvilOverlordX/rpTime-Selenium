@@ -13,29 +13,10 @@ import org.openqa.selenium.WebDriver;
 public class AdminNavBar {
 
     private WebDriver driver;
-    private HomeLink homeLink;
-    private ClientsLink clientsLink;
-    private WorkersLink workersLink;
-    private ContractsLink contractsLink;
-    private TimeSheetsAdminLink timeSheetsAdminLink;
-    private MyTimeSheetsLink myTimeSheetsLink;
-    private ReportDropDown reportDropDown;
-    private PrintButton printButton;
-    private StatsLink statsLink;
-
     private boolean reportsSelected = false;
 
     public AdminNavBar(WebDriver driver) {
         this.driver = driver;
-        homeLink = new HomeLink(driver);
-        clientsLink = new ClientsLink(driver);
-        workersLink = new WorkersLink(driver);
-        contractsLink = new ContractsLink(driver);
-        reportDropDown = new ReportDropDown(driver);
-        timeSheetsAdminLink = new TimeSheetsAdminLink(driver);
-        myTimeSheetsLink = new MyTimeSheetsLink(driver);
-        printButton = new PrintButton(driver);
-        statsLink = new StatsLink(driver);
     }
 
     public WebDriver getDriver() {
@@ -44,36 +25,43 @@ public class AdminNavBar {
 
     public HomePage clickHomeLink() {
         reportsSelected = false;
+        HomeLink homeLink = new HomeLink(driver);
         return homeLink.click();
     }
 
     public ClientPage clickClientsLink() {
         reportsSelected = false;
+        ClientsLink clientsLink = new ClientsLink(driver);
         return clientsLink.click();
     }
 
     public WorkerPage clickWorkersLink() {
         reportsSelected = false;
+        WorkersLink workersLink = new WorkersLink(driver);
         return workersLink.click();
     }
 
     public ContractsPage clickContractsLink() {
         reportsSelected = false;
+        ContractsLink contractsLink = new ContractsLink(driver);
         return contractsLink.click();
     }
 
     public ReportsPopup clickReportDropDown() {
         reportsSelected = true;
+        ReportDropDown reportDropDown = new ReportDropDown(driver);
         return reportDropDown.click();
     }
 
     public TimeSheetAdminPage clickTimeSheetsAdminLink() {
         reportsSelected = false;
+        TimeSheetsAdminLink timeSheetsAdminLink = new TimeSheetsAdminLink(driver);
         return timeSheetsAdminLink.click();
     }
 
     public MyTimeSheetsPage clickMyTimeSheetsLink() {
         reportsSelected = false;
+        MyTimeSheetsLink myTimeSheetsLink = new MyTimeSheetsLink(driver);
         return myTimeSheetsLink.click();
     }
 
@@ -81,12 +69,14 @@ public class AdminNavBar {
         if (!reportsSelected) {
             throw new InoperableControlException("Reports drop down needs to be selected!");
         } else {
+            PrintButton printButton = new PrintButton(driver);
             printButton.click();
         }
     }
 
     public StatsPage clickStatsLink() {
         reportsSelected = false;
+        StatsLink statsLink = new StatsLink(driver);
         return statsLink.click();
     }
 
