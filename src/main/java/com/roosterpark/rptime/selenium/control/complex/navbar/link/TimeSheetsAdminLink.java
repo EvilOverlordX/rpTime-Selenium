@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class TimeSheetsAdminLink extends Link<TimeSheetAdminPage> {
 
-    private static final String TIME_SHEETS_LINK = "Time Sheets";
+    private static final String TIME_SHEETS_LINK = "Time Sheets Admin";
 
     public TimeSheetsAdminLink(WebDriver driver) {
         super(driver, TIME_SHEETS_LINK);
