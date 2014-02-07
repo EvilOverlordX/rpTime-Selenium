@@ -74,7 +74,6 @@ public class ContractsMule {
                                          String startDate, String endDate) {
         contractsPage = homePage.getNavBar().clickContractsLink();
         contractsPage.pauseForRedraw();
-        contractsPage.waitForContractsRedraw();
         CreateContractForm createContractForm = contractsPage.getCreateContractForm();
         if (isOnSite) {
             createContractForm.checkOnSite();

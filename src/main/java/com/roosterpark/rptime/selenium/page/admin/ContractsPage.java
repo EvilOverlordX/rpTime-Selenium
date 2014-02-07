@@ -43,13 +43,6 @@ public class ContractsPage extends AdminPageObject {
         return new CreateContractForm(getWebDriver());
     }
 
-    public void waitForContractsRedraw() {
-        WebElement contractsDiv = getWebDriver().findElement(By.id("contracts"));
-        WebElement contractsHeader = contractsDiv.findElement(By.xpath(".//div[@class='panel-heading']/h4"));
-        WaitForVisible waitForVisible = new WaitForVisible(contractsHeader);
-        waitForVisible.defaultWaitForVisible();
-    }
-
     public void initContractEditList() {
         contractEditList = new ContractEditList(getWebDriver());
         contractEditList.init();
