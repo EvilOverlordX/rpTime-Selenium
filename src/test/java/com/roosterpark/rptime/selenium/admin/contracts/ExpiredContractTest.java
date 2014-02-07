@@ -1,7 +1,5 @@
-package com.roosterpark.rptime.selenium.admin;
+package com.roosterpark.rptime.selenium.admin.contracts;
 
-import com.roosterpark.rptime.selenium.BasicSeleniumTest;
-import com.roosterpark.rptime.selenium.control.complex.form.CreateContractForm;
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEditList;
 import com.roosterpark.rptime.selenium.control.complex.list.contract.ContractEditListRow;
 import com.roosterpark.rptime.selenium.mule.ClientMule;
@@ -23,7 +21,7 @@ import static org.junit.Assert.assertNotNull;
  * Date: 1/13/14
  * Time: 12:33 PM
  */
-public class ExpiredContractTest extends BasicSeleniumTest {
+public class ExpiredContractTest extends BasicContractsTest {
 
     private static final String CONTRACT_START_DATE = "2013-01-01";
     private static final String CONTRACT_END_DATE = "2013-12-31";
@@ -60,7 +58,7 @@ public class ExpiredContractTest extends BasicSeleniumTest {
         ClientPage clientPage = clientMule.addNonLunchRequiredClient(client, "Monday");
         HomePage homePage = clientPage.getNavBar().clickHomeLink();
         ContractsPage contractsPage = homePage.getNavBar().clickContractsLink();
-        contractsPage.waitForContractsRedraw();
+        contractsPage.pauseForRedraw();
         contractsPage = createContractHelper(contractsPage, client, lastName + ", " + firstName, true,
                                              CONTRACT_START_DATE, CONTRACT_END_DATE);
         contractsPage.pauseForRedraw();
@@ -73,20 +71,6 @@ public class ExpiredContractTest extends BasicSeleniumTest {
         assertEquals("Row count incorrect!", 1, rows.size());
         assertNotNull("Row null!", rows.get(0));
         contractsPage.close();
-    }
-
-    private ContractsPage createContractHelper(ContractsPage contractsPage, String client, String worker,
-                                               boolean isOnSite, String startDate, String endDate) {
-        CreateContractForm createContractForm = contractsPage.getCreateContractForm();
-        if (isOnSite) {
-            createContractForm.checkOnSite();
-        }
-        createContractForm.selectClient(client);
-        createContractForm.selectWorker(worker);
-        createContractForm.enterStartDate(startDate);
-        createContractForm.enterEndDate(endDate);
-        createContractForm.clickSave();
-        return contractsPage;
     }
 
 }
