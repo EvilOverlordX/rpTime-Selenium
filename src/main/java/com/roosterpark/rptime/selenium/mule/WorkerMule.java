@@ -48,7 +48,6 @@ public class WorkerMule {
         AdminNavBar navBar = homePage.getNavBar();
         WorkerPage workerPage = navBar.clickWorkersLink();
         workerPage.pauseForRedraw();
-        workerPage.waitForWorkersRedraw();
         workerPage.initWorkerForm();
         CreateWorkerForm workerForm = workerPage.getCreateWorkerForm();
         workerForm.waitForRedraw();

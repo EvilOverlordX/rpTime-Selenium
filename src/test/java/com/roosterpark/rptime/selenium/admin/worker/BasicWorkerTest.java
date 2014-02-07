@@ -41,6 +41,8 @@ public abstract class BasicWorkerTest extends BasicSeleniumTest {
     }
 
     public void verifyWorkerAdded(WorkerPage workerPage, String email) {
+        workerPage.pauseForRedraw();
+        workerPage.initWorkerEditList();
         WorkerEditList workerEditList = workerPage.getWorkerEditList();
         WorkerEditListRow row = workerEditList.getRowByEmail(email);
         assertNotNull("Worker not added!", row);
