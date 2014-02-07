@@ -47,4 +47,8 @@ public abstract class Link<T> implements Control {
         return by;
     }
 
+    public String getLinkText() {
+        return getElement().getText();
+    }
+
 }
