@@ -37,6 +37,8 @@ public abstract class BasicClientsTest extends BasicSeleniumTest {
     }
 
     public void verifyClientAdded(ClientPage clientPage, String name) {
+        clientPage.pauseForRedraw();
+        clientPage.initClientEditList();
         ClientEditList clientEditList = clientPage.getClientEditList();
         ClientEditListRow row = clientEditList.getRowByName(name);
         assertNotNull("Client not added!", row);
