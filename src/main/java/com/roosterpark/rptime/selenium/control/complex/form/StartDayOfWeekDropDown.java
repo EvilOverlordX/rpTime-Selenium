@@ -1,7 +1,7 @@
 package com.roosterpark.rptime.selenium.control.complex.form;
 
 import com.roosterpark.rptime.selenium.control.DropDownList;
-import com.roosterpark.rptime.selenium.control.ListItem;
+import com.roosterpark.rptime.selenium.control.Option;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -16,15 +16,15 @@ public class StartDayOfWeekDropDown extends DropDownList {
 
     private static final String ID = "startDayOfWeek";
 
-    private static final ListItem SUNDAY = new ListItem(0, "Sunday");
-    private static final ListItem MONDAY = new ListItem(1, "Monday");
-    private static final ListItem TUESDAY = new ListItem(2, "Tuesday");
-    private static final ListItem WEDNESDAY = new ListItem(3, "Wednesday");
-    private static final ListItem THURSDAY = new ListItem(4, "Thursday");
-    private static final ListItem FRIDAY = new ListItem(5, "Friday");
-    private static final ListItem SATURDAY = new ListItem(6, "Saturday");
+    private static final Option SUNDAY = new Option("Sunday", "0");
+    private static final Option MONDAY = new Option("Monday", "1");
+    private static final Option TUESDAY = new Option("Tuesday", "2");
+    private static final Option WEDNESDAY = new Option("Wednesday", "3");
+    private static final Option THURSDAY = new Option("Thursday", "4");
+    private static final Option FRIDAY = new Option("Friday", "5");
+    private static final Option SATURDAY = new Option("Saturday", "6");
 
-    private final List<ListItem> options = new ArrayList<>();
+    private final List<Option> options = new ArrayList<>();
 
     public StartDayOfWeekDropDown(WebDriver driver) {
         super(driver, ID);
@@ -37,7 +37,7 @@ public class StartDayOfWeekDropDown extends DropDownList {
         options.add(SATURDAY);
     }
 
-    public List<ListItem> getOptions() {
+    public List<Option> getOptions() {
         return options;
     }
 
@@ -58,7 +58,7 @@ public class StartDayOfWeekDropDown extends DropDownList {
     }
 
     public String getSelectedDay() {
-        return getSelect().getFirstSelectedOption().getText().trim();
+        return getElement().getText().trim();
     }
 
 }
