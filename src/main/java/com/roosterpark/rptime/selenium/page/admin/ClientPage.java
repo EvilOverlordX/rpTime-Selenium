@@ -36,6 +36,10 @@ public class ClientPage extends AdminPageObject {
         return new CreateClientForm(getWebDriver());
     }
 
+    public CreateClientForm getEditClientForm() {
+        return new CreateClientForm(getWebDriver());
+    }
+
     public void initClientEditList() {
         clientEditList = new ClientEditList(getWebDriver());
         clientEditList.init();
