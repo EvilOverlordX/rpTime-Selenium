@@ -1,18 +1,10 @@
-package com.roosterpark.rptime.selenium.admin;
+package com.roosterpark.rptime.selenium.admin.clients;
 
-import com.roosterpark.rptime.selenium.BasicSeleniumTest;
 import com.roosterpark.rptime.selenium.control.complex.form.CreateClientForm;
-import com.roosterpark.rptime.selenium.control.complex.list.client.ClientEditList;
-import com.roosterpark.rptime.selenium.control.complex.list.client.ClientEditListRow;
-import com.roosterpark.rptime.selenium.control.complex.navbar.AdminNavBar;
-import com.roosterpark.rptime.selenium.mule.LoginMule;
 import com.roosterpark.rptime.selenium.page.admin.ClientPage;
-import com.roosterpark.rptime.selenium.page.admin.HomePage;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -20,18 +12,11 @@ import static org.junit.Assert.assertTrue;
  * Date: 11/4/13
  * Time: 10:48 AM
  */
-public class ClientsPageTest extends BasicSeleniumTest {
+public class ClientsPageTest extends BasicClientsTest {
 
     private static final String NAME = "fooclient-" + System.currentTimeMillis();
     private static final String NAME2 = "fooclient2-" + System.currentTimeMillis();
     private static final String NAME3 = "fooclient3-" + System.currentTimeMillis();
-
-    private LoginMule loginMule;
-
-    @Before
-    public void setup() {
-        loginMule = new LoginMule(getDriver());
-    }
 
     @Test
     public void addLunchRequiredClientTest() {
@@ -73,28 +58,6 @@ public class ClientsPageTest extends BasicSeleniumTest {
         clientPage.close();
     }
 
-    private void clientFormHelper(ClientPage clientPage, String name, boolean isLunchRequired) {
-        CreateClientForm createClientForm = clientPage.getCreateClientForm();
-        createClientForm.enterName(name);
-        if (isLunchRequired) {
-            createClientForm.checkLunchRequired();
-        }
-        createClientForm.selectMonday();
-        createClientForm.clickSave();
-    }
 
-    private void verifyClientAdded(ClientPage clientPage, String name) {
-        ClientEditList clientEditList = clientPage.getClientEditList();
-        ClientEditListRow row = clientEditList.getRowByName(name);
-        assertNotNull("Client not added!", row);
-    }
-
-    private ClientPage goToClientPage() {
-        HomePage homePage = loginMule.loginAsAdmin();
-        AdminNavBar navBar = homePage.getNavBar();
-        ClientPage clientPage = navBar.clickClientsLink();
-        clientPage.pauseForRedraw();
-        return clientPage;
-    }
 
 }
