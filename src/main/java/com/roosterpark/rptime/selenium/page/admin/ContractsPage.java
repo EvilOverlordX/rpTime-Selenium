@@ -43,6 +43,10 @@ public class ContractsPage extends AdminPageObject {
         return new CreateContractForm(getWebDriver());
     }
 
+    public CreateContractForm getEditContractForm() {
+        return new CreateContractForm(getWebDriver());
+    }
+
     public void initContractEditList() {
         contractEditList = new ContractEditList(getWebDriver());
         contractEditList.init();
