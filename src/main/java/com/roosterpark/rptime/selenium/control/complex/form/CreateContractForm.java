@@ -84,6 +84,14 @@ public class CreateContractForm {
         endDate.clear();
     }
 
+    public String getStartDate() {
+        return startDate.getText();
+    }
+
+    public String getEndDate() {
+        return endDate.getText();
+    }
+
     public void waitForCreateContractRedraw() {
         WebElement createContractDiv = getDriver().findElement(By.id("createContract"));
         WaitForVisible waitForVisible = new WaitForVisible(createContractDiv);

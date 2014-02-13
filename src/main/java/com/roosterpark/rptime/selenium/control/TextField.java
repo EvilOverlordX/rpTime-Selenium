@@ -35,7 +35,7 @@ public class TextField implements Control {
     }
 
     public String getText() {
-        return element.getText();
+        return element.getAttribute("value");
     }
 
     @Override
