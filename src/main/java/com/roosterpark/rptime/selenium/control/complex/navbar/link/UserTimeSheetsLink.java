@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class UserTimeSheetsLink extends Link<UserTimeSheetPage> {
 
-    private static final String TIME_SHEETS_LINK = "Time Sheets";
+    private static final String TIME_SHEETS_LINK = "My Time Sheets";
 
     public UserTimeSheetsLink(WebDriver driver) {
         super(driver, TIME_SHEETS_LINK);
