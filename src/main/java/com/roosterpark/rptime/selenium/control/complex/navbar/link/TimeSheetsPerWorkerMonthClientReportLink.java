@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class TimeSheetsPerWorkerMonthClientReportLink extends Link<TimeSheetsPerWorkerMonthClientReportPage> {
 
-    private static final String ID = "Hours per Worker/Month, all Clients";
+    private static final String ID = "Time Sheets per Worker/Month/Client";
 
     public TimeSheetsPerWorkerMonthClientReportLink(WebDriver driver) {
         super(driver, ID);
