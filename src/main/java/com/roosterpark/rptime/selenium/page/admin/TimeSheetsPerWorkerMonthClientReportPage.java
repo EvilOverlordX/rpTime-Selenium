@@ -3,6 +3,7 @@ package com.roosterpark.rptime.selenium.page.admin;
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.complex.list.client.ClientLink;
+import com.roosterpark.rptime.selenium.control.complex.reports.ClientSelect;
 import com.roosterpark.rptime.selenium.control.complex.reports.TimeSheetsReportTable;
 import com.roosterpark.rptime.selenium.control.complex.reports.TimeSheetsSummaryReportTable;
 import com.roosterpark.rptime.selenium.control.complex.reports.generator.TimeSheetsReportTableGenerator;
@@ -85,6 +86,12 @@ public class TimeSheetsPerWorkerMonthClientReportPage extends BasicPageObject {
         WebElement baseElement = getWebDriver().findElement(By.id("reportSummary"));
         WebElement linkElement = baseElement.findElement(By.xpath(".//h2/a"));
         return linkElement.getAttribute("id");
+    }
+
+    public void selectClient(String client) {
+        ClientSelect clientSelect = new ClientSelect(getWebDriver());
+        clientSelect.initialize();
+        clientSelect.selectOptionByText(client);
     }
 
     private class PreviousMonthButton extends Button<TimeSheetsPerWorkerMonthClientReportPage> {
