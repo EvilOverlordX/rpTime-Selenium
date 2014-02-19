@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class ClientSelect extends DropDownList {
 
-    private static final String ID = "clientFilter";
+    private static final String ID = "client";
 
     private List<Option> options;
     private Map<String, Option> optionsByText;
