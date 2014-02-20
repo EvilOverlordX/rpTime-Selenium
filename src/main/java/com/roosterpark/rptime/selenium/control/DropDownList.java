@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium.control;
 
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +36,8 @@ public abstract class DropDownList implements Control {
     }
 
     public Select getSelect() {
+        WaitForVisible waitForVisible = new WaitForVisible(getElement());
+        waitForVisible.defaultWaitForVisible();
         return select;
     }
 
