@@ -75,7 +75,7 @@ public class TimeSheetsSummaryReportRowGenerator {
         List<WebElement> allTds = element.findElements(By.xpath(".//td"));
         String hours = null;
         for (WebElement td : allTds) {
-            if (td.getAttribute("id").contains("hourss-")) {
+            if (td.getAttribute("id").contains("hours-")) {
                 hours = td.getText().trim();
             }
         }
