@@ -14,11 +14,13 @@ import static org.junit.Assert.assertTrue;
  * User: John
  * Date: 12/19/13
  * Time: 10:15 AM
+ *
+ * Assumes user hasn't been created as a worker
  */
 public class ErrorPageTest extends BasicSeleniumTest {
 
-    private static final String EMAIL = "error.user.42@gmail.com";
-    private static final String PASSWORD = "3rr05_P@55wd";
+    private static final String EMAIL = "testuser4@roosterpark.com";
+    private static final String PASSWORD = "te5tU5er4";
 
     private LoginMule loginMule;
     private User user;
