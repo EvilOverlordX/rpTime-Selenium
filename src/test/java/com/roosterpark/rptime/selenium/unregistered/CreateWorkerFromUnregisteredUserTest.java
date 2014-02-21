@@ -75,8 +75,8 @@ public class CreateWorkerFromUnregisteredUserTest extends BasicSeleniumTest {
 
     private void enterUserInfo(CreateWorkerForm form) {
         assertTrue("Email not set as default!", form.doesEmailFieldHaveText());
-        form.enterFirstName("Aiko");
-        form.enterLastName("Doe");
+        form.enterFirstName("Test");
+        form.enterLastName("User2");
         form.enterStartDate("2014-01-01");
         form.clickSave();
     }
