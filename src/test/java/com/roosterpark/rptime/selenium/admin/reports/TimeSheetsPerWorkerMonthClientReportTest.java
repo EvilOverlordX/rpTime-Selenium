@@ -63,6 +63,7 @@ public class TimeSheetsPerWorkerMonthClientReportTest extends BasicContractsTest
         TimeSheetsSummaryReportRow row = table.getRowByWorker(WORKER);
         assertEquals("Days do not match!", Integer.valueOf(5), row.getTotalDays());
         assertEquals("Total hours do not match!", Double.valueOf(40.00), row.getTotalHours());
+        homePage.close();
     }
 
     private ContractsPage createContract() {
