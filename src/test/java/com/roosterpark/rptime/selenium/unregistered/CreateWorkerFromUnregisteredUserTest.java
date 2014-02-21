@@ -27,8 +27,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class CreateWorkerFromUnregisteredUserTest extends BasicSeleniumTest {
 
-    private static final String EMAIL = "aiko.doe@gmail.com";
-    private static final String PASSWORD = "D@ughter_P@55wd";
+    private static final String EMAIL = "testuser2@roosterpark.com";
+    private static final String PASSWORD = "te5tU5er2";
 
     private LoginMule loginMule;
     private User user;
