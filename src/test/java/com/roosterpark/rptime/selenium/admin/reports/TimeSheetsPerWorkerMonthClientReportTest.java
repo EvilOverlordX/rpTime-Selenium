@@ -29,9 +29,9 @@ import static org.junit.Assert.assertEquals;
  */
 public class TimeSheetsPerWorkerMonthClientReportTest extends BasicContractsTest {
 
-    private static final String FIRST = "Aiko";
-    private static final String LAST = "Doe";
-    private static final String EMAIL = "aiko.doe@gmail.com";
+    private static final String FIRST = "Test";
+    private static final String LAST = "User3";
+    private static final String EMAIL = "testuser3@roosterpark.com";
     private static final String EMPLOYEE_START = "2013-01-01";
     private static final String DAY_OF_WEEK = "Monday";
     private static final String CONTRACT_START = "2014-01-01";
@@ -48,7 +48,7 @@ public class TimeSheetsPerWorkerMonthClientReportTest extends BasicContractsTest
         contractsMule = new ContractsMule(getDriver());
         loginMule = new LoginMule(getDriver());
         client = "client-" + System.currentTimeMillis();
-        user = new TestUser(EMAIL, "D@ughter_P@55wd");
+        user = new TestUser(EMAIL, "te5tU5er3");
     }
 
     @Test
