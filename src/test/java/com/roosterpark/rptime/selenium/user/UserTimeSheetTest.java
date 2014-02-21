@@ -8,7 +8,6 @@ import com.roosterpark.rptime.selenium.mule.ContractsMule;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
 import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
 import com.roosterpark.rptime.selenium.page.UserTimeSheetPage;
-import com.roosterpark.rptime.selenium.page.popup.TimeSheetPopup;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,10 +24,10 @@ public class UserTimeSheetTest extends BasicSeleniumTest {
     private static final String END_DATE = "2014-12-31";
     private static final String DAY = "Monday";
 
-    private static final String FIRST = "Aiko";
-    private static final String LAST = "Doe";
+    private static final String FIRST = "Test";
+    private static final String LAST = "User2";
     private static final String WORKER = LAST + ", " + FIRST;
-    private static final String EMAIL = "aiko.doe@gmail.com";
+    private static final String EMAIL = "testuser2@roosterpark.com";
     private static final String CLIENT = "Client-Doe";
 
     private ContractsMule contractsMule;
@@ -39,7 +38,7 @@ public class UserTimeSheetTest extends BasicSeleniumTest {
     public void setup() {
         contractsMule = new ContractsMule(getDriver());
         loginMule = new LoginMule(getDriver());
-        user = new TestUser(EMAIL, "D@ughter_P@55wd");
+        user = new TestUser(EMAIL, "te5tU5er2");
         setupUser();
     }
 
@@ -48,9 +47,6 @@ public class UserTimeSheetTest extends BasicSeleniumTest {
         UserTimeSheetPage userTimeSheetPage = loginMule.loginAsTestDefinedUser(user);
         NavBar navBar = userTimeSheetPage.getNavBar();
         userTimeSheetPage = navBar.clickTimeSheetsLink();
-        userTimeSheetPage.pauseForRedraw();
-        TimeSheetPopup popup = userTimeSheetPage.clickDropDownButton();
-        userTimeSheetPage = popup.clickThisWeekLink();
         userTimeSheetPage.pauseForRedraw();
         userTimeSheetPage.initializeTimeSheetForm();
         TimeSheetForm timeSheetForm = userTimeSheetPage.getTimeSheetForm();
