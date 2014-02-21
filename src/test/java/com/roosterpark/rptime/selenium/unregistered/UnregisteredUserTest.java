@@ -23,8 +23,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class UnregisteredUserTest extends BasicSeleniumTest {
 
-    private static final String EMAIL = "error.user.42@gmail.com";
-    private static final String PASSWORD = "3rr05_P@55wd";
+    private static final String EMAIL = "testuser4@roosterpark.com";
+    private static final String PASSWORD = "te5tU5er4";
 
     private LoginMule loginMule;
     private User user;
