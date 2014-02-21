@@ -60,7 +60,6 @@ public class TimeSheetRow {
     }
 
     public int getSubRowCount() {
-        System.err.println(subRows);
         return subRows.size();
     }
 
