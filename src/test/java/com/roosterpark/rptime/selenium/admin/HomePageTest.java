@@ -2,10 +2,7 @@ package com.roosterpark.rptime.selenium.admin;
 
 import com.roosterpark.rptime.selenium.BasicSeleniumTest;
 import com.roosterpark.rptime.selenium.mule.LoginMule;
-import com.roosterpark.rptime.selenium.page.admin.ClientPage;
-import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
-import com.roosterpark.rptime.selenium.page.admin.HomePage;
-import com.roosterpark.rptime.selenium.page.admin.WorkerPage;
+import com.roosterpark.rptime.selenium.page.admin.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -56,6 +53,28 @@ public class HomePageTest extends BasicSeleniumTest {
         assertTrue("Not on Contracts page!", contractsPage.isContractsPage());
         assertTrue("Admin warning not visible!", contractsPage.isAdminWarningVisible());
         contractsPage.close();
+    }
+
+    @Test
+    public void hoursPerWorkerMonthReportLinkTest() {
+        HomePage homePage = loginMule.loginAsAdmin();
+        homePage.pauseForRedraw();
+        HoursPerWorkerMonthReportPage hoursPerWorkerMonthReportPage = homePage.clickHoursPerWorkerMonthReportLink();
+        hoursPerWorkerMonthReportPage.pauseForRedraw();
+        assertTrue("Not on Hours Per Worker Month Report page!", hoursPerWorkerMonthReportPage.isHoursPerWorkerMonthReportPage());
+        assertTrue("Admin warning not visible!", hoursPerWorkerMonthReportPage.isAdminWarningVisible());
+        hoursPerWorkerMonthReportPage.close();
+    }
+
+    @Test
+    public void timeSheetsPerWorkerMonthClientReportLinkTest() {
+        HomePage homePage = loginMule.loginAsAdmin();
+        homePage.pauseForRedraw();
+        TimeSheetsPerWorkerMonthClientReportPage tspwmcrPage = homePage.clickTimeSheetsPerWorkerMonthClientReportLink();
+        tspwmcrPage.pauseForRedraw();
+        assertTrue("Not on Time Sheets per Worker/Month/Client page!", tspwmcrPage.isTimeSheetsPerWorkerMonthClientReportPage());
+        assertTrue("Admin warning not visible!", tspwmcrPage.isAdminWarningVisible());
+        tspwmcrPage.close();
     }
 
 }
