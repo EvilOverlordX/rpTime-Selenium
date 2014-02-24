@@ -38,6 +38,16 @@ public class HomePage extends AdminPageObject {
         return contractsLink.click();
     }
 
+    public HoursPerWorkerMonthReportPage clickHoursPerWorkerMonthReportLink() {
+        HoursPerWorkerMonthReportLink hoursPerWorkerMonthReportLink = new HoursPerWorkerMonthReportLink(getWebDriver());
+        return hoursPerWorkerMonthReportLink.click();
+    }
+
+    public TimeSheetsPerWorkerMonthClientReportPage clickTimeSheetsPerWorkerMonthClientReportLink() {
+        TimeSheetsPerWorkerMonthClientReportLink tspwmcrLink = new TimeSheetsPerWorkerMonthClientReportLink(getWebDriver());
+        return tspwmcrLink.click();
+    }
+
     private class WorkersLink extends Link<WorkerPage> {
 
         private static final String ID = "//div[@id='mainDiv']/div[@id='rpTimeWrapperDiv']/div/div/div/div/" +
@@ -90,6 +100,42 @@ public class HomePage extends AdminPageObject {
             getElement().click();
             return new ContractsPage(getDriver());
         }
+    }
+
+    private class HoursPerWorkerMonthReportLink extends Link<HoursPerWorkerMonthReportPage> {
+
+        private static final String ID = "Hours per Worker/Month, all Clients";
+
+        public HoursPerWorkerMonthReportLink(WebDriver driver) {
+            super(driver, ID);
+        }
+
+        @Override
+        public HoursPerWorkerMonthReportPage click() {
+            WaitForVisible waitForVisible = new WaitForVisible(getElement());
+            waitForVisible.defaultWaitForVisible();
+            getElement().click();
+            return new HoursPerWorkerMonthReportPage(getDriver());
+        }
+
+    }
+
+    private class TimeSheetsPerWorkerMonthClientReportLink extends Link<TimeSheetsPerWorkerMonthClientReportPage> {
+
+        private static final String ID = "Time Sheets per Worker/Month/Client";
+
+        public TimeSheetsPerWorkerMonthClientReportLink(WebDriver driver) {
+            super(driver, ID);
+        }
+
+        @Override
+        public TimeSheetsPerWorkerMonthClientReportPage click() {
+            WaitForVisible waitForVisible = new WaitForVisible(getElement());
+            waitForVisible.defaultWaitForVisible();
+            getElement().click();
+            return new TimeSheetsPerWorkerMonthClientReportPage(getDriver());
+        }
+
     }
 
 }
