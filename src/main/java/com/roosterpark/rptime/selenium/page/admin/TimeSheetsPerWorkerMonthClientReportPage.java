@@ -94,6 +94,13 @@ public class TimeSheetsPerWorkerMonthClientReportPage extends BasicPageObject {
         clientSelect.selectOptionByText(client);
     }
 
+    public boolean isTimeSheetsPerWorkerMonthClientReportPage() {
+        WebElement reportDiv = getWebDriver().findElement(By.id("timesheets-per-worker-by-month-for-client"));
+        WaitForVisible waitForVisible = new WaitForVisible(reportDiv);
+        waitForVisible.defaultWaitForVisible();
+        return reportDiv.isDisplayed();
+    }
+
     private class PreviousMonthButton extends Button<TimeSheetsPerWorkerMonthClientReportPage> {
 
         public PreviousMonthButton() {

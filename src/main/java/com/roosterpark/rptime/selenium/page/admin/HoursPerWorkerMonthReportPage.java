@@ -56,6 +56,13 @@ public class HoursPerWorkerMonthReportPage extends BasicPageObject {
         return totalHoursReportTable;
     }
 
+    public boolean isHoursPerWorkerMonthReportPage() {
+        WebElement reportDiv = getWebDriver().findElement(By.id("total-hours-per-worker-per-month"));
+        WaitForVisible waitForVisible = new WaitForVisible(reportDiv);
+        waitForVisible.defaultWaitForVisible();
+        return reportDiv.isDisplayed();
+    }
+
     private class PreviousMonthButton extends Button<HoursPerWorkerMonthReportPage> {
 
         public PreviousMonthButton() {
