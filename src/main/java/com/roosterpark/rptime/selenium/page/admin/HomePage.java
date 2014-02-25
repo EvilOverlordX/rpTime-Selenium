@@ -5,7 +5,9 @@ import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.control.finder.FindByHelper.ByXpath;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
 import com.roosterpark.rptime.selenium.timer.WaitForVisible;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * User: John
@@ -46,6 +48,13 @@ public class HomePage extends AdminPageObject {
     public TimeSheetsPerWorkerMonthClientReportPage clickTimeSheetsPerWorkerMonthClientReportLink() {
         TimeSheetsPerWorkerMonthClientReportLink tspwmcrLink = new TimeSheetsPerWorkerMonthClientReportLink(getWebDriver());
         return tspwmcrLink.click();
+    }
+
+    public boolean isHomePage() {
+        WebElement homeDiv = getWebDriver().findElement(By.id("home"));
+        WaitForVisible waitForVisible = new WaitForVisible(homeDiv);
+        waitForVisible.defaultWaitForVisible();
+        return homeDiv.isDisplayed();
     }
 
     private class WorkersLink extends Link<WorkerPage> {
