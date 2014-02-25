@@ -77,4 +77,13 @@ public class HomePageTest extends BasicSeleniumTest {
         tspwmcrPage.close();
     }
 
+    @Test
+    public void landingTest() {
+        HomePage homePage = loginMule.loginAsAdmin();
+        homePage.pauseForRedraw();
+        assertTrue("Not on Home page!", homePage.isHomePage());
+        assertTrue("Admin warning not visible!", homePage.isAdminWarningVisible());
+        homePage.close();
+    }
+
 }
