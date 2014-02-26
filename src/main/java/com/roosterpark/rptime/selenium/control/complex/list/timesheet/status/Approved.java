@@ -1,5 +1,6 @@
 package com.roosterpark.rptime.selenium.control.complex.list.timesheet.status;
 
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -17,6 +18,8 @@ public class Approved implements Status {
 
     @Override
     public boolean isVisible() {
+        WaitForVisible waitForVisible = new WaitForVisible(element);
+        waitForVisible.defaultWaitForVisible();
         return element.isDisplayed();
     }
 
