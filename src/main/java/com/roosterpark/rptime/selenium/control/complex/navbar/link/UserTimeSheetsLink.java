@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.navbar.link;
 
 import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.page.UserTimeSheetPage;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -19,6 +20,8 @@ public class UserTimeSheetsLink extends Link<UserTimeSheetPage> {
 
     @Override
     public UserTimeSheetPage click() {
+        WaitForVisible waitForVisible = new WaitForVisible(getElement());
+        waitForVisible.defaultWaitForVisible();
         getElement().click();
         return new UserTimeSheetPage(getDriver());
     }

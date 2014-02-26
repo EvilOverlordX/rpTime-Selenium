@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.control.complex.navbar.link;
 
 import com.roosterpark.rptime.selenium.control.Link;
 import com.roosterpark.rptime.selenium.page.admin.ContractsPage;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -19,6 +20,8 @@ public class ContractsLink extends Link<ContractsPage> {
 
     @Override
     public ContractsPage click() {
+        WaitForVisible waitForVisible = new WaitForVisible(getElement());
+        waitForVisible.defaultWaitForVisible();
         getElement().click();
         return new ContractsPage(getDriver());
     }
