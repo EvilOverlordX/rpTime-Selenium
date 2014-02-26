@@ -47,7 +47,6 @@ public class ClientMule {
         AdminNavBar navBar = homePage.getNavBar();
         ClientPage clientPage = navBar.clickClientsLink();
         clientPage.pauseForRedraw();
-        clientPage.waitForClientsRedraw();
         CreateClientForm createClientForm = clientPage.getCreateClientForm();
         createClientForm.enterName(name);
         if(isLunchRequired) {
@@ -79,6 +78,7 @@ public class ClientMule {
                 createClientForm.selectMonday();
         }
         createClientForm.clickSave();
+        clientPage.pauseForRedraw();
         return clientPage;
     }
 

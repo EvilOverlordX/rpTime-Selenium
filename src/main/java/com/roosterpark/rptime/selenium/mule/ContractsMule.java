@@ -41,7 +41,7 @@ public class ContractsMule {
     }
 
     public void addWorker(String firstName, String lastName, String email, String startDate, boolean isSalaried) {
-        WorkerPage workerPage = null;
+        WorkerPage workerPage;
         workerMule.setHomePage(homePage);
         if (isSalaried) {
             workerPage = workerMule.addSalariedWorker(firstName, lastName, email, startDate);
@@ -52,7 +52,7 @@ public class ContractsMule {
     }
 
     public void addClient(String client, String dayOfWeek, boolean isLunchRequired) {
-        ClientPage clientPage = null;
+        ClientPage clientPage;
         clientMule.setHomePage(homePage);
         if(isLunchRequired) {
             clientPage = clientMule.addLunchRequiredClient(client, dayOfWeek);
@@ -83,6 +83,7 @@ public class ContractsMule {
         createContractForm.enterStartDate(startDate);
         createContractForm.enterEndDate(endDate);
         createContractForm.clickSave();
+        contractsPage.pauseForRedraw();
         return contractsPage;
     }
 

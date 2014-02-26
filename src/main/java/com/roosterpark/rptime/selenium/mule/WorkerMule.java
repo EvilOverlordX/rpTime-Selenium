@@ -31,10 +31,6 @@ public class WorkerMule {
         this.homePage = homePage;
     }
 
-    public void setHomePageAsAdmin(HomePage homePage) {
-        this.homePage = homePage;
-    }
-
     public WorkerPage addHourlyWorker(String firstName, String lastName, String email, String startDate) {
         return addWorker(firstName, lastName, email, startDate, true);
     }
