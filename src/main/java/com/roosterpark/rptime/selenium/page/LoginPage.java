@@ -5,6 +5,7 @@ import com.roosterpark.rptime.selenium.control.Button;
 import com.roosterpark.rptime.selenium.control.CheckBox;
 import com.roosterpark.rptime.selenium.control.TextField;
 import com.roosterpark.rptime.selenium.exception.NotDirectlyOpenableException;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -50,6 +51,8 @@ public class LoginPage extends BasicPageObject {
 
         @Override
         public ConfirmationPage click() {
+            WaitForVisible waitForVisible = new WaitForVisible(getElement());
+            waitForVisible.defaultWaitForVisible();
             getElement().click();
             return new ConfirmationPage(getDriver());
         }

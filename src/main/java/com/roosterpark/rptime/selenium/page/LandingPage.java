@@ -2,6 +2,7 @@ package com.roosterpark.rptime.selenium.page;
 
 import com.roosterpark.rptime.selenium.BasicPageObject;
 import com.roosterpark.rptime.selenium.control.Link;
+import com.roosterpark.rptime.selenium.timer.WaitForVisible;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -13,8 +14,6 @@ public class LandingPage extends BasicPageObject {
 
     private static final String ADDRESS = "http://roosterparktime-qa.appspot.com";
 
-    private SignInLink signInLink;
-
     public LandingPage(WebDriver driver) {
         super(driver);
     }
@@ -25,7 +24,7 @@ public class LandingPage extends BasicPageObject {
     }
 
     public LoginPage clickSignInLink() {
-        signInLink = new SignInLink(getWebDriver());
+        SignInLink signInLink = new SignInLink(getWebDriver());
         return signInLink.click();
     }
 
@@ -39,6 +38,8 @@ public class LandingPage extends BasicPageObject {
 
         @Override
         public LoginPage click() {
+            WaitForVisible waitForVisible = new WaitForVisible(getElement());
+            waitForVisible.defaultWaitForVisible();
             getElement().click();
             return new LoginPage(getDriver());
         }
