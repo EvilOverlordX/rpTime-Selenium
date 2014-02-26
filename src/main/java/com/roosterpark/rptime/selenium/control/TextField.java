@@ -54,6 +54,8 @@ public class TextField implements Control {
     }
 
     public boolean isValid() {
+        WaitForVisible waitForVisible = new WaitForVisible(element);
+        waitForVisible.defaultWaitForVisible();
         return element.getAttribute("class").contains("ng-valid");
     }
 
